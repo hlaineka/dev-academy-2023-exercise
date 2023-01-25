@@ -25,4 +25,18 @@ start the hasura server
 
 Now you should have the database running with hasura, and you can access the console from http://localhost:8080/console/
 
+Starting the front end:
 
+Go to the folder /frontend and run 
+
+```npm i```
+
+then
+
+```npm run generate```
+ 
+and
+
+```npm run start```
+
+The page should open to your browser, if not, you can find it in http://localhost:3000/
