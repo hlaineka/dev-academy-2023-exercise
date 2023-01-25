@@ -1,6 +1,6 @@
 import { gql, useApolloClient } from '@apollo/client';
 import React, { Fragment, useState, useRef } from 'react';
-import { GetAllStationsQuery } from '../generated/graphql';
+import { GetAllStationsQuery } from '../../generated/graphql';
 
 type Station = {
   Adress: String;
@@ -53,13 +53,13 @@ const loadAllStations = async () => {
   }
 };
 
-const MockPage = () => {
+const DashBoard = () => {
   loadAllStations();
 
   return (
     <div>
-      <h1>Stations</h1>
+      <h1>Dashboard</h1>
     </div>
   );
 };
-export default MockPage;
+export default DashBoard;
