@@ -1,3 +1,12 @@
 */node_modules
 .DS_Store
 *.dump
+*/dist
+
+frontend/src/generated*
+graphql.schema.json
+
+.env
+
+/extras*
+/backend/data*
