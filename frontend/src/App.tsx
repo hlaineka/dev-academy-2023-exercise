@@ -4,6 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import DashBoard from './components/DashBoard/DashBoard';
 import Stations from './components/Stations/Stations';
 import Journeys from './components/Journeys/Journeys';
+import Navigation from './components/Navigation/Navigation';
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <ApolloProvider client={client}>
+				<Navigation/>
         <Routes>
           <Route path="/" element={<DashBoard />} />
           <Route path="/stations" element={<Stations />} />
