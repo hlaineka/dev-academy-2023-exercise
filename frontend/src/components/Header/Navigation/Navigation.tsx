@@ -27,8 +27,7 @@ const Navigation = () => {
   const [state, setState] = React.useState(false);
 
   const toggleDrawer =
-    (open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
         event.type === 'keydown' &&
         ((event as React.KeyboardEvent).key === 'Tab' ||
@@ -42,17 +41,32 @@ const Navigation = () => {
 
   const list = () => (
     <Box
-      sx={{ width: 'auto', paddingRight: '2rem' }}
+      sx={{ width: 'auto', paddingRight: '2rem', backgroundColor: "#14213D"}}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Dashboard', 'Journeys', 'Stations'].map((text) => (
+        {['Dashboard', 'Journeys', 'Stations'].map(text => (
           <ListItem key={text} disablePadding>
-            <ListItemButton component={Link} to={text == "Journeys" ? "/journeys" : text == "Stations" ? "/stations" : "/"}>
+            <ListItemButton
+              component={Link}
+              to={
+                text == 'Journeys'
+                  ? '/journeys'
+                  : text == 'Stations'
+                  ? '/stations'
+                  : '/'
+              }
+							sx={{ color: "#FFF"}}>
               <ListItemIcon>
-                {text == "Journeys" ? <DirectionsBikeIcon /> : text == "Stations" ? <LocationOnIcon /> : <DashboardIcon/>}
+                {text == 'Journeys' ? (
+                  <DirectionsBikeIcon style={{ color: '#FCA311' }}/>
+                ) : text == 'Stations' ? (
+                  <LocationOnIcon style={{ color: '#FCA311' }}/>
+                ) : (
+                  <DashboardIcon style={{ color: '#FCA311' }}/>
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -64,15 +78,18 @@ const Navigation = () => {
 
   return (
     <div>
-          <Button onClick={toggleDrawer(true)}><MenuIcon /> </Button>
-          <Drawer
-            open={state}
-            onClose={toggleDrawer(false)}
-          >
-						{list()}
-          </Drawer>
+      <Button onClick={toggleDrawer(true)}>
+        <MenuIcon style={{ color: '#FCA311' }} />{' '}
+      </Button>
+      <Drawer open={state} onClose={toggleDrawer(false)} PaperProps={{
+    sx: {
+      backgroundColor: "#14213D"
+    }
+  }}>
+        {list()}
+      </Drawer>
     </div>
   );
-}
+};
 
 export default Navigation;
