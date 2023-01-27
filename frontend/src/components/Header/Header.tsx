@@ -5,9 +5,13 @@ import Typography from '@mui/material/Typography';
 
 const Header = () => {
   return (
-    <AppBar position="static" sx={{flexDirection: "row", padding: "1rem 0", backgroundColor: "#14213D"}}>
+    <AppBar position="static" sx={{ flexDirection: 'row', padding: '1rem 0' }}>
       <Navigation />
-      <Typography variant="h1" component="div" sx={{ flexGrow: 1, fontSize: "2rem" }}>
+      <Typography
+        variant="h1"
+        component="div"
+        sx={{ flexGrow: 1, fontSize: '2rem' }}
+      >
         Helsinki city bike app
       </Typography>
     </AppBar>

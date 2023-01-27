@@ -4,7 +4,8 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+			"es6" //for mui
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,7 +20,9 @@
     "noEmit": true,
     "jsx": "react",
     "noImplicitAny": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "noImplicitThis": true, //for mui
+    "strictNullChecks": true //for mui
   },
   "include": [
     "src"

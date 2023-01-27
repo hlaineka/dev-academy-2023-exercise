@@ -1,4 +1,7 @@
 import { gql, useApolloClient } from '@apollo/client';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/system/Box';
 import React, { Fragment, useState, useRef } from 'react';
 import { GetAllStationsQuery } from '../../generated/graphql';
 
@@ -57,9 +60,23 @@ const DashBoard = () => {
   loadAllStations();
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
+    <Box
+      sx={{
+        backgroundColor: "#E5E5E5", width: "100vw", height: "100vh", position: "absolute", top: 0, left: 0, zIndex: -1
+      }}
+    >
+      <Paper elevation={3}  sx={{
+        width: "80vw", height: "80vh", margin: "auto", marginTop: "10vh", padding: "3rem", boxSizing: "border-box"
+      }}>
+       <Typography
+        variant="h2"
+        component="div"
+        sx={{ flexGrow: 1, fontSize: '2rem' }}
+      >
+        Dashboard
+      </Typography>
+      </Paper>
+    </Box>
   );
 };
 export default DashBoard;
