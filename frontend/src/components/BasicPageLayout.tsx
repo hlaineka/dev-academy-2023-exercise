@@ -12,11 +12,11 @@ const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({ children, pageName })
   return (
     <Box
       sx={{
-        backgroundColor: "#E5E5E5", width: "100vw", height: "100vh", position: "absolute", top: 0, left: 0, zIndex: -1
+        backgroundColor: "#E5E5E5", width: "100vw", minHeight: "100vh", position: "absolute", top: 0, left: 0, zIndex: -1
       }}
     >
       <Paper elevation={3}  sx={{
-        width: "80vw", height: "80vh", margin: "auto", marginTop: "10vh", padding: "3rem", boxSizing: "border-box"
+        width: "80vw", minHeight: "80vh", margin: "auto", marginTop: "10vh", padding: "3rem", boxSizing: "border-box"
       }}>
        <Typography
         variant="h2"
