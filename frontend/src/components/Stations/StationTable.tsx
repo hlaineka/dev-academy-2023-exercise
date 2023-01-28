@@ -6,23 +6,16 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {
-  useGetStationsCountQuery,
-  useGetAllStationsQuery,
-} from '../../generated/graphql';
-import TablePagination from '@mui/material/TablePagination';
 
-const getStationsCount = () => {
-  const { loading, error, data } = useGetStationsCountQuery();
-  return data?.stations_aggregate.aggregate?.count
-    ? data?.stations_aggregate.aggregate?.count
-    : 0;
-};
+import TablePagination from '@mui/material/TablePagination';
+import {
+  GetPaginatedOrderedStations,
+  GetStationsCount,
+} from '../../queries/Queries';
+import { Station } from './types';
 
 const BasicTable = () => {
-  const { loading, error, data } = useGetAllStationsQuery();
-
-  const maxRowsCount = getStationsCount();
+  const maxRowsCount = GetStationsCount();
 
   const [stationPage, setStationPage] = React.useState<number>(0);
   const [rowsPerStationsPage, setRowsPerStationPage] =
@@ -38,11 +31,11 @@ const BasicTable = () => {
   };
 
   const handleChangeRowsPerStationPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    rowCount: number,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+		const rowCount = parseInt(event.target.value, 10);
     console.log(event);
-    setRowsPerStationPage(457);
+    setRowsPerStationPage(rowCount);
     setStationPage(0);
   };
 
@@ -51,6 +44,13 @@ const BasicTable = () => {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(id);
   };
+
+  const { loading, error, data } = GetPaginatedOrderedStations(
+    stationPage,
+    rowsPerStationsPage,
+    order,
+    orderBy,
+  );
 
   const filteredData = data?.stations;
 
@@ -62,6 +62,9 @@ const BasicTable = () => {
     { label: 'all', value: -1 },
   ];
 
+  if (error) {
+    console.log(data, error);
+  }
   return (
     <>
       {loading ? (
@@ -78,7 +81,7 @@ const BasicTable = () => {
               onPageChange={handleChangeStationsPage}
               rowsPerPage={rowsPerStationsPage}
               onRowsPerPageChange={event =>
-                handleChangeRowsPerStationPage(event, 10)
+                handleChangeRowsPerStationPage(event)
               }
               rowsPerPageOptions={rowsPerPageOptions}
             />
@@ -93,7 +96,7 @@ const BasicTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredData?.map(row => (
+                {filteredData?.map((row: Station) => (
                   <TableRow
                     key={row.FID?.toString()}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
