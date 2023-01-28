@@ -41,7 +41,7 @@ const Navigation = () => {
 
   const list = () => (
     <Box
-      sx={{ width: 'auto', paddingRight: '2rem', backgroundColor: "#14213D"}}
+      sx={{ width: 'auto', paddingRight: '2rem', backgroundColor: '#14213D' }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
@@ -58,14 +58,15 @@ const Navigation = () => {
                   ? '/stations'
                   : '/'
               }
-							sx={{ color: "#FFF"}}>
+              sx={{ color: '#FFF' }}
+            >
               <ListItemIcon>
                 {text == 'Journeys' ? (
-                  <DirectionsBikeIcon style={{ color: '#FCA311' }}/>
+                  <DirectionsBikeIcon style={{ color: '#FCA311' }} />
                 ) : text == 'Stations' ? (
-                  <LocationOnIcon style={{ color: '#FCA311' }}/>
+                  <LocationOnIcon style={{ color: '#FCA311' }} />
                 ) : (
-                  <DashboardIcon style={{ color: '#FCA311' }}/>
+                  <DashboardIcon style={{ color: '#FCA311' }} />
                 )}
               </ListItemIcon>
               <ListItemText primary={text} />
@@ -81,11 +82,15 @@ const Navigation = () => {
       <Button onClick={toggleDrawer(true)}>
         <MenuIcon style={{ color: '#FCA311' }} />{' '}
       </Button>
-      <Drawer open={state} onClose={toggleDrawer(false)} PaperProps={{
-    sx: {
-      backgroundColor: "#14213D"
-    }
-  }}>
+      <Drawer
+        open={state}
+        onClose={toggleDrawer(false)}
+        PaperProps={{
+          sx: {
+            backgroundColor: '#14213D',
+          },
+        }}
+      >
         {list()}
       </Drawer>
     </div>

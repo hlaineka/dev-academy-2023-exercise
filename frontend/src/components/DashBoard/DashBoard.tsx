@@ -4,7 +4,7 @@ import BasicPageLayout from '../BasicPageLayout';
 
 const DashBoard = () => {
   return (
-    <BasicPageLayout pageName="Stations">
+    <BasicPageLayout pageName="Dashboard">
       <div>dadaa</div>
     </BasicPageLayout>
   );

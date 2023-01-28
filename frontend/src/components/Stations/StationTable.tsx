@@ -31,9 +31,9 @@ const BasicTable = () => {
   };
 
   const handleChangeRowsPerStationPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-		const rowCount = parseInt(event.target.value, 10);
+    const rowCount = parseInt(event.target.value, 10);
     console.log(event);
     setRowsPerStationPage(rowCount);
     setStationPage(0);
@@ -73,7 +73,7 @@ const BasicTable = () => {
         <div>Error!</div>
       ) : (
         data && (
-          <TableContainer component={Paper}>
+          <>
             <TablePagination
               component="div"
               count={maxRowsCount}
@@ -85,34 +85,36 @@ const BasicTable = () => {
               }
               rowsPerPageOptions={rowsPerPageOptions}
             />
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="left">Nimi</TableCell>
-                  <TableCell align="left">Osoite</TableCell>
-                  <TableCell align="left">Kaupunki</TableCell>
-                  <TableCell align="left">Operaattori</TableCell>
-                  <TableCell align="left">Kapasiteetti</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {filteredData?.map((row: Station) => (
-                  <TableRow
-                    key={row.FID?.toString()}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell align="left">{row.Nimi}</TableCell>
-                    <TableCell align="left">{row.Osoite}</TableCell>
-                    <TableCell align="left">{row.Kaupunki}</TableCell>
-                    <TableCell align="left">{row.Operaattor}</TableCell>
-                    <TableCell align="left">
-                      {row.Kapasiteet?.toString()}
-                    </TableCell>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="left">Nimi</TableCell>
+                    <TableCell align="left">Osoite</TableCell>
+                    <TableCell align="left">Kaupunki</TableCell>
+                    <TableCell align="left">Operaattori</TableCell>
+                    <TableCell align="left">Kapasiteetti</TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {filteredData?.map((row: Station) => (
+                    <TableRow
+                      key={row.FID?.toString()}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell align="left">{row.Nimi}</TableCell>
+                      <TableCell align="left">{row.Osoite}</TableCell>
+                      <TableCell align="left">{row.Kaupunki}</TableCell>
+                      <TableCell align="left">{row.Operaattor}</TableCell>
+                      <TableCell align="left">
+                        {row.Kapasiteet?.toString()}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </>
         )
       )}
     </>

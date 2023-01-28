@@ -25,23 +25,27 @@ export const GET_ALL_STATIONS = gql`
 `;
 
 export const GET_PAGINATED_ORDERED_STATIONS = gql`
-query GetPaginatedOrderedStations($offset: Int, $limit: Int, $order_by: [stations_order_by!]  ) {
-	stations(order_by: $order_by, limit: $limit, offset: $offset) {
-		Adress
-		FID
-		ID
-		Kapasiteet
-		Kaupunki
-		Name
-		Namn
-		Nimi
-		Operaattor
-		Osoite
-		Stad
-		x
-		y
-	}
-}
+  query GetPaginatedOrderedStations(
+    $offset: Int
+    $limit: Int
+    $order_by: [stations_order_by!]
+  ) {
+    stations(order_by: $order_by, limit: $limit, offset: $offset) {
+      Adress
+      FID
+      ID
+      Kapasiteet
+      Kaupunki
+      Name
+      Namn
+      Nimi
+      Operaattor
+      Osoite
+      Stad
+      x
+      y
+    }
+  }
 `;
 
 export const GET_STATIONS_COUNT = gql`
@@ -61,16 +65,21 @@ export const GetStationsCount = () => {
     : 0;
 };
 
-export const GetPaginatedOrderedStations = (stationPage: number, rowsPerStationsPage: number, order: String, orderBy: String) => {
+export const GetPaginatedOrderedStations = (
+  stationPage: number,
+  rowsPerStationsPage: number,
+  order: String,
+  orderBy: String,
+) => {
   const offset = stationPage * rowsPerStationsPage;
-	const limit = rowsPerStationsPage;
-	
-	const returnable = useQuery(GET_PAGINATED_ORDERED_STATIONS, {
+  const limit = rowsPerStationsPage;
+
+  const returnable = useQuery(GET_PAGINATED_ORDERED_STATIONS, {
     variables: {
       offset: offset,
       limit: limit,
       order_by: {
-        'Nimi': 'asc',
+        Nimi: 'asc',
       },
     },
   });

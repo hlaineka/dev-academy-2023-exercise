@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate": "graphql-codegen --config codegen.js"
+    "generate": "graphql-codegen --config codegen.js",
+		"prettier": "prettier --list-different '{src,e2e}/**/*.{ts,tsx}'"
   },
   "devDependencies": {
     "@emotion/react": "^11.10.5",

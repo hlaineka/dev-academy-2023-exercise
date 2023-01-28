@@ -21,14 +21,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <ApolloProvider client={client}>
-			<ThemeProvider theme={theme}>
-				<Header/>
-        <Routes>
-          <Route path="/" element={<DashBoard />} />
-          <Route path="/stations" element={<Stations />} />
-          <Route path="/journeys" element={<Journeys />} />
-        </Routes>
-				</ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<DashBoard />} />
+            <Route path="/stations" element={<Stations />} />
+            <Route path="/journeys" element={<Journeys />} />
+          </Routes>
+        </ThemeProvider>
       </ApolloProvider>
     </BrowserRouter>
   );
