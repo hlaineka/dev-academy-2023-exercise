@@ -58,3 +58,4 @@ The page should open to your browser, if not, you can find it in http://localhos
 - [ ] Jest tests
 - [ ] E2E tests
 - [ ] Dashboard with statistics
+- [ ] Language versions
