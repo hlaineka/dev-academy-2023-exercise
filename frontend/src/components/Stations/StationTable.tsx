@@ -25,7 +25,7 @@ const BasicTable = () => {
   const [rowsPerStationsPage, setRowsPerStationPage] =
     React.useState<number>(25);
   const [order, setOrder] = React.useState<SortDirection>('desc');
-  const [orderBy, setOrderBy] = React.useState<String>('Nimi');
+  const [orderBy, setOrderBy] = React.useState<string>('Nimi');
 
   const handleChangeStationsPage = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
@@ -43,10 +43,10 @@ const BasicTable = () => {
     setStationPage(0);
   };
 
-  const handleToggleOrdering = (id: String) => {
-    const isAsc = orderBy === id && order === 'asc';
+  const handleToggleOrdering = (query_name: string) => {
+    const isAsc = orderBy === query_name && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(id);
+    setOrderBy(query_name);
     console.log(orderBy);
     console.log(order);
   };
@@ -90,7 +90,7 @@ const BasicTable = () => {
                   headCells={stationTableHeads}
                   orderBy={orderBy}
                   order={order}
-                  tableType="journeys"
+                  tableType="stationss"
                   handleOrdering={handleToggleOrdering}
                 />
                 <TableBody>
@@ -103,7 +103,7 @@ const BasicTable = () => {
                       <TableCell align="left">{row.osoite}</TableCell>
                       <TableCell align="left">{row.kaupunki}</TableCell>
                       <TableCell align="left">{row.operaattori}</TableCell>
-                      <TableCell align="left">
+                      <TableCell align="right">
                         {row.kapasiteetti?.toString()}
                       </TableCell>
                       <TableCell align="center">
