@@ -19,6 +19,6 @@ export type Station = {
 export type TableHeads = {
   id: string;
   label: String;
-  query_name: String;
+  query_name: string;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 };

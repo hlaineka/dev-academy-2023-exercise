@@ -10,11 +10,11 @@ import Button from '@mui/material/Button';
 
 import TablePagination from '@mui/material/TablePagination';
 import {
-  GetPaginatedOrderedStations,
+	GetPaginatedOrderedStations,
   GetStationsCount,
 } from '../../queries/Queries';
 import { Station } from './types';
-import { journeyTableHeads, rowsPerPageOptions } from './constants';
+import { stationTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../CreateTableHead';
 import StationViewButton from './SingleStationView';
 
@@ -88,7 +88,7 @@ const BasicTable = () => {
             />
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <CreateTableHead headCells={journeyTableHeads} orderBy={orderBy} order={order} tableType="journeys" handleOrdering={handleToggleOrdering }/>
+                <CreateTableHead headCells={stationTableHeads} orderBy={orderBy} order={order} tableType="journeys" handleOrdering={handleToggleOrdering }/>
                 <TableBody>
                   {filteredData?.map((row: Station) => (
                     <TableRow

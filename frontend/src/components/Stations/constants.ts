@@ -8,35 +8,35 @@ export const rowsPerPageOptions = [
   { label: 'all', value: -1 },
 ];
 
-export const journeyTableHeads: Array<TableHeads> = [
+export const stationTableHeads: Array<TableHeads> = [
   {
     id: '0',
     label: 'Nimi',
-    query_name: 'Nimi',
+    query_name: 'nimi',
     align: 'left',
   },
   {
     id: '1',
     label: 'Osoite',
-    query_name: 'Osoite',
+    query_name: 'osoite',
     align: 'left',
   },
   {
     id: '2',
     label: 'Kaupunki',
-    query_name: 'Kaupunki',
+    query_name: 'kaupunki',
     align: 'left',
   },
   {
     id: '3',
     label: 'Operaattori',
-    query_name: 'Operaattor',
+    query_name: 'operaattori',
     align: 'left',
   },
   {
     id: '4',
     label: 'Kapasiteetti',
-    query_name: 'Kapasiteet',
+    query_name: 'kapasiteetti',
     align: 'left',
   },
 ];

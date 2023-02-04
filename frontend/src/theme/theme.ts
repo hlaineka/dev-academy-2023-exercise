@@ -19,7 +19,7 @@ export const theme = createTheme({
     },
     text: {
       primary: '#000000',
-      secondary: '#ffffff',
+      secondary: '#000000',
     },
   },
 });
@@ -43,7 +43,7 @@ export const darkTheme = createTheme({
     },
     text: {
       primary: '#ffffff',
-      secondary: '#000000',
+      secondary: '#ffffff',
     },
   },
 });

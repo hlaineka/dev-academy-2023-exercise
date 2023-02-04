@@ -1,10 +1,11 @@
 import React from 'react';
 import BasicPageLayout from '../BasicPageLayout';
+import JourneyTable from './JourneyTable';
 
 const Journeys = () => {
   return (
     <BasicPageLayout pageName="Journeys">
-      <div>dadaa</div>
+      <JourneyTable/>
     </BasicPageLayout>
   );
 };
