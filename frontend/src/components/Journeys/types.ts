@@ -1,13 +1,13 @@
 export type Journey = {
-	Departure: Date;
-	Return: Date;
-	covered_distance_m: number;
-	departure_station_id: number;
-	departure_station_name: String;
-	duration_sec: number;
-	id: number;
-	return_station_id: number;
-	return_station_name: String;
+  Departure: Date;
+  Return: Date;
+  covered_distance_m: number;
+  departure_station_id: number;
+  departure_station_name: String;
+  duration_sec: number;
+  id: number;
+  return_station_id: number;
+  return_station_name: String;
 };
 
 export type TableHeads = {

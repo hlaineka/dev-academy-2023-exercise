@@ -1,4 +1,4 @@
-import { TableHeads } from "./types";
+import { TableHeads } from './types';
 
 export const rowsPerPageOptions = [
   { label: '10', value: 10 },
@@ -15,7 +15,7 @@ export const journeyTableHeads: Array<TableHeads> = [
     query_name: 'Departure',
     align: 'left',
   },
-	{
+  {
     id: '1',
     label: 'Departure station',
     query_name: 'departure_station_name',
@@ -27,7 +27,7 @@ export const journeyTableHeads: Array<TableHeads> = [
     query_name: 'Return',
     align: 'left',
   },
-	{
+  {
     id: '3',
     label: 'Return',
     query_name: 'return_station_name',

@@ -12,8 +12,8 @@ export type Station = {
   stad: String;
   x: number;
   y: number;
-	journey_departures: number;
-	journey_returns: number;
+  journey_departures: number;
+  journey_returns: number;
 };
 
 export type TableHeads = {

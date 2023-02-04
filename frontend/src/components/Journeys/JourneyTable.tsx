@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import {
-	GetPaginatedOrderedJourneys,
+  GetPaginatedOrderedJourneys,
   GetJourneysCount,
 } from '../../queries/Queries';
 import { Journey } from './types';
@@ -15,22 +15,22 @@ import { journeyTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../CreateTableHead';
 
 const createDurationString = (duration: number) => {
-	const seconds = duration % 60;
-	const minutes = Math.floor(duration / 60) % 60;
-	const hours = Math.floor(duration / 3600);
+  const seconds = duration % 60;
+  const minutes = Math.floor(duration / 60) % 60;
+  const hours = Math.floor(duration / 3600);
 
-	const secondsString = ("  " + seconds.toString()).slice(-3) + "s";
-	const minutesString = ("  " + minutes.toString()).slice(-3) + "m";
-	const hoursString = ("            " + hours.toString()).slice(-10) + "h";
+  const secondsString = ('  ' + seconds.toString()).slice(-3) + 's';
+  const minutesString = ('  ' + minutes.toString()).slice(-3) + 'm';
+  const hoursString = ('            ' + hours.toString()).slice(-10) + 'h';
 
-	return(hoursString + minutesString + secondsString);
-}
+  return hoursString + minutesString + secondsString;
+};
 
 const createDistanceString = (distance: number) => {
-	const meters = Math.floor(distance % 1000);
-	const kilometers = Math.floor(distance / 1000);
-	return kilometers === 0 ? (meters + "m") : (kilometers + "km " + meters + "m")
-}
+  const meters = Math.floor(distance % 1000);
+  const kilometers = Math.floor(distance / 1000);
+  return kilometers === 0 ? meters + 'm' : kilometers + 'km ' + meters + 'm';
+};
 
 const JourneyTable = () => {
   const maxRowsCount = GetJourneysCount();
@@ -61,8 +61,8 @@ const JourneyTable = () => {
     const isAsc = orderBy === query_name && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(query_name);
-		console.log(orderBy);
-		console.log(order);
+    console.log(orderBy);
+    console.log(order);
   };
 
   const { loading, error, data } = GetPaginatedOrderedJourneys(
@@ -100,21 +100,37 @@ const JourneyTable = () => {
             />
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <CreateTableHead headCells={journeyTableHeads} orderBy={orderBy} order={order} tableType="journeys" handleOrdering={handleToggleOrdering }/>
+                <CreateTableHead
+                  headCells={journeyTableHeads}
+                  orderBy={orderBy}
+                  order={order}
+                  tableType="journeys"
+                  handleOrdering={handleToggleOrdering}
+                />
                 <TableBody>
                   {filteredData?.map((row: Journey) => (
                     <TableRow
                       key={row.id?.toString()}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                      <TableCell align="left">{row.Departure.toString()}</TableCell>
-                      <TableCell align="left">{row.departure_station_name}</TableCell>
-                      <TableCell align="left">{row.Return.toString()}</TableCell>
-                      <TableCell align="left">{row.return_station_name}</TableCell>
+                      <TableCell align="left">
+                        {row.Departure.toString()}
+                      </TableCell>
+                      <TableCell align="left">
+                        {row.departure_station_name}
+                      </TableCell>
+                      <TableCell align="left">
+                        {row.Return.toString()}
+                      </TableCell>
+                      <TableCell align="left">
+                        {row.return_station_name}
+                      </TableCell>
                       <TableCell align="left">
                         {createDistanceString(row.covered_distance_m)}
                       </TableCell>
-											<TableCell align="right"> {createDurationString(row.duration_sec)}
+                      <TableCell align="right">
+                        {' '}
+                        {createDurationString(row.duration_sec)}
                       </TableCell>
                     </TableRow>
                   ))}
