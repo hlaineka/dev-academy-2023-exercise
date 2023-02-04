@@ -66,3 +66,4 @@ The page should open to your browser, if not, you can find it in http://localhos
 - [ ] Search for journeys and stations
 - [ ] Change queries to allow more functionalities
 - [ ] Code through prettier, commenting
+- [ ] Single station view to english
