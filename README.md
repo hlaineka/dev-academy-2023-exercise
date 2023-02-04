@@ -68,3 +68,4 @@ The page should open to your browser, if not, you can find it in http://localhos
 - [ ] Code through prettier, commenting
 - [ ] Single station view to english
 - [ ] Timestamp on journeys to more readable format
+- [ ] Google maps to singe station view
