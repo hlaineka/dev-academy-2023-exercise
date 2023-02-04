@@ -24,8 +24,8 @@ const BasicTable = () => {
   const [stationPage, setStationPage] = React.useState<number>(0);
   const [rowsPerStationsPage, setRowsPerStationPage] =
     React.useState<number>(25);
-  const [order, setOrder] = React.useState<SortDirection>('desc');
-  const [orderBy, setOrderBy] = React.useState<string>('Nimi');
+  const [order, setOrder] = React.useState<SortDirection>('asc');
+  const [orderBy, setOrderBy] = React.useState<string>('nimi');
 
   const handleChangeStationsPage = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
