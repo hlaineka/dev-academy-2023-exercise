@@ -50,12 +50,15 @@ The page should open to your browser, if not, you can find it in http://localhos
 
 ## Todo -list
 - [ ] Backend data validation
-- [ ] Not importing journey data with distance shorter than 10m or duration shorter than 10s
+- [x] Not importing journey data with distance shorter than 10m or duration shorter than 10s
 - [ ] Fixing station data by importing missing city info
-- [ ] Single station view
+- [x] Single station view
 - [ ] Adding new journeys and stations
 - [ ] Running the project online
 - [ ] Jest tests
 - [ ] E2E tests
 - [ ] Dashboard with statistics
 - [ ] Language versions
+- [ ] Responsive layout
+- [ ] Accessible layout
+- [ ] Documentation
