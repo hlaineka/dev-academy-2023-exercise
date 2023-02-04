@@ -12,13 +12,13 @@ export type Station = {
   stad: String;
   x: number;
   y: number;
-	journey_departures: number;
-	journey_returns: number;
+  journey_departures: number;
+  journey_returns: number;
 };
 
 export type TableHeads = {
   id: string;
   label: String;
-  query_name: String;
+  query_name: string;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 };

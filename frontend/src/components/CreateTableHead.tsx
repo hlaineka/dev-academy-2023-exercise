@@ -6,18 +6,24 @@ import Box from '@mui/material/Box';
 import { visuallyHidden } from '@mui/utils';
 import { TableHeads } from './Stations/types';
 import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { darkTheme } from '../theme/theme';
 
 export type CreateTableHeadProps = {
-  headCells: Array<TableHeads>,
-  orderBy: String,
-  order: SortDirection,
-  tableType: String,
-  handleOrdering: (id: string) => void,
+  headCells: Array<TableHeads>;
+  orderBy: String;
+  order: SortDirection;
+  tableType: String;
+  handleOrdering: (id: string) => void;
 };
 
-export const CreateTableHead: React.FC<CreateTableHeadProps>  = (
-  {headCells, orderBy, order, tableType, handleOrdering}
-) => {
+export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
+  headCells,
+  orderBy,
+  order,
+  tableType,
+  handleOrdering,
+}) => {
   const createSortHandler = (id: string) => () => {
     handleOrdering(id);
   };
@@ -27,46 +33,50 @@ export const CreateTableHead: React.FC<CreateTableHeadProps>  = (
 
   return (
     <TableHead>
-      <TableRow>
-        {headCells.map(headCell => {
-          if (headCell.query_name === '') {
-            return (
-              <TableCell
-                key={headCell.id + '-' + tableType}
-                id={headCell.id}
-                align={headCell.align}
-              >
-                {headCell.label}
-              </TableCell>
-            );
-          } else {
-            return (
-              <TableCell
-                key={headCell.id + '-' + tableType}
-                id={headCell.id}
-                align={headCell.align}
-                sortDirection={orderBy === headCell.id ? order : 'asc'}
-              >
-                <TableSortLabel
-                  active={orderBy === headCell.id}
-                  direction={orderBy === headCell.id ? directionOrder : 'asc'}
-                  onClick={createSortHandler(headCell.id)}
+      <ThemeProvider theme={darkTheme}>
+        <TableRow sx={{ backgroundColor: '#14213d' }}>
+          {headCells.map(headCell => {
+            if (headCell.query_name === '') {
+              return (
+                <TableCell
+                  key={headCell.id + '-' + tableType}
+                  id={headCell.id}
+                  align={headCell.align}
                 >
-                  {' '}
                   {headCell.label}
-                  {orderBy === headCell.id ? (
-                    <Box component="span" sx={visuallyHidden}>
-                      {order === 'desc'
-                        ? 'sorted descending'
-                        : 'sorted ascending'}
-                    </Box>
-                  ) : null}
-                </TableSortLabel>
-              </TableCell>
-            );
-          }
-        })}
-      </TableRow>
+                </TableCell>
+              );
+            } else {
+              return (
+                <TableCell
+                  key={headCell.id + '-' + tableType}
+                  id={headCell.id}
+                  align={headCell.align}
+                  sortDirection={
+                    orderBy === headCell.query_name ? order : 'asc'
+                  }
+                >
+                  <TableSortLabel
+                    active={orderBy === headCell.id}
+                    direction={orderBy === headCell.id ? directionOrder : 'asc'}
+                    onClick={createSortHandler(headCell.query_name)}
+                  >
+                    {' '}
+                    {headCell.label}
+                    {orderBy === headCell.query_name ? (
+                      <Box component="span" sx={visuallyHidden}>
+                        {order === 'desc'
+                          ? 'sorted descending'
+                          : 'sorted ascending'}
+                      </Box>
+                    ) : null}
+                  </TableSortLabel>
+                </TableCell>
+              );
+            }
+          })}
+        </TableRow>
+      </ThemeProvider>
     </TableHead>
   );
 };
