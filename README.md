@@ -49,7 +49,7 @@ and
 The page should open to your browser, if not, you can find it in http://localhost:3000/
 
 ## Todo -list
-- [ ] Backend data validation
+- [ ] Backend data validation, remove duplicate rows!
 - [x] Not importing journey data with distance shorter than 10m or duration shorter than 10s
 - [ ] Fixing station data by importing missing city info
 - [x] Single station view
