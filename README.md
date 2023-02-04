@@ -3,6 +3,13 @@
 
 ## TECHNOLOGIES USED
 
+Backend database created by using postgres server with hasura
+
+Frontend stack:
+- Typescript
+- Apollo 
+- Codegen
+- Mui
 
 ## RUNNING THE PROJECT
 
@@ -40,3 +47,25 @@ and
 ```npm run start```
 
 The page should open to your browser, if not, you can find it in http://localhost:3000/
+
+## Todo -list
+- [ ] Backend data validation, remove duplicate rows!
+- [x] Not importing journey data with distance shorter than 10m or duration shorter than 10s
+- [ ] Fixing station data by importing missing city info
+- [x] Single station view
+- [ ] Adding new journeys and stations
+- [ ] Running the project online
+- [ ] Jest tests
+- [ ] E2E tests
+- [ ] Dashboard with statistics
+- [ ] Language versions
+- [ ] Responsive layout
+- [ ] Accessible layout
+- [ ] Documentation
+- [ ] Ordering per column for journeys ans stations
+- [ ] Search for journeys and stations
+- [ ] Change queries to allow more functionalities
+- [ ] Code through prettier, commenting
+- [ ] Single station view to english
+- [ ] Timestamp on journeys to more readable format
+- [ ] Google maps to singe station view

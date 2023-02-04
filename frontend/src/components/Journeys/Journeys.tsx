@@ -9,4 +9,5 @@ const Journeys = () => {
     </BasicPageLayout>
   );
 };
+
 export default Journeys;
