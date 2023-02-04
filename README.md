@@ -67,3 +67,4 @@ The page should open to your browser, if not, you can find it in http://localhos
 - [ ] Change queries to allow more functionalities
 - [ ] Code through prettier, commenting
 - [ ] Single station view to english
+- [ ] Timestamp on journeys to more readable format
