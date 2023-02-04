@@ -1,23 +1,23 @@
 import { gql, useQuery } from '@apollo/client';
+import { SortDirection } from '@mui/material/TableCell';
 import {
   useGetStationsCountQuery,
-  GetPaginatedOrderedStationsQuery,
 } from '../generated/graphql';
 
 export const GET_ALL_STATIONS = gql`
   query GetAllStations {
-    stations(order_by: { Name: asc }) {
-      Adress
-      FID
-      ID
-      Kapasiteet
-      Kaupunki
-      Name
-      Namn
-      Nimi
-      Operaattor
-      Osoite
-      Stad
+    stations(order_by: { nimi: asc }) {
+      adress
+      fid
+      id
+      kapasiteetti
+      kaupunki
+      name
+      namn
+      nimi
+      operaattori
+      osoite
+      stad
       x
       y
     }
@@ -31,19 +31,21 @@ export const GET_PAGINATED_ORDERED_STATIONS = gql`
     $order_by: [stations_order_by!]
   ) {
     stations(order_by: $order_by, limit: $limit, offset: $offset) {
-      Adress
-      FID
-      ID
-      Kapasiteet
-      Kaupunki
-      Name
-      Namn
-      Nimi
-      Operaattor
-      Osoite
-      Stad
+      adress
+      fid
+      id
+      kapasiteetti
+      kaupunki
+      name
+      namn
+      nimi
+      operaattori
+      osoite
+      stad
       x
       y
+			journey_departures
+			journey_returns
     }
   }
 `;
@@ -68,7 +70,7 @@ export const GetStationsCount = () => {
 export const GetPaginatedOrderedStations = (
   stationPage: number,
   rowsPerStationsPage: number,
-  order: String,
+  order: SortDirection,
   orderBy: String,
 ) => {
   const offset = stationPage * rowsPerStationsPage;
@@ -79,7 +81,7 @@ export const GetPaginatedOrderedStations = (
       offset: offset,
       limit: limit,
       order_by: {
-        Nimi: 'asc',
+        nimi: 'asc',
       },
     },
   });

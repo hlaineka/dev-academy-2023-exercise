@@ -1,11 +1,12 @@
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell, { SortDirection } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 
 import TablePagination from '@mui/material/TablePagination';
 import {
@@ -13,6 +14,9 @@ import {
   GetStationsCount,
 } from '../../queries/Queries';
 import { Station } from './types';
+import { journeyTableHeads, rowsPerPageOptions } from './constants';
+import { CreateTableHead } from '../CreateTableHead';
+import StationViewButton from './SingleStationView';
 
 const BasicTable = () => {
   const maxRowsCount = GetStationsCount();
@@ -20,7 +24,7 @@ const BasicTable = () => {
   const [stationPage, setStationPage] = React.useState<number>(0);
   const [rowsPerStationsPage, setRowsPerStationPage] =
     React.useState<number>(25);
-  const [order, setOrder] = React.useState<String>('desc');
+  const [order, setOrder] = React.useState<SortDirection>('desc');
   const [orderBy, setOrderBy] = React.useState<String>('Nimi');
 
   const handleChangeStationsPage = (
@@ -43,6 +47,8 @@ const BasicTable = () => {
     const isAsc = orderBy === id && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(id);
+		console.log(orderBy);
+		console.log(order);
   };
 
   const { loading, error, data } = GetPaginatedOrderedStations(
@@ -54,17 +60,12 @@ const BasicTable = () => {
 
   const filteredData = data?.stations;
 
-  const rowsPerPageOptions = [
-    { label: '10', value: 10 },
-    { label: '25', value: 25 },
-    { label: '50', value: 50 },
-    { label: '100', value: 100 },
-    { label: 'all', value: -1 },
-  ];
-
   if (error) {
     console.log(data, error);
   }
+
+
+
   return (
     <>
       {loading ? (
@@ -87,27 +88,22 @@ const BasicTable = () => {
             />
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell align="left">Nimi</TableCell>
-                    <TableCell align="left">Osoite</TableCell>
-                    <TableCell align="left">Kaupunki</TableCell>
-                    <TableCell align="left">Operaattori</TableCell>
-                    <TableCell align="left">Kapasiteetti</TableCell>
-                  </TableRow>
-                </TableHead>
+                <CreateTableHead headCells={journeyTableHeads} orderBy={orderBy} order={order} tableType="journeys" handleOrdering={handleToggleOrdering }/>
                 <TableBody>
                   {filteredData?.map((row: Station) => (
                     <TableRow
-                      key={row.FID?.toString()}
+                      key={row.fid?.toString()}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                      <TableCell align="left">{row.Nimi}</TableCell>
-                      <TableCell align="left">{row.Osoite}</TableCell>
-                      <TableCell align="left">{row.Kaupunki}</TableCell>
-                      <TableCell align="left">{row.Operaattor}</TableCell>
+                      <TableCell align="left">{row.nimi}</TableCell>
+                      <TableCell align="left">{row.osoite}</TableCell>
+                      <TableCell align="left">{row.kaupunki}</TableCell>
+                      <TableCell align="left">{row.operaattori}</TableCell>
                       <TableCell align="left">
-                        {row.Kapasiteet?.toString()}
+                        {row.kapasiteetti?.toString()}
+                      </TableCell>
+											<TableCell align="center">
+											<StationViewButton data={row}/>
                       </TableCell>
                     </TableRow>
                   ))}

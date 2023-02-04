@@ -1,15 +1,24 @@
 export type Station = {
-  Adress: String;
-  FID: Number;
-  ID: Number;
-  Kapasiteet: Number;
-  Kaupunki: String;
-  Name: String;
-  Namn: String;
-  Nimi: String;
-  Operaattor: String;
-  Osoite: String;
-  Stad: String;
-  x: Number;
-  y: Number;
+  adress: String;
+  fid: number;
+  id: number;
+  kapasiteetti: number;
+  kaupunki: String;
+  name: String;
+  namn: String;
+  nimi: String;
+  operaattori: String;
+  osoite: String;
+  stad: String;
+  x: number;
+  y: number;
+	journey_departures: number;
+	journey_returns: number;
+};
+
+export type TableHeads = {
+  id: string;
+  label: String;
+  query_name: String;
+  align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 };

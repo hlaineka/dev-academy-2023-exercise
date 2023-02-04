@@ -39,44 +39,6 @@ const Navigation = () => {
       setState(open);
     };
 
-  const list = () => (
-    <Box
-      sx={{ width: 'auto', paddingRight: '2rem', backgroundColor: '#14213D' }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {['Dashboard', 'Journeys', 'Stations'].map(text => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton
-              component={Link}
-              to={
-                text == 'Journeys'
-                  ? '/journeys'
-                  : text == 'Stations'
-                  ? '/stations'
-                  : '/'
-              }
-              sx={{ color: '#FFF' }}
-            >
-              <ListItemIcon>
-                {text == 'Journeys' ? (
-                  <DirectionsBikeIcon style={{ color: '#FCA311' }} />
-                ) : text == 'Stations' ? (
-                  <LocationOnIcon style={{ color: '#FCA311' }} />
-                ) : (
-                  <DashboardIcon style={{ color: '#FCA311' }} />
-                )}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
     <div>
       <Button onClick={toggleDrawer(true)}>
@@ -91,7 +53,45 @@ const Navigation = () => {
           },
         }}
       >
-        {list()}
+        <Box
+          sx={{
+            width: 'auto',
+            paddingRight: '2rem',
+            backgroundColor: '#14213D',
+          }}
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          <List>
+            {['Dashboard', 'Journeys', 'Stations'].map(text => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton
+                  component={Link}
+                  to={
+                    text == 'Journeys'
+                      ? '/journeys'
+                      : text == 'Stations'
+                      ? '/stations'
+                      : '/'
+                  }
+                  sx={{ color: '#FFF' }}
+                >
+                  <ListItemIcon>
+                    {text == 'Journeys' ? (
+                      <DirectionsBikeIcon style={{ color: '#FCA311' }} />
+                    ) : text == 'Stations' ? (
+                      <LocationOnIcon style={{ color: '#FCA311' }} />
+                    ) : (
+                      <DashboardIcon style={{ color: '#FCA311' }} />
+                    )}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </Drawer>
     </div>
   );
