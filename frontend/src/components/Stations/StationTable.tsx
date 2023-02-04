@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 
 import TablePagination from '@mui/material/TablePagination';
 import {
-	GetPaginatedOrderedStations,
+  GetPaginatedOrderedStations,
   GetStationsCount,
 } from '../../queries/Queries';
 import { Station } from './types';
@@ -47,8 +47,8 @@ const BasicTable = () => {
     const isAsc = orderBy === id && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(id);
-		console.log(orderBy);
-		console.log(order);
+    console.log(orderBy);
+    console.log(order);
   };
 
   const { loading, error, data } = GetPaginatedOrderedStations(
@@ -63,8 +63,6 @@ const BasicTable = () => {
   if (error) {
     console.log(data, error);
   }
-
-
 
   return (
     <>
@@ -88,7 +86,13 @@ const BasicTable = () => {
             />
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <CreateTableHead headCells={stationTableHeads} orderBy={orderBy} order={order} tableType="journeys" handleOrdering={handleToggleOrdering }/>
+                <CreateTableHead
+                  headCells={stationTableHeads}
+                  orderBy={orderBy}
+                  order={order}
+                  tableType="journeys"
+                  handleOrdering={handleToggleOrdering}
+                />
                 <TableBody>
                   {filteredData?.map((row: Station) => (
                     <TableRow
@@ -102,8 +106,8 @@ const BasicTable = () => {
                       <TableCell align="left">
                         {row.kapasiteetti?.toString()}
                       </TableCell>
-											<TableCell align="center">
-											<StationViewButton data={row}/>
+                      <TableCell align="center">
+                        <StationViewButton data={row} />
                       </TableCell>
                     </TableRow>
                   ))}

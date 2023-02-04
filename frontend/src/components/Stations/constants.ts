@@ -1,4 +1,4 @@
-import { TableHeads } from "./types";
+import { TableHeads } from './types';
 
 export const rowsPerPageOptions = [
   { label: '10', value: 10 },

@@ -107,7 +107,7 @@ export const GetPaginatedOrderedStations = (
       },
     },
   });
-	return (returnable);
+  return returnable;
 };
 
 export const GetStationsCount = () => {
@@ -123,8 +123,6 @@ export const GetJourneysCount = () => {
     ? data?.journeys_aggregate.aggregate?.count
     : 0;
 };
-
-
 
 export const GetPaginatedOrderedJourneys = (
   journeyPage: number,

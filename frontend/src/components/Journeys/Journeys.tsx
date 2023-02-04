@@ -5,7 +5,7 @@ import JourneyTable from './JourneyTable';
 const Journeys = () => {
   return (
     <BasicPageLayout pageName="Journeys">
-      <JourneyTable/>
+      <JourneyTable />
     </BasicPageLayout>
   );
 };
