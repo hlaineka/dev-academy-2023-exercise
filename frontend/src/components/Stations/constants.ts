@@ -37,6 +37,12 @@ export const stationTableHeads: Array<TableHeads> = [
     id: '4',
     label: 'Kapasiteetti',
     query_name: 'kapasiteetti',
-    align: 'left',
+    align: 'right',
+  },
+  {
+    id: '5',
+    label: '',
+    query_name: '',
+    align: 'center',
   },
 ];

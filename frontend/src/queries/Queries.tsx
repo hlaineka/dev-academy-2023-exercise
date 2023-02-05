@@ -93,7 +93,7 @@ export const GetPaginatedOrderedStations = (
   stationPage: number,
   rowsPerStationsPage: number,
   order: SortDirection,
-  orderBy: String,
+  orderBy: string,
 ) => {
   const offset = stationPage * rowsPerStationsPage;
   const limit = rowsPerStationsPage;
@@ -103,7 +103,7 @@ export const GetPaginatedOrderedStations = (
       offset: offset,
       limit: limit,
       order_by: {
-        nimi: 'asc',
+        [orderBy]: order,
       },
     },
   });
