@@ -36,7 +36,15 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
   return (
     <TableHead>
       <ThemeProvider theme={darkTheme}>
-        <TableRow sx={{ backgroundColor: '#14213d' }}>
+        <TableRow
+          sx={{
+            backgroundColor: '#14213d',
+            padding: '2rem 2rem .5rem 2rem',
+            boxSizing: 'border-box',
+            borderRadius: '.5rem .5rem 0 0',
+            borderBottom: 'solid .5rem #fca211',
+          }}
+        >
           {headCells.map(headCell => {
             return (
               <TableCell

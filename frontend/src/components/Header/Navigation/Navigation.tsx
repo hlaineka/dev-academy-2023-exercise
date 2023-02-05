@@ -35,7 +35,6 @@ const Navigation = () => {
       ) {
         return;
       }
-
       setState(open);
     };
 
@@ -59,7 +58,6 @@ const Navigation = () => {
             paddingRight: '2rem',
             backgroundColor: '#14213D',
           }}
-          role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >

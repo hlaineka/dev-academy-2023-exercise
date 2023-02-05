@@ -1,20 +1,4 @@
-export type Station = {
-  adress: String;
-  fid: number;
-  id: number;
-  kapasiteetti: number;
-  kaupunki: String;
-  name: String;
-  namn: String;
-  nimi: String;
-  operaattori: String;
-  osoite: String;
-  stad: String;
-  x: number;
-  y: number;
-  journey_departures: number;
-  journey_returns: number;
-};
+import { Stations } from '../../generated/graphql';
 
 export type TableHeads = {
   id: string;
@@ -24,5 +8,9 @@ export type TableHeads = {
 };
 
 export type StationViewButtonProps = {
-  data: Station;
+  data: Stations;
+};
+
+export type StationRowProps = {
+  row: Stations;
 };

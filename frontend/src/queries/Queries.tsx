@@ -3,27 +3,11 @@ import { SortDirection } from '@mui/material/TableCell';
 import {
   useGetStationsCountQuery,
   useGetJourneysCountQuery,
+  useGetTopDepartureStationsQuery,
+  useGetTopReturnStationsQuery,
+  useGetaverageStationUsageQuery,
+  useGetAverageJourneysQuery,
 } from '../generated/graphql';
-
-export const GET_ALL_STATIONS = gql`
-  query GetAllStations {
-    stations(order_by: { nimi: asc }) {
-      adress
-      fid
-      id
-      kapasiteetti
-      kaupunki
-      name
-      namn
-      nimi
-      operaattori
-      osoite
-      stad
-      x
-      y
-    }
-  }
-`;
 
 export const GET_PAGINATED_ORDERED_JOURNEYS = gql`
   query GetPaginatedOrderedJourneys(
@@ -89,6 +73,51 @@ export const GET_PAGINATED_ORDERED_STATIONS = gql`
   }
 `;
 
+export const GET_TOP_DEPARTURE_STATIONS = gql`
+  query getTopDepartureStations {
+    stations(order_by: { journey_departures: desc }, limit: 5) {
+      id
+      nimi
+      journey_departures
+    }
+  }
+`;
+
+export const GET_AVERAGE_STATION_USAGE = gql`
+  query getaverageStationUsage {
+    stations_aggregate {
+      aggregate {
+        avg {
+          journey_departures
+        }
+      }
+    }
+  }
+`;
+
+export const GET_AVERAGE_JOURNEYS = gql`
+  query getAverageJourneys {
+    journeys_aggregate {
+      aggregate {
+        avg {
+          covered_distance_m
+          duration_sec
+        }
+      }
+    }
+  }
+`;
+
+export const GET_TOP_RETURN_STATIONS = gql`
+  query getTopReturnStations {
+    stations(order_by: { journey_returns: desc }, limit: 5) {
+      id
+      nimi
+      journey_returns
+    }
+  }
+`;
+
 export const GetPaginatedOrderedStations = (
   stationPage: number,
   rowsPerStationsPage: number,
@@ -122,6 +151,105 @@ export const GetJourneysCount = () => {
   return data?.journeys_aggregate.aggregate?.count
     ? data?.journeys_aggregate.aggregate?.count
     : 0;
+};
+
+const GetTopDepartureStations = () => {
+  const { loading, error, data } = useGetTopDepartureStationsQuery();
+
+  if (loading) {
+    console.log('loading');
+    return null;
+  } else if (error) {
+    console.log('error', error);
+    return null;
+  } else if (data) {
+    return data.stations;
+  }
+};
+
+const GetTopReturnStations = () => {
+  const { loading, error, data } = useGetTopReturnStationsQuery();
+
+  if (loading) {
+    console.log('loading');
+    return null;
+  } else if (error) {
+    console.log('error', error);
+    return null;
+  } else if (data) {
+    return data.stations;
+  }
+};
+
+const GetaverageStationUsage = () => {
+  const { loading, error, data } = useGetaverageStationUsageQuery();
+
+  if (loading) {
+    console.log('loading');
+    return null;
+  } else if (error) {
+    console.log('error', error);
+    return null;
+  } else if (
+    data &&
+    data.stations_aggregate &&
+    data.stations_aggregate.aggregate &&
+    data.stations_aggregate.aggregate.avg &&
+    data.stations_aggregate.aggregate.avg.journey_departures
+  ) {
+    return Math.floor(data.stations_aggregate.aggregate.avg.journey_departures);
+  }
+};
+
+const GetAverageJourneys = () => {
+  const { loading, error, data } = useGetAverageJourneysQuery();
+
+  if (loading) {
+    console.log('loading');
+    return null;
+  } else if (error) {
+    console.log('error', error);
+    return null;
+  } else if (
+    data &&
+    data.journeys_aggregate &&
+    data.journeys_aggregate.aggregate &&
+    data.journeys_aggregate.aggregate.avg &&
+    data.journeys_aggregate.aggregate.avg.covered_distance_m &&
+    data.journeys_aggregate.aggregate.avg.duration_sec
+  ) {
+    const averageDuration = Math.floor(
+      data.journeys_aggregate.aggregate.avg.duration_sec,
+    );
+    const averageDistance = Math.floor(
+      data.journeys_aggregate.aggregate.avg.covered_distance_m,
+    );
+    return { averageDuration, averageDistance };
+  }
+};
+
+export const GetDashboardData = () => {
+  const topDepartureStations = GetTopDepartureStations();
+
+  const topReturnStations = GetTopReturnStations();
+
+  const averageStationsUsage = GetaverageStationUsage();
+
+  const averageJourneys = GetAverageJourneys();
+  const averageDuration = averageJourneys
+    ? averageJourneys.averageDuration
+    : null;
+  const averageDistance = averageJourneys
+    ? averageJourneys.averageDistance
+    : null;
+
+  return {
+    topDepartureStations,
+    topReturnStations,
+    averageStationsUsage,
+    averageDuration,
+    averageDistance,
+  };
 };
 
 export const GetPaginatedOrderedJourneys = (
