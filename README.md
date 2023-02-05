@@ -24,6 +24,7 @@ Start the postgres server
 
 copy the dump file to postgres server
 ```psql -h localhost -U postgres < data/latest.dump```
+default password is postgrespassword
 
 start the hasura server
 ```cd hasura```
