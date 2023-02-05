@@ -7,7 +7,7 @@ import { visuallyHidden } from '@mui/utils';
 import { TableHeads } from './Stations/types';
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import { darkTheme } from '../theme/theme';
+import { darkTheme, responsiveStyles, theme } from '../theme/theme';
 
 export type CreateTableHeadProps = {
   headCells: Array<TableHeads>;
@@ -28,6 +28,8 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
     handleOrdering(id);
   };
 
+	const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+
   const directionOrder: 'asc' | 'desc' | undefined =
     order === 'desc' ? 'desc' : 'asc';
 
@@ -36,17 +38,6 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
       <ThemeProvider theme={darkTheme}>
         <TableRow sx={{ backgroundColor: '#14213d' }}>
           {headCells.map(headCell => {
-            if (headCell.query_name === '') {
-              return (
-                <TableCell
-                  key={headCell.id + '-' + tableType}
-                  id={headCell.id}
-                  align={headCell.align}
-                >
-                  {headCell.label}
-                </TableCell>
-              );
-            } else {
               return (
                 <TableCell
                   key={headCell.id + '-' + tableType}
@@ -55,6 +46,7 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
                   sortDirection={
                     orderBy === headCell.query_name ? order : 'asc'
                   }
+									sx={tableCellStyles}
                 >
                   <TableSortLabel
                     active={orderBy === headCell.id}
@@ -74,7 +66,7 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
                 </TableCell>
               );
             }
-          })}
+          )}
         </TableRow>
       </ThemeProvider>
     </TableHead>

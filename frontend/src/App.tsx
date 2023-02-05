@@ -6,7 +6,8 @@ import Stations from './components/Stations/Stations';
 import Journeys from './components/Journeys/Journeys';
 import Header from './components/Header/Header';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './theme/theme';
+import { responsiveStyles, theme } from './theme/theme';
+import { Box } from '@mui/material';
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -17,11 +18,13 @@ const createApolloClient = () => {
 
 const App = () => {
   const client = createApolloClient();
+	const rootStyles = responsiveStyles(theme)[0].root;
 
   return (
     <BrowserRouter>
       <ApolloProvider client={client}>
-        <ThemeProvider theme={theme}>
+				<Box sx={rootStyles}>
+        <ThemeProvider theme={theme} >
           <Header />
           <Routes>
             <Route path="/" element={<DashBoard />} />
@@ -29,6 +32,7 @@ const App = () => {
             <Route path="/journeys" element={<Journeys />} />
           </Routes>
         </ThemeProvider>
+				</Box>
       </ApolloProvider>
     </BrowserRouter>
   );
