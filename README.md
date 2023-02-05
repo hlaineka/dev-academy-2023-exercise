@@ -15,7 +15,7 @@ Frontend stack:
 
 ### Start the Hasura/Postgre backend:
 
-Download the datadump (address to datadump added later)
+Download the datadump https://www.dropbox.com/s/3a9zk0ssde2lc4c/latest.dump?dl=0
 
 Start the postgres server
 ```cd backend```
