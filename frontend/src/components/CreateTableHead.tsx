@@ -28,7 +28,7 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
     handleOrdering(id);
   };
 
-	const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
 
   const directionOrder: 'asc' | 'desc' | undefined =
     order === 'desc' ? 'desc' : 'asc';
@@ -38,35 +38,32 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
       <ThemeProvider theme={darkTheme}>
         <TableRow sx={{ backgroundColor: '#14213d' }}>
           {headCells.map(headCell => {
-              return (
-                <TableCell
-                  key={headCell.id + '-' + tableType}
-                  id={headCell.id}
-                  align={headCell.align}
-                  sortDirection={
-                    orderBy === headCell.query_name ? order : 'asc'
-                  }
-									sx={tableCellStyles}
+            return (
+              <TableCell
+                key={headCell.id + '-' + tableType}
+                id={headCell.id}
+                align={headCell.align}
+                sortDirection={orderBy === headCell.query_name ? order : 'asc'}
+                sx={tableCellStyles}
+              >
+                <TableSortLabel
+                  active={orderBy === headCell.id}
+                  direction={orderBy === headCell.id ? directionOrder : 'asc'}
+                  onClick={createSortHandler(headCell.query_name)}
                 >
-                  <TableSortLabel
-                    active={orderBy === headCell.id}
-                    direction={orderBy === headCell.id ? directionOrder : 'asc'}
-                    onClick={createSortHandler(headCell.query_name)}
-                  >
-                    {' '}
-                    {headCell.label}
-                    {orderBy === headCell.query_name ? (
-                      <Box component="span" sx={visuallyHidden}>
-                        {order === 'desc'
-                          ? 'sorted descending'
-                          : 'sorted ascending'}
-                      </Box>
-                    ) : null}
-                  </TableSortLabel>
-                </TableCell>
-              );
-            }
-          )}
+                  {' '}
+                  {headCell.label}
+                  {orderBy === headCell.query_name ? (
+                    <Box component="span" sx={visuallyHidden}>
+                      {order === 'desc'
+                        ? 'sorted descending'
+                        : 'sorted ascending'}
+                    </Box>
+                  ) : null}
+                </TableSortLabel>
+              </TableCell>
+            );
+          })}
         </TableRow>
       </ThemeProvider>
     </TableHead>

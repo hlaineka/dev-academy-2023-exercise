@@ -170,7 +170,7 @@ export const responsiveStyles = (theme: Theme) => [
       [theme.breakpoints.down(500)]: {},
       [theme.breakpoints.down(850)]: {},
       [theme.breakpoints.down(1100)]: {
-				position: 'absolute' as 'absolute',
+        position: 'absolute' as 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -180,8 +180,8 @@ export const responsiveStyles = (theme: Theme) => [
         border: '2px solid primary.dark',
         boxShadow: 24,
         p: 4,
-				padding: '3rem'
-			},
+        padding: '3rem',
+      },
       [theme.breakpoints.up(1100)]: {
         position: 'absolute' as 'absolute',
         top: '50%',
@@ -193,7 +193,7 @@ export const responsiveStyles = (theme: Theme) => [
         border: '2px solid primary.dark',
         boxShadow: 24,
         p: 4,
-				padding: '3rem'
+        padding: '3rem',
       },
       [theme.breakpoints.up(1350)]: {},
     },

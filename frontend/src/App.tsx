@@ -18,21 +18,21 @@ const createApolloClient = () => {
 
 const App = () => {
   const client = createApolloClient();
-	const rootStyles = responsiveStyles(theme)[0].root;
+  const rootStyles = responsiveStyles(theme)[0].root;
 
   return (
     <BrowserRouter>
       <ApolloProvider client={client}>
-				<Box sx={rootStyles}>
-        <ThemeProvider theme={theme} >
-          <Header />
-          <Routes>
-            <Route path="/" element={<DashBoard />} />
-            <Route path="/stations" element={<Stations />} />
-            <Route path="/journeys" element={<Journeys />} />
-          </Routes>
-        </ThemeProvider>
-				</Box>
+        <Box sx={rootStyles}>
+          <ThemeProvider theme={theme}>
+            <Header />
+            <Routes>
+              <Route path="/" element={<DashBoard />} />
+              <Route path="/stations" element={<Stations />} />
+              <Route path="/journeys" element={<Journeys />} />
+            </Routes>
+          </ThemeProvider>
+        </Box>
       </ApolloProvider>
     </BrowserRouter>
   );

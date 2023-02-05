@@ -1,14 +1,10 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Station } from './types';
+import { StationViewButtonProps } from './types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { responsiveStyles, theme } from '../../theme/theme';
-
-export type StationViewButtonProps = {
-  data: Station;
-};
 
 const singleStationStyles = responsiveStyles(theme)[0].singleStation;
 
@@ -37,11 +33,15 @@ const SingleStationView: React.FC<StationViewButtonProps> = ({ data }) => {
           >
             {data.nimi}
           </Typography>
-          <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>{infoString}</Typography>
+          <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>
+            {infoString}
+          </Typography>
           <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>
             {departuredString}
           </Typography>
-          <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>{returnedString}</Typography>
+          <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>
+            {returnedString}
+          </Typography>
         </Box>
       </Modal>
     </>
