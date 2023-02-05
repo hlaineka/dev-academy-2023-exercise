@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { ThemeProvider } from '@mui/material/styles';
-import { darkTheme } from '../theme/theme';
+import { darkTheme, responsiveStyles, theme } from '../theme/theme';
 
 type BasicPageLayoutProps = {
   children: React.ReactNode;
@@ -14,6 +14,8 @@ const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({
   children,
   pageName,
 }) => {
+  const headerStyles = responsiveStyles(darkTheme)[0].pageHeader;
+  const contentStyles = responsiveStyles(theme)[0].contentView;
   return (
     <Box
       sx={{
@@ -27,16 +29,7 @@ const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({
       }}
     >
       <ThemeProvider theme={darkTheme}>
-        <Paper
-          elevation={3}
-          sx={{
-            width: '80vw',
-            margin: 'auto',
-            marginTop: '10vh',
-            padding: '3rem',
-            boxSizing: 'border-box',
-          }}
-        >
+        <Paper elevation={3} sx={headerStyles}>
           <Typography
             variant="h2"
             component="div"
@@ -46,17 +39,7 @@ const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({
           </Typography>
         </Paper>
       </ThemeProvider>
-      <Paper
-        elevation={3}
-        sx={{
-          width: '80vw',
-          minHeight: '80vh',
-          margin: 'auto',
-          marginTop: '3vh',
-          padding: '3rem',
-          boxSizing: 'border-box',
-        }}
-      >
+      <Paper elevation={3} sx={contentStyles}>
         {children}
       </Paper>
     </Box>

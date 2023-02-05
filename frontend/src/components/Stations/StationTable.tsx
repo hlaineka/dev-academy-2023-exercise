@@ -3,11 +3,8 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { SortDirection } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-
 import TablePagination from '@mui/material/TablePagination';
 import {
   GetPaginatedOrderedStations,
@@ -17,8 +14,9 @@ import { Station } from './types';
 import { stationTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../CreateTableHead';
 import StationViewButton from './SingleStationView';
+import { responsiveStyles, theme } from '../../theme/theme';
 
-const BasicTable = () => {
+const StationTable = () => {
   const maxRowsCount = GetStationsCount();
 
   const [stationPage, setStationPage] = React.useState<number>(0);
@@ -64,6 +62,8 @@ const BasicTable = () => {
     console.log(data, error);
   }
 
+  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+
   return (
     <>
       {loading ? (
@@ -85,7 +85,7 @@ const BasicTable = () => {
               rowsPerPageOptions={rowsPerPageOptions}
             />
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table sx={{ maxWidth: '100%' }} aria-label="stations table">
                 <CreateTableHead
                   headCells={stationTableHeads}
                   orderBy={orderBy}
@@ -99,14 +99,22 @@ const BasicTable = () => {
                       key={row.fid?.toString()}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                      <TableCell align="left">{row.nimi}</TableCell>
-                      <TableCell align="left">{row.osoite}</TableCell>
-                      <TableCell align="left">{row.kaupunki}</TableCell>
-                      <TableCell align="left">{row.operaattori}</TableCell>
-                      <TableCell align="right">
+                      <TableCell align="left" sx={tableCellStyles}>
+                        {row.nimi}
+                      </TableCell>
+                      <TableCell align="left" sx={tableCellStyles}>
+                        {row.osoite}
+                      </TableCell>
+                      <TableCell align="left" sx={tableCellStyles}>
+                        {row.kaupunki}
+                      </TableCell>
+                      <TableCell align="left" sx={tableCellStyles}>
+                        {row.operaattori}
+                      </TableCell>
+                      <TableCell align="right" sx={tableCellStyles}>
                         {row.kapasiteetti?.toString()}
                       </TableCell>
-                      <TableCell align="center">
+                      <TableCell align="center" sx={tableCellStyles}>
                         <StationViewButton data={row} />
                       </TableCell>
                     </TableRow>
@@ -121,4 +129,4 @@ const BasicTable = () => {
   );
 };
 
-export default BasicTable;
+export default StationTable;

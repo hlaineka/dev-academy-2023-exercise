@@ -22,3 +22,7 @@ export type TableHeads = {
   query_name: string;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 };
+
+export type StationViewButtonProps = {
+  data: Station;
+};
