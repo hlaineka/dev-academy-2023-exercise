@@ -12,31 +12,31 @@ export const rowsPerPageOptions = [
 export const stationTableHeads: Array<TableHeads> = [
   {
     id: '0',
-    label: 'Nimi',
-    query_name: 'nimi',
+    label: 'Name',
+    query_name: 'name',
     align: 'left',
   },
   {
     id: '1',
-    label: 'Osoite',
+    label: 'Adress',
     query_name: 'osoite',
     align: 'left',
   },
   {
     id: '2',
-    label: 'Kaupunki',
+    label: 'City',
     query_name: 'kaupunki',
     align: 'left',
   },
   {
     id: '3',
-    label: 'Operaattori',
+    label: 'Operator',
     query_name: 'operaattori',
     align: 'left',
   },
   {
     id: '4',
-    label: 'Kapasiteetti',
+    label: 'Capacity',
     query_name: 'kapasiteetti',
     align: 'right',
   },
