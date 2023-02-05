@@ -13,8 +13,9 @@ import {
 import { Journey } from './types';
 import { journeyTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../CreateTableHead';
+import { responsiveStyles, theme } from '../../theme/theme';
 
-const createDurationString = (duration: number) => {
+export const createDurationString = (duration: number) => {
   const seconds = duration % 60;
   const minutes = Math.floor(duration / 60) % 60;
   const hours = Math.floor(duration / 3600);
@@ -26,7 +27,7 @@ const createDurationString = (duration: number) => {
   return hoursString + minutesString + secondsString;
 };
 
-const createDistanceString = (distance: number) => {
+export const createDistanceString = (distance: number) => {
   const meters = Math.floor(distance % 1000);
   const kilometers = Math.floor(distance / 1000);
   return kilometers === 0 ? meters + 'm' : kilometers + 'km ' + meters + 'm';
@@ -78,6 +79,8 @@ const JourneyTable = () => {
     console.log(data, error);
   }
 
+	const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+
   return (
     <>
       {loading ? (
@@ -113,22 +116,22 @@ const JourneyTable = () => {
                       key={row.id?.toString()}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                      <TableCell align="left">
+                      <TableCell align="left" sx={tableCellStyles}>
                         {row.Departure.toString()}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" sx={tableCellStyles}>
                         {row.departure_station_name}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" sx={tableCellStyles}>
                         {row.Return.toString()}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" sx={tableCellStyles}>
                         {row.return_station_name}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" sx={tableCellStyles}>
                         {createDistanceString(row.covered_distance_m)}
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="right" sx={tableCellStyles}>
                         {' '}
                         {createDurationString(row.duration_sec)}
                       </TableCell>
