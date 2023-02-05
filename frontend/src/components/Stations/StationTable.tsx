@@ -1,24 +1,22 @@
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { SortDirection } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import {
   GetPaginatedOrderedStations,
   GetStationsCount,
 } from '../../queries/Queries';
-import { Station } from './types';
 import { stationTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../CreateTableHead';
-import StationViewButton from './SingleStationView';
 import { responsiveStyles, theme } from '../../theme/theme';
+import { SortDirection } from '@mui/material';
+import { Stations } from '../../generated/graphql';
+import StationRow from './StationRow';
 
 const StationTable = () => {
-  const maxRowsCount = GetStationsCount();
-
+  //states and handlers for pagination and ordering
   const [stationPage, setStationPage] = React.useState<number>(0);
   const [rowsPerStationsPage, setRowsPerStationPage] =
     React.useState<number>(25);
@@ -56,13 +54,12 @@ const StationTable = () => {
     orderBy,
   );
 
-  const filteredData = data?.stations;
-
   if (error) {
     console.log(data, error);
   }
 
-  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+  const filteredData = data?.stations;
+  const maxRowsCount = GetStationsCount();
 
   return (
     <>
@@ -94,30 +91,8 @@ const StationTable = () => {
                   handleOrdering={handleToggleOrdering}
                 />
                 <TableBody>
-                  {filteredData?.map((row: Station) => (
-                    <TableRow
-                      key={row.fid?.toString()}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.nimi}
-                      </TableCell>
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.osoite}
-                      </TableCell>
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.kaupunki}
-                      </TableCell>
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.operaattori}
-                      </TableCell>
-                      <TableCell align="right" sx={tableCellStyles}>
-                        {row.kapasiteetti?.toString()}
-                      </TableCell>
-                      <TableCell align="center" sx={tableCellStyles}>
-                        <StationViewButton data={row} />
-                      </TableCell>
-                    </TableRow>
+                  {filteredData?.map((row: Stations) => (
+                    <StationRow row={row} />
                   ))}
                 </TableBody>
               </Table>

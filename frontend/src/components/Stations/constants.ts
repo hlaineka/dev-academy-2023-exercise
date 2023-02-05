@@ -1,5 +1,6 @@
 import { TableHeads } from './types';
 
+// for mui pagination component, selection for pagination options
 export const rowsPerPageOptions = [
   { label: '10', value: 10 },
   { label: '25', value: 25 },

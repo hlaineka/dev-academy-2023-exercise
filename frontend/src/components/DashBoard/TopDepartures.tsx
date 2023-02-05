@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Paper,
   Table,
@@ -10,15 +11,13 @@ import {
 } from '@mui/material';
 import { darkTheme, responsiveStyles, theme } from '../../theme/theme';
 import { Stations } from '../../generated/graphql';
-import React from 'react';
 import { TopDeparturesProps } from './types';
 
 const TopDepartures: React.FC<TopDeparturesProps> = ({
   topDepartureStations,
 }) => {
+  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
 
-	const tableCellStyles = responsiveStyles(theme)[0].tableCell;
-	
   return (
     <>
       <p>Top 5 stations to departure: </p>
@@ -39,7 +38,7 @@ const TopDepartures: React.FC<TopDeparturesProps> = ({
                   key={'0-top-departure-stations'}
                   id={'0-top-departure-stations'}
                   align={'left'}
-									sx={tableCellStyles}
+                  sx={tableCellStyles}
                 >
                   Station
                 </TableCell>
@@ -47,7 +46,7 @@ const TopDepartures: React.FC<TopDeparturesProps> = ({
                   key={'1-top-departure-stations-departures'}
                   id={'1-top-departure-stations-departures'}
                   align={'left'}
-									sx={tableCellStyles}
+                  sx={tableCellStyles}
                 >
                   Departures
                 </TableCell>
@@ -60,8 +59,12 @@ const TopDepartures: React.FC<TopDeparturesProps> = ({
                 key={row.id?.toString()}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="left" sx={tableCellStyles}>{row.nimi?.toString()}</TableCell>
-                <TableCell align="left" sx={tableCellStyles}>{row.journey_departures}</TableCell>
+                <TableCell align="left" sx={tableCellStyles}>
+                  {row.nimi?.toString()}
+                </TableCell>
+                <TableCell align="left" sx={tableCellStyles}>
+                  {row.journey_departures}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

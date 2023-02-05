@@ -1,35 +1,13 @@
 import { gql, useQuery } from '@apollo/client';
 import { SortDirection } from '@mui/material/TableCell';
-import { DashboardData } from '../components/DashBoard/types';
 import {
   useGetStationsCountQuery,
   useGetJourneysCountQuery,
   useGetTopDepartureStationsQuery,
-  Stations,
   useGetTopReturnStationsQuery,
   useGetaverageStationUsageQuery,
-	useGetaverageJourneysQuery,
+  useGetAverageJourneysQuery,
 } from '../generated/graphql';
-
-export const GET_ALL_STATIONS = gql`
-  query GetAllStations {
-    stations(order_by: { nimi: asc }) {
-      adress
-      fid
-      id
-      kapasiteetti
-      kaupunki
-      name
-      namn
-      nimi
-      operaattori
-      osoite
-      stad
-      x
-      y
-    }
-  }
-`;
 
 export const GET_PAGINATED_ORDERED_JOURNEYS = gql`
   query GetPaginatedOrderedJourneys(
@@ -105,7 +83,7 @@ export const GET_TOP_DEPARTURE_STATIONS = gql`
   }
 `;
 
-export const GET_average_STATION_USAGE = gql`
+export const GET_AVERAGE_STATION_USAGE = gql`
   query getaverageStationUsage {
     stations_aggregate {
       aggregate {
@@ -117,8 +95,8 @@ export const GET_average_STATION_USAGE = gql`
   }
 `;
 
-export const GET_average_JOURNEYS = gql`
-  query getaverageJourneys {
+export const GET_AVERAGE_JOURNEYS = gql`
+  query getAverageJourneys {
     journeys_aggregate {
       aggregate {
         avg {
@@ -223,8 +201,8 @@ const GetaverageStationUsage = () => {
   }
 };
 
-const GetaverageJourneys = () => {
-  const { loading, error, data } = useGetaverageJourneysQuery();
+const GetAverageJourneys = () => {
+  const { loading, error, data } = useGetAverageJourneysQuery();
 
   if (loading) {
     console.log('loading');
@@ -240,9 +218,13 @@ const GetaverageJourneys = () => {
     data.journeys_aggregate.aggregate.avg.covered_distance_m &&
     data.journeys_aggregate.aggregate.avg.duration_sec
   ) {
-		const averageDuration = Math.floor(data.journeys_aggregate.aggregate.avg.duration_sec);
-		const averageDistance = Math.floor(data.journeys_aggregate.aggregate.avg.covered_distance_m)
-    return {averageDuration, averageDistance};
+    const averageDuration = Math.floor(
+      data.journeys_aggregate.aggregate.avg.duration_sec,
+    );
+    const averageDistance = Math.floor(
+      data.journeys_aggregate.aggregate.avg.covered_distance_m,
+    );
+    return { averageDuration, averageDistance };
   }
 };
 
@@ -253,11 +235,21 @@ export const GetDashboardData = () => {
 
   const averageStationsUsage = GetaverageStationUsage();
 
-  const averageJourneys = GetaverageJourneys();
-	const averageDuration = averageJourneys ? averageJourneys.averageDuration : null;
-	const averageDistance = averageJourneys ? averageJourneys.averageDistance : null;
+  const averageJourneys = GetAverageJourneys();
+  const averageDuration = averageJourneys
+    ? averageJourneys.averageDuration
+    : null;
+  const averageDistance = averageJourneys
+    ? averageJourneys.averageDistance
+    : null;
 
-  return { topDepartureStations, topReturnStations, averageStationsUsage, averageDuration, averageDistance  };
+  return {
+    topDepartureStations,
+    topReturnStations,
+    averageStationsUsage,
+    averageDuration,
+    averageDistance,
+  };
 };
 
 export const GetPaginatedOrderedJourneys = (

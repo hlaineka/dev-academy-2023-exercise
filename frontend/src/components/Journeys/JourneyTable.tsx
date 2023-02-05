@@ -1,41 +1,21 @@
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { SortDirection } from '@mui/material/TableCell';
+import { SortDirection } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import {
   GetPaginatedOrderedJourneys,
   GetJourneysCount,
 } from '../../queries/Queries';
-import { Journey } from './types';
 import { journeyTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../CreateTableHead';
-import { responsiveStyles, theme } from '../../theme/theme';
-
-export const createDurationString = (duration: number) => {
-  const seconds = duration % 60;
-  const minutes = Math.floor(duration / 60) % 60;
-  const hours = Math.floor(duration / 3600);
-
-  const secondsString = ('  ' + seconds.toString()).slice(-3) + 's';
-  const minutesString = ('  ' + minutes.toString()).slice(-3) + 'm';
-  const hoursString = ('            ' + hours.toString()).slice(-10) + 'h';
-
-  return hoursString + minutesString + secondsString;
-};
-
-export const createDistanceString = (distance: number) => {
-  const meters = Math.floor(distance % 1000);
-  const kilometers = Math.floor(distance / 1000);
-  return kilometers === 0 ? meters + 'm' : kilometers + 'km ' + meters + 'm';
-};
+import JourneyRow from './JourneyRow';
+import { Journeys } from '../../generated/graphql';
 
 const JourneyTable = () => {
-  const maxRowsCount = GetJourneysCount();
-
+  //states and handlers for padination and ordering
   const [journeyPage, setJourneyPage] = React.useState<number>(0);
   const [rowsPerJourneyPage, setRowsPerJourneyPage] =
     React.useState<number>(25);
@@ -53,7 +33,6 @@ const JourneyTable = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const rowCount = parseInt(event.target.value, 10);
-    console.log(event);
     setRowsPerJourneyPage(rowCount);
     setJourneyPage(0);
   };
@@ -62,10 +41,9 @@ const JourneyTable = () => {
     const isAsc = orderBy === query_name && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(query_name);
-    console.log(orderBy);
-    console.log(order);
   };
 
+  //query call for paginated, ordered data
   const { loading, error, data } = GetPaginatedOrderedJourneys(
     journeyPage,
     rowsPerJourneyPage,
@@ -73,13 +51,12 @@ const JourneyTable = () => {
     orderBy,
   );
 
-  const filteredData = data?.journeys;
-
   if (error) {
     console.log(data, error);
   }
 
-	const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+  const maxRowsCount = GetJourneysCount();
+  const filteredData = data?.journeys;
 
   return (
     <>
@@ -111,31 +88,8 @@ const JourneyTable = () => {
                   handleOrdering={handleToggleOrdering}
                 />
                 <TableBody>
-                  {filteredData?.map((row: Journey) => (
-                    <TableRow
-                      key={row.id?.toString()}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.Departure.toString()}
-                      </TableCell>
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.departure_station_name}
-                      </TableCell>
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.Return.toString()}
-                      </TableCell>
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {row.return_station_name}
-                      </TableCell>
-                      <TableCell align="left" sx={tableCellStyles}>
-                        {createDistanceString(row.covered_distance_m)}
-                      </TableCell>
-                      <TableCell align="right" sx={tableCellStyles}>
-                        {' '}
-                        {createDurationString(row.duration_sec)}
-                      </TableCell>
-                    </TableRow>
+                  {filteredData?.map((row: Journeys) => (
+                    <JourneyRow row={row} />
                   ))}
                 </TableBody>
               </Table>

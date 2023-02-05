@@ -127,8 +127,8 @@ export const responsiveStyles = (theme: Theme) => [
         marginTop: '10vh',
         padding: '2rem 2rem 1rem 2rem',
         boxSizing: 'border-box',
-				borderRadius: '.5rem .5rem 0 0',
-				borderBottom: 'solid 1rem #fca211'
+        borderRadius: '.5rem .5rem 0 0',
+        borderBottom: 'solid 1rem #fca211',
       },
       [theme.breakpoints.up(1100)]: {
         width: '80vw',
@@ -136,8 +136,8 @@ export const responsiveStyles = (theme: Theme) => [
         marginTop: '10vh',
         padding: '3rem 3rem 2rem 3rem',
         boxSizing: 'border-box',
-				borderRadius: '.5rem .5rem 0 0',
-				borderBottom: 'solid 1rem #fca211'
+        borderRadius: '.5rem .5rem 0 0',
+        borderBottom: 'solid 1rem #fca211',
       },
       [theme.breakpoints.up(1350)]: {},
     },

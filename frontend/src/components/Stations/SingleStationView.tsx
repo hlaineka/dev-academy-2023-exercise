@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { StationViewButtonProps } from './types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { StationViewButtonProps } from './types';
 import { responsiveStyles, theme } from '../../theme/theme';
 
 const singleStationStyles = responsiveStyles(theme)[0].singleStation;
@@ -14,14 +14,14 @@ const SingleStationView: React.FC<StationViewButtonProps> = ({ data }) => {
   const handleClose = () => setOpen(false);
 
   const ariaLabel = 'Station info of ' + data.nimi;
-  const infoString = 'Osoite: ' + data.osoite;
+  const infoString = 'Adress: ' + data.osoite;
   const departuredString =
-    'Asemalta lähteneet matkat: ' + data.journey_departures;
-  const returnedString = 'Asemalle palanneet matkat: ' + data.journey_returns;
+    'Number of journeys departed: ' + data.journey_departures;
+  const returnedString = 'Number of journeys returned: ' + data.journey_returns;
 
   return (
     <>
-      <Button onClick={handleOpen}>Tarkastele</Button>
+      <Button onClick={handleOpen}>More info</Button>
 
       <Modal open={open} onClose={handleClose} aria-labelledby={ariaLabel}>
         <Box sx={singleStationStyles}>
