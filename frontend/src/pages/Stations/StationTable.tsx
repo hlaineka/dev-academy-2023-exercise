@@ -1,52 +1,55 @@
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import { SortDirection } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import {
-  GetPaginatedOrderedJourneys,
-  GetJourneysCount,
+  GetPaginatedOrderedStations,
+  GetStationsCount,
 } from '../../queries/Queries';
-import { journeyTableHeads, rowsPerPageOptions } from './constants';
-import { CreateTableHead } from '../CreateTableHead';
-import JourneyRow from './JourneyRow';
-import { Journeys } from '../../generated/graphql';
+import { stationTableHeads, rowsPerPageOptions } from './constants';
+import { CreateTableHead } from '../../components/CreateTableHead';
+import { responsiveStyles, theme } from '../../theme/theme';
+import { SortDirection } from '@mui/material';
+import { Stations } from '../../generated/graphql';
+import StationRow from './StationRow';
 
-const JourneyTable = () => {
-  //states and handlers for padination and ordering
-  const [journeyPage, setJourneyPage] = React.useState<number>(0);
-  const [rowsPerJourneyPage, setRowsPerJourneyPage] =
+const StationTable = () => {
+  //states and handlers for pagination and ordering
+  const [stationPage, setStationPage] = React.useState<number>(0);
+  const [rowsPerStationsPage, setRowsPerStationPage] =
     React.useState<number>(25);
-  const [order, setOrder] = React.useState<SortDirection>('desc');
-  const [orderBy, setOrderBy] = React.useState<string>('Departure');
+  const [order, setOrder] = React.useState<SortDirection>('asc');
+  const [orderBy, setOrderBy] = React.useState<string>('nimi');
 
-  const handleChangeJourneyPage = (
+  const handleChangeStationsPage = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
     newPage: number,
   ) => {
-    setJourneyPage(newPage);
+    setStationPage(newPage);
   };
 
-  const handleChangeRowsPerJourneyPage = (
+  const handleChangeRowsPerStationPage = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const rowCount = parseInt(event.target.value, 10);
-    setRowsPerJourneyPage(rowCount);
-    setJourneyPage(0);
+    console.log(event);
+    setRowsPerStationPage(rowCount);
+    setStationPage(0);
   };
 
   const handleToggleOrdering = (query_name: string) => {
     const isAsc = orderBy === query_name && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(query_name);
+    console.log(orderBy);
+    console.log(order);
   };
 
-  //query call for paginated, ordered data
-  const { loading, error, data } = GetPaginatedOrderedJourneys(
-    journeyPage,
-    rowsPerJourneyPage,
+  const { loading, error, data } = GetPaginatedOrderedStations(
+    stationPage,
+    rowsPerStationsPage,
     order,
     orderBy,
   );
@@ -55,8 +58,8 @@ const JourneyTable = () => {
     console.log(data, error);
   }
 
-  const maxRowsCount = GetJourneysCount();
-  const filteredData = data?.journeys;
+  const filteredData = data?.stations;
+  const maxRowsCount = GetStationsCount();
 
   return (
     <>
@@ -70,26 +73,26 @@ const JourneyTable = () => {
             <TablePagination
               component="div"
               count={maxRowsCount}
-              page={journeyPage}
-              onPageChange={handleChangeJourneyPage}
-              rowsPerPage={rowsPerJourneyPage}
+              page={stationPage}
+              onPageChange={handleChangeStationsPage}
+              rowsPerPage={rowsPerStationsPage}
               onRowsPerPageChange={event =>
-                handleChangeRowsPerJourneyPage(event)
+                handleChangeRowsPerStationPage(event)
               }
               rowsPerPageOptions={rowsPerPageOptions}
             />
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table sx={{ maxWidth: '100%' }} aria-label="stations table">
                 <CreateTableHead
-                  headCells={journeyTableHeads}
+                  headCells={stationTableHeads}
                   orderBy={orderBy}
                   order={order}
-                  tableType="journeys"
+                  tableType="stationss"
                   handleOrdering={handleToggleOrdering}
                 />
                 <TableBody>
-                  {filteredData?.map((row: Journeys) => (
-                    <JourneyRow row={row} />
+                  {filteredData?.map((row: Stations) => (
+                    <StationRow row={row} />
                   ))}
                 </TableBody>
               </Table>
@@ -101,4 +104,4 @@ const JourneyTable = () => {
   );
 };
 
-export default JourneyTable;
+export default StationTable;

@@ -4,7 +4,7 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Box from '@mui/material/Box';
 import { visuallyHidden } from '@mui/utils';
-import { TableHeads } from './Stations/types';
+import { TableHeads } from '../pages/Stations/types';
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme, responsiveStyles, theme } from '../theme/theme';

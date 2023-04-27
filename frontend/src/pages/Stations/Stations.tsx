@@ -1,5 +1,5 @@
 import React from 'react';
-import BasicPageLayout from '../BasicPageLayout';
+import BasicPageLayout from '../../components/BasicPageLayout';
 import StationTable from './StationTable';
 
 const StationsPage = () => {

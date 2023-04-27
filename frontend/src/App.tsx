@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import DashBoard from './components/DashBoard/DashBoard';
-import Stations from './components/Stations/Stations';
-import Journeys from './components/Journeys/Journeys';
+import DashBoard from './pages/DashBoard/DashBoard';
+import Stations from './pages/Stations/Stations';
+import Journeys from './pages/Journeys/Journeys';
 import Header from './components/Header/Header';
 import { ThemeProvider } from '@mui/material/styles';
 import { responsiveStyles, theme } from './theme/theme';

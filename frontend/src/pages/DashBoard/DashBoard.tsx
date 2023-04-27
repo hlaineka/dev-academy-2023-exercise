@@ -1,7 +1,7 @@
 import { Paper } from '@mui/material';
 import React from 'react';
 import { GetDashboardData } from '../../queries/Queries';
-import BasicPageLayout from '../BasicPageLayout';
+import BasicPageLayout from '../../components/BasicPageLayout';
 import {
   createDistanceString,
   createDurationString,
