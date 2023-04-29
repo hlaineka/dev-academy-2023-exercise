@@ -10,7 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme, responsiveStyles, theme } from '../theme/theme';
 
 export type CreateTableHeadProps = {
-  headCells: Array<TableHeads>;
+  headCells: Array<TableHeads | undefined>;
   orderBy: String;
   order: SortDirection;
   tableType: String;
@@ -46,7 +46,7 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
           }}
         >
           {headCells.map(headCell => {
-            return (
+            return headCell ? (
               <TableCell
                 key={headCell.id + '-' + tableType}
                 id={headCell.id}
@@ -59,7 +59,6 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
                   direction={orderBy === headCell.id ? directionOrder : 'asc'}
                   onClick={createSortHandler(headCell.query_name)}
                 >
-                  {' '}
                   {headCell.label}
                   {orderBy === headCell.query_name ? (
                     <Box component="span" sx={visuallyHidden}>
@@ -70,6 +69,8 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
                   ) : null}
                 </TableSortLabel>
               </TableCell>
+            ) : (
+              <></>
             );
           })}
         </TableRow>

@@ -13,6 +13,25 @@ import { journeyTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../../components/CreateTableHead';
 import JourneyRow from './JourneyRow';
 import { Journeys } from '../../generated/graphql';
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from '@mui/material';
+import { TableHeads } from './types';
+
+type SortByOption = Array<string>;
+
+const sortByOptions: Array<SortByOption> = [
+  ['Departure', 'Departure'],
+  ['Return', 'Return'],
+  ['covered_distance_m', 'Covered distance'],
+  ['departure_station_name', 'Departure station'],
+  ['duration_sec', 'Duration'],
+  ['return_station_name', 'Return station'],
+];
 
 const JourneyTable = () => {
   //states and handlers for padination and ordering
@@ -43,6 +62,12 @@ const JourneyTable = () => {
     setOrderBy(query_name);
   };
 
+  const handleOrderBy = (event: SelectChangeEvent<'Sort by'>) => {
+    const index: number = Number(event.target.value);
+    setOrderBy(sortByOptions[index][0]);
+    console.log(sortByOptions[index][0]);
+  };
+
   //query call for paginated, ordered data
   const { loading, error, data } = GetPaginatedOrderedJourneys(
     journeyPage,
@@ -58,6 +83,33 @@ const JourneyTable = () => {
   const maxRowsCount = GetJourneysCount();
   const filteredData = data?.journeys;
 
+  sortByOptions.map((option: SortByOption, index) => {
+    console.log(index);
+    console.log(option);
+  });
+
+  console.log(journeyTableHeads);
+
+  const customJourneyTableHeads: Array<TableHeads | undefined> = [
+    undefined,
+    journeyTableHeads[1],
+    journeyTableHeads[3],
+    journeyTableHeads[6],
+  ];
+
+  const customField = journeyTableHeads.find(
+    tableHead => tableHead.query_name === orderBy,
+  );
+  if (
+    customField &&
+    orderBy != 'departure_station_name' &&
+    orderBy != 'return_station_name'
+  ) {
+    customJourneyTableHeads[0] = customField;
+  }
+
+  console.log(customJourneyTableHeads);
+
   return (
     <>
       {loading ? (
@@ -67,6 +119,26 @@ const JourneyTable = () => {
       ) : (
         data && (
           <>
+            <FormControl sx={{ width: '20rem', color: '#14213D' }}>
+              <InputLabel id="journeys-order-by">Sort By</InputLabel>
+              <Select
+                labelId="journeys-order-by-select-label"
+                id="journeys-order-by-select"
+                value=""
+                label="Sort by"
+                onChange={handleOrderBy}
+              >
+                {sortByOptions.map((option: SortByOption, index) => (
+                  <MenuItem
+                    sx={{ color: '#14213D' }}
+                    key={`${index}`}
+                    value={index.toString()}
+                  >
+                    {option[1]}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <TablePagination
               component="div"
               count={maxRowsCount}
@@ -79,9 +151,16 @@ const JourneyTable = () => {
               rowsPerPageOptions={rowsPerPageOptions}
             />
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table
+                sx={{
+                  tableLayout: 'auto',
+                  whiteSpace: 'normal',
+                  maxWidth: '100vw',
+                }}
+                aria-label="simple table"
+              >
                 <CreateTableHead
-                  headCells={journeyTableHeads}
+                  headCells={customJourneyTableHeads}
                   orderBy={orderBy}
                   order={order}
                   tableType="journeys"
@@ -89,7 +168,11 @@ const JourneyTable = () => {
                 />
                 <TableBody>
                   {filteredData?.map((row: Journeys) => (
-                    <JourneyRow row={row} />
+                    <JourneyRow
+                      key={row.id}
+                      row={row}
+                      customJourneyTableHeads={customJourneyTableHeads}
+                    />
                   ))}
                 </TableBody>
               </Table>

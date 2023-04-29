@@ -8,5 +8,10 @@ export type TableHeads = {
 };
 
 export type JourneyRowProps = {
-  row: Journeys;
+  row: TypedKeyJourneys;
+	customJourneyTableHeads: Array<TableHeads | undefined>
 };
+
+interface TypedKeyJourneys {
+	[key: string]: any;
+}
