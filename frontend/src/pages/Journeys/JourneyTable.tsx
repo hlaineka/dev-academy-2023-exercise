@@ -65,7 +65,6 @@ const JourneyTable = () => {
   const handleOrderBy = (event: SelectChangeEvent<'Sort by'>) => {
     const index: number = Number(event.target.value);
     setOrderBy(sortByOptions[index][0]);
-    console.log(sortByOptions[index][0]);
   };
 
   //query call for paginated, ordered data
@@ -82,13 +81,6 @@ const JourneyTable = () => {
 
   const maxRowsCount = GetJourneysCount();
   const filteredData = data?.journeys;
-
-  sortByOptions.map((option: SortByOption, index) => {
-    console.log(index);
-    console.log(option);
-  });
-
-  console.log(journeyTableHeads);
 
   const customJourneyTableHeads: Array<TableHeads | undefined> = [
     undefined,
@@ -107,8 +99,6 @@ const JourneyTable = () => {
   ) {
     customJourneyTableHeads[0] = customField;
   }
-
-  console.log(customJourneyTableHeads);
 
   return (
     <>
@@ -131,7 +121,7 @@ const JourneyTable = () => {
                 {sortByOptions.map((option: SortByOption, index) => (
                   <MenuItem
                     sx={{ color: '#14213D' }}
-                    key={`${index}`}
+                    key={`${index}-${option[1]}`}
                     value={index.toString()}
                   >
                     {option[1]}
@@ -169,7 +159,7 @@ const JourneyTable = () => {
                 <TableBody>
                   {filteredData?.map((row: Journeys) => (
                     <JourneyRow
-                      key={row.id}
+                      key={`${row.id.toString()}-${row.departure_station_name}-journey-row`}
                       row={row}
                       customJourneyTableHeads={customJourneyTableHeads}
                     />
