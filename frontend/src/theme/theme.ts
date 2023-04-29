@@ -148,7 +148,8 @@ export const responsiveStyles = (theme: Theme) => [
       [theme.breakpoints.down(850)]: {},
       [theme.breakpoints.down(1100)]: {
         width: '100vw',
-        margin: 0,
+				margin: 0,
+        padding: '2rem 0',
       },
       [theme.breakpoints.up(1100)]: {
         width: '80vw',
@@ -161,14 +162,33 @@ export const responsiveStyles = (theme: Theme) => [
     },
     tableCell: {
       [theme.breakpoints.down(500)]: {},
-      [theme.breakpoints.down(850)]: {},
       [theme.breakpoints.down(1100)]: {
-        maxWidth: 'fit-content',
-        padding: '.5rem',
+				padding: '.5rem'
+      },
+			[theme.breakpoints.down(850)]: {
+			},
+      [theme.breakpoints.up(1100)]: {},
+      [theme.breakpoints.up(1350)]: {},
+    },
+		tableRow: {
+      [theme.breakpoints.down(500)]: {},
+			[theme.breakpoints.down(850)]: {
+			},
+			[theme.breakpoints.down(1100)]: {
       },
       [theme.breakpoints.up(1100)]: {},
       [theme.breakpoints.up(1350)]: {},
     },
+		table: {
+			[theme.breakpoints.down(500)]: {},
+			[theme.breakpoints.down(850)]: {
+			},
+			[theme.breakpoints.down(1100)]: {
+
+      },
+      [theme.breakpoints.up(1100)]: {},
+      [theme.breakpoints.up(1350)]: {},
+		},
     singleStation: {
       [theme.breakpoints.down(500)]: {},
       [theme.breakpoints.down(850)]: {},
