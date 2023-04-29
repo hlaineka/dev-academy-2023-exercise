@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-	Box,
+  Box,
   Button,
   Collapse,
   IconButton,
@@ -28,20 +28,22 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
     setShowMore(!showMore);
   };
 
-  console.log(row);
-
   const durationString = createDurationString(row.duration_sec);
   const distanceString = createDistanceString(row.covered_distance_m);
 
   return (
     <>
       <TableRow
-        key={row.id?.toString()}
+        key={Math.floor(Math.random()*10000000).toString(16)}
         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
       >
         <>
           {customJourneyTableHeads[0] ? (
-            <TableCell align="left" sx={tableCellStyles}>
+            <TableCell
+              align="left"
+              sx={tableCellStyles}
+              key={Math.floor(Math.random()*10000000).toString(16)}
+            >
               {customJourneyTableHeads[0]
                 ? customJourneyTableHeads[0].query_name === 'duration_sec'
                   ? durationString
@@ -54,51 +56,84 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
           ) : (
             <></>
           )}
-          <TableCell align="left" sx={tableCellStyles}>
+          <TableCell
+            align="left"
+            sx={tableCellStyles}
+            key={Math.floor(Math.random()*10000000).toString(16)}
+          >
             {customJourneyTableHeads[1]
               ? row[customJourneyTableHeads[1].query_name]
               : ''}
           </TableCell>
-          <TableCell align="left" sx={tableCellStyles}>
+          <TableCell
+            align="left"
+            sx={tableCellStyles}
+            key={Math.floor(Math.random()*10000000).toString(16)}
+          >
             {customJourneyTableHeads[2]
               ? row[customJourneyTableHeads[2].query_name]
               : ''}
           </TableCell>
-          <TableCell>
-            <IconButton sx={{ color: '#14213D' }} onClick={toggleShowMore}>
+          <TableCell key={Math.floor(Math.random()*10000000).toString(16)}>
+            <IconButton
+              sx={{ color: '#14213D' }}
+              onClick={toggleShowMore}
+              key={Math.floor(Math.random()*10000000).toString(16)}
+            >
               {showMore ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </IconButton>
           </TableCell>
         </>
       </TableRow>
-      <TableRow>
-        <TableCell style={{ padding: 0 }} colSpan={customJourneyTableHeads.length}>
-          <Collapse in={showMore} timeout="auto" unmountOnExit>
-					<Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-            {Object.entries(row).map(([key, value]) =>
-              key != 'departure_station_name' &&
-              key != 'return_station_name' &&
-              key != customJourneyTableHeads[0]?.query_name &&
-              key != '__typename' &&
-              key != 'id' ? (
-                <Box>
-                  <TableCell align="left" sx={tableCellStyles} style={{paddingRight: '.5rem'}}>
-                    {key === 'Return' ? 'Return:' : key === 'Departure' ? 'Departure:' : key === 'covered_distance_m' ? 'Covered distance:' : 'Duration:'}
-                  </TableCell>
-                  <TableCell align="left" sx={tableCellStyles} style={{paddingLeft: '0', margin: 'auto'}}>
+      <TableRow key={Math.floor(Math.random()*10000000).toString(16)}>
+        <TableCell
+          style={{ padding: 0 }}
+          colSpan={customJourneyTableHeads.length}
+          key={Math.floor(Math.random()*10000000).toString(16)}
+        >
+          <Collapse in={showMore} timeout="auto" unmountOnExit key={Math.floor(Math.random()*10000000).toString(16)}>
+            <Box
+              sx={{ display: 'flex', justifyContent: 'space-between' }}
+              key={Math.floor(Math.random()*10000000).toString(16)}
+            >
+              {Object.entries(row).map(([key, value]) =>
+                key != 'departure_station_name' &&
+                key != 'return_station_name' &&
+                key != customJourneyTableHeads[0]?.query_name &&
+                key != '__typename' &&
+                key != 'id' ? (
+                  <Box
+                    sx={{ display: 'flex', padding: '1rem' }}
+                    key={Math.floor(Math.random()*10000000).toString(16)}
+                  >
+                    <Box
+                      style={{ paddingRight: '.5rem' }}
+                      key={Math.floor(Math.random()*10000000).toString(16)}
+                    >
+                      {key === 'Return'
+                        ? 'Return:'
+                        : key === 'Departure'
+                        ? 'Departure:'
+                        : key === 'covered_distance_m'
+                        ? 'Covered distance:'
+                        : 'Duration:'}
+                    </Box>
+                    <Box
+                      style={{ paddingLeft: '0', margin: 'auto' }}
+                      key={Math.floor(Math.random()*10000000).toString(16)}
+                    >
                       {key === 'duration_sec'
                         ? durationString
                         : key === 'covered_distance_m'
                         ? distanceString
                         : value}
-                  </TableCell>
-									</Box>
-              ) : (
-                <></>
-              ),
-							
-            )}
-						</Box>
+                    </Box>
+                  </Box>
+                ) : (
+                  <></>
+                ),
+              )}
+            </Box>
           </Collapse>
         </TableCell>
       </TableRow>
