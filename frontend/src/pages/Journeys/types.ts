@@ -9,9 +9,9 @@ export type TableHeads = {
 
 export type JourneyRowProps = {
   row: TypedKeyJourneys;
-	customJourneyTableHeads: Array<TableHeads | undefined>
+  customJourneyTableHeads: Array<TableHeads | undefined>;
 };
 
 interface TypedKeyJourneys {
-	[key: string]: any;
+  [key: string]: any;
 }

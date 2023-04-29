@@ -159,7 +159,9 @@ const JourneyTable = () => {
                 <TableBody>
                   {filteredData?.map((row: Journeys) => (
                     <JourneyRow
-                      key={`${row.id.toString()}-${row.departure_station_name}-journey-row`}
+                      key={`${row.id.toString()}-${
+                        row.departure_station_name
+                      }-journey-row`}
                       row={row}
                       customJourneyTableHeads={customJourneyTableHeads}
                     />

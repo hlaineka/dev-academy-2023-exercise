@@ -34,7 +34,7 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
   return (
     <>
       <TableRow
-        key={Math.floor(Math.random()*10000000).toString(16)}
+        key={Math.floor(Math.random() * 10000000).toString(16)}
         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
       >
         <>
@@ -42,7 +42,7 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
             <TableCell
               align="left"
               sx={tableCellStyles}
-              key={Math.floor(Math.random()*10000000).toString(16)}
+              key={Math.floor(Math.random() * 10000000).toString(16)}
             >
               {customJourneyTableHeads[0]
                 ? customJourneyTableHeads[0].query_name === 'duration_sec'
@@ -59,7 +59,7 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
           <TableCell
             align="left"
             sx={tableCellStyles}
-            key={Math.floor(Math.random()*10000000).toString(16)}
+            key={Math.floor(Math.random() * 10000000).toString(16)}
           >
             {customJourneyTableHeads[1]
               ? row[customJourneyTableHeads[1].query_name]
@@ -68,33 +68,38 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
           <TableCell
             align="left"
             sx={tableCellStyles}
-            key={Math.floor(Math.random()*10000000).toString(16)}
+            key={Math.floor(Math.random() * 10000000).toString(16)}
           >
             {customJourneyTableHeads[2]
               ? row[customJourneyTableHeads[2].query_name]
               : ''}
           </TableCell>
-          <TableCell key={Math.floor(Math.random()*10000000).toString(16)}>
+          <TableCell key={Math.floor(Math.random() * 10000000).toString(16)}>
             <IconButton
               sx={{ color: '#14213D' }}
               onClick={toggleShowMore}
-              key={Math.floor(Math.random()*10000000).toString(16)}
+              key={Math.floor(Math.random() * 10000000).toString(16)}
             >
               {showMore ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </IconButton>
           </TableCell>
         </>
       </TableRow>
-      <TableRow key={Math.floor(Math.random()*10000000).toString(16)}>
+      <TableRow key={Math.floor(Math.random() * 10000000).toString(16)}>
         <TableCell
           style={{ padding: 0 }}
           colSpan={customJourneyTableHeads.length}
-          key={Math.floor(Math.random()*10000000).toString(16)}
+          key={Math.floor(Math.random() * 10000000).toString(16)}
         >
-          <Collapse in={showMore} timeout="auto" unmountOnExit key={Math.floor(Math.random()*10000000).toString(16)}>
+          <Collapse
+            in={showMore}
+            timeout="auto"
+            unmountOnExit
+            key={Math.floor(Math.random() * 10000000).toString(16)}
+          >
             <Box
               sx={{ display: 'flex', justifyContent: 'space-between' }}
-              key={Math.floor(Math.random()*10000000).toString(16)}
+              key={Math.floor(Math.random() * 10000000).toString(16)}
             >
               {Object.entries(row).map(([key, value]) =>
                 key != 'departure_station_name' &&
@@ -104,11 +109,11 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
                 key != 'id' ? (
                   <Box
                     sx={{ display: 'flex', padding: '1rem' }}
-                    key={Math.floor(Math.random()*10000000).toString(16)}
+                    key={Math.floor(Math.random() * 10000000).toString(16)}
                   >
                     <Box
                       style={{ paddingRight: '.5rem' }}
-                      key={Math.floor(Math.random()*10000000).toString(16)}
+                      key={Math.floor(Math.random() * 10000000).toString(16)}
                     >
                       {key === 'Return'
                         ? 'Return:'
@@ -120,7 +125,7 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
                     </Box>
                     <Box
                       style={{ paddingLeft: '0', margin: 'auto' }}
-                      key={Math.floor(Math.random()*10000000).toString(16)}
+                      key={Math.floor(Math.random() * 10000000).toString(16)}
                     >
                       {key === 'duration_sec'
                         ? durationString

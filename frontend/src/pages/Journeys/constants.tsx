@@ -46,11 +46,10 @@ export const journeyTableHeads: Array<TableHeads> = [
     query_name: 'duration_sec',
     align: 'left',
   },
-	{
-		id: '6',
-		label: 'Show more',
-		query_name: '',
-		align: 'left'
-	}
-
+  {
+    id: '6',
+    label: 'Show more',
+    query_name: '',
+    align: 'left',
+  },
 ];
