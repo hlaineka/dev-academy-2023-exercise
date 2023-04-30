@@ -34,6 +34,7 @@ const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({
             variant="h2"
             component="div"
             sx={{ flexGrow: 1, fontSize: '2rem' }}
+						data-testid="page-name"
           >
             {pageName}
           </Typography>

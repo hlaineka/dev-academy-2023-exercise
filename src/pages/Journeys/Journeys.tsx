@@ -7,7 +7,7 @@ const Journeys = () => {
   const { t } = useTranslation();
 
   return (
-    <BasicPageLayout pageName={t('journeys:journeys').toString()}>
+    <BasicPageLayout pageName={t('journeys:journeys').toString()} data-testid="journeys-container">
       <JourneyTable />
     </BasicPageLayout>
   );

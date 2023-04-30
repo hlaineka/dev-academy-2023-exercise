@@ -10,3 +10,5 @@ graphql.schema.json
 
 /extras*
 /data*
+
+/coverage

@@ -1,7 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -10,11 +8,11 @@ import ListItemText from '@mui/material/ListItemText';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import MenuIcon from '@mui/icons-material/Menu';
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
 } from 'react-router-dom';
+import { styled } from '@mui/material';
 
 const Link = React.forwardRef<HTMLAnchorElement, RouterLinkProps>(function Link(
   itemProps,
@@ -23,74 +21,80 @@ const Link = React.forwardRef<HTMLAnchorElement, RouterLinkProps>(function Link(
   return <RouterLink ref={ref} {...itemProps} role={undefined} />;
 });
 
-const Navigation = () => {
-  const [state, setState] = React.useState(false);
+const SelectableListItem = styled(ListItem)(() => ({
+	height: '100%',
+  '&.selected-item': {
+    backgroundColor: '#FCA211',
+    color: '#14213D',
 
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
-      setState(open);
-    };
+		'& .MuiTypography-root': {
+			color: '#14213D',
+		},
+
+		'& .MuiSvgIcon-root': {
+			color: '#14213D !important',
+		}
+  },
+}));
+
+const CustomList = styled(List)(() => ({
+  display: 'flex',
+	padding: 0,
+	height: '100%'
+}));
+
+const Navigation = () => {
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleListItemClick = (index: number) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>
-        <MenuIcon style={{ color: '#FCA311' }} />{' '}
-      </Button>
-      <Drawer
-        open={state}
-        onClose={toggleDrawer(false)}
-        PaperProps={{
-          sx: {
-            backgroundColor: '#14213D',
-          },
+      <Box
+        sx={{
+          width: 'auto',
+          paddingRight: '2rem',
+          backgroundColor: '#14213D',
+					height: '5rem',
         }}
       >
-        <Box
-          sx={{
-            width: 'auto',
-            paddingRight: '2rem',
-            backgroundColor: '#14213D',
-          }}
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <List>
-            {['Dashboard', 'Journeys', 'Stations'].map(text => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton
-                  component={Link}
-                  to={
-                    text == 'Journeys'
-                      ? '/journeys'
-                      : text == 'Stations'
-                      ? '/stations'
-                      : '/'
-                  }
-                  sx={{ color: '#FFF' }}
-                >
-                  <ListItemIcon>
-                    {text == 'Journeys' ? (
-                      <DirectionsBikeIcon style={{ color: '#FCA311' }} />
-                    ) : text == 'Stations' ? (
-                      <LocationOnIcon style={{ color: '#FCA311' }} />
-                    ) : (
-                      <DashboardIcon style={{ color: '#FCA311' }} />
-                    )}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Drawer>
+        <CustomList>
+          {['Dashboard', 'Journeys', 'Stations'].map((text, index) => (
+            <SelectableListItem
+              key={text}
+              disablePadding
+              onClick={() => handleListItemClick(index)}
+              className={selectedIndex === index ? 'selected-item' : ''}
+							data-testid={`navigation-${text}`}
+            >
+              <ListItemButton
+                component={Link}
+                to={
+                  text == 'Journeys'
+                    ? '/journeys'
+                    : text == 'Stations'
+                    ? '/stations'
+                    : '/'
+                }
+                sx={{ color: '#FFF' }}
+              >
+                <ListItemIcon>
+                  {text == 'Journeys' ? (
+                    <DirectionsBikeIcon style={{ color: '#FCA311' }} />
+                  ) : text == 'Stations' ? (
+                    <LocationOnIcon style={{ color: '#FCA311' }} />
+                  ) : (
+                    <DashboardIcon style={{ color: '#FCA311' }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </SelectableListItem>
+          ))}
+        </CustomList>
+      </Box>
     </div>
   );
 };
