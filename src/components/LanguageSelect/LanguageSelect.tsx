@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-	Box,
-  Button,
-  InputBase,
-  styled,
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { Box, Button, styled } from '@mui/material';
 import i18n from '../../i18n';
 
 type Language = 'fi' | 'en';
@@ -14,14 +8,15 @@ type OnLanguageChange = (language: Language) => void;
 
 const languages: Array<Language> = ['fi', 'en'];
 
-const BootstrapButton = styled(Button)(({ theme }) => ({
+const BootstrapButton = styled(Button)(() => ({
+  borderRadius: 0,
   color: 'white',
-	height: '5rem',
-	borderRadius: 0,
-	'&.active': {
-		backgroundColor: '#FCA211',
-		color: '#14213D'
-	}
+  height: '5rem',
+
+  '&.active': {
+    backgroundColor: '#FCA211',
+    color: '#14213D',
+  },
 }));
 
 /*const BootstrapInput = styled(InputBase)(({ theme }) => ({
@@ -58,24 +53,22 @@ const BootstrapButton = styled(Button)(({ theme }) => ({
 }));*/
 
 const LanguageSelect: React.FC = () => {
-  const { t } = useTranslation();
-
-	const onLanguageChange: OnLanguageChange = language => {
+  const onLanguageChange: OnLanguageChange = language => {
     i18n.changeLanguage(language);
   };
 
   return (
-		<Box sx={{display: 'flex'}}>
-		{languages.map(language => (
-			<BootstrapButton
-				key={`${language}-selection`}
-				onClick={() => onLanguageChange(language)}
-				className={i18n.language === language ? 'active' : ''}
-			>
-				{language}
-			</BootstrapButton>
-		))}
-	</Box>
+    <Box sx={{ display: 'flex' }}>
+      {languages.map(language => (
+        <BootstrapButton
+          key={`${language}-selection`}
+          onClick={() => onLanguageChange(language)}
+          className={i18n.language === language ? 'active' : ''}
+        >
+          {language}
+        </BootstrapButton>
+      ))}
+    </Box>
   );
 };
 

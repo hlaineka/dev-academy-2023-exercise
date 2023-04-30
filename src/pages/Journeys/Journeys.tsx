@@ -4,7 +4,7 @@ import JourneyTable from './JourneyTable';
 import { useTranslation } from 'react-i18next';
 
 const Journeys = () => {
-	const { t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <BasicPageLayout pageName={t('journeys:journeys').toString()}>

@@ -6,7 +6,16 @@ import LanguageSelect from '../LanguageSelect/LanguageSelect';
 
 const Header = () => {
   return (
-    <AppBar position="static" sx={{ flexDirection: 'row', padding: '1rem 0', height: '5rem', diplay: 'flex', alignItems: 'center' }}>
+    <AppBar
+      position="static"
+      sx={{
+        alignItems: 'center',
+        diplay: 'flex',
+        flexDirection: 'row',
+        height: '5rem',
+        padding: '1rem 0',
+      }}
+    >
       <Navigation />
       <Typography
         variant="h1"
@@ -15,7 +24,7 @@ const Header = () => {
       >
         Helsinki city bike app
       </Typography>
-			<LanguageSelect/>
+      <LanguageSelect />
     </AppBar>
   );
 };

@@ -10,7 +10,6 @@ import {
 } from '../../queries/Queries';
 import { stationTableHeads, rowsPerPageOptions } from './constants';
 import { CreateTableHead } from '../../components/CreateTableHead';
-import { responsiveStyles, theme } from '../../theme/theme';
 import { SortDirection } from '@mui/material';
 import { Stations } from '../../generated/graphql';
 import StationRow from './StationRow';
@@ -92,7 +91,7 @@ const StationTable = () => {
                 />
                 <TableBody>
                   {filteredData?.map((row: Stations) => (
-                    <StationRow row={row} />
+                    <StationRow row={row} key={`${row.id}-station-row`} />
                   ))}
                 </TableBody>
               </Table>

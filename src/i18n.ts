@@ -4,13 +4,13 @@ import fiTranslations from './resources/translations/fi.json';
 import enTranslations from './resources/translations/en.json';
 
 const resources = {
-  fi: fiTranslations,
   en: enTranslations,
+  fi: fiTranslations,
 };
 
 i18n.use(initReactI18next).init({
+  lng: 'en',
   resources,
-  lng: 'fi',
 });
 
 export default i18n;

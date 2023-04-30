@@ -1,8 +1,6 @@
-import { Journeys } from '../../generated/graphql';
-
 export type TableHeads = {
   id: string;
-  label: String;
+  label: string;
   query_name: string;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 };
@@ -13,5 +11,6 @@ export type JourneyRowProps = {
 };
 
 interface TypedKeyJourneys {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }

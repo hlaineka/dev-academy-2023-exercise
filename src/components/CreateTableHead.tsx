@@ -11,9 +11,9 @@ import { darkTheme, responsiveStyles, theme } from '../theme/theme';
 
 export type CreateTableHeadProps = {
   headCells: Array<TableHeads | undefined>;
-  orderBy: String;
+  orderBy: string;
   order: SortDirection;
-  tableType: String;
+  tableType: string;
   handleOrdering: (id: string) => void;
 };
 

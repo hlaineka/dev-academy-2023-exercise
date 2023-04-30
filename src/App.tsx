@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import DashBoard from './pages/DashBoard/DashBoard';
@@ -11,8 +10,8 @@ import { Box } from '@mui/material';
 
 const createApolloClient = () => {
   return new ApolloClient({
-    uri: 'http://localhost:8080/v1/graphql',
     cache: new InMemoryCache(),
+    uri: 'http://localhost:8080/v1/graphql',
   });
 };
 

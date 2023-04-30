@@ -7,12 +7,12 @@ import { darkTheme, responsiveStyles, theme } from '../theme/theme';
 
 type BasicPageLayoutProps = {
   children: React.ReactNode;
-  pageName?: String;
+  pageName?: string;
 };
 
 const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({
   children,
-  pageName = "Not found",
+  pageName = 'Not found',
 }) => {
   const headerStyles = responsiveStyles(darkTheme)[0].pageHeader;
   const contentStyles = responsiveStyles(theme)[0].contentView;
@@ -20,11 +20,11 @@ const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({
     <Box
       sx={{
         backgroundColor: '#E5E5E5',
-        width: '100vw',
+        left: 0,
         minHeight: '100vh',
         position: 'absolute',
         top: 0,
-        left: 0,
+        width: '100vw',
         zIndex: -1,
       }}
     >

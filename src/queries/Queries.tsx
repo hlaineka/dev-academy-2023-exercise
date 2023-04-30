@@ -141,6 +141,12 @@ export const GetPaginatedOrderedStations = (
 
 export const GetStationsCount = () => {
   const { loading, error, data } = useGetStationsCountQuery();
+  if (loading) {
+    console.log('loading');
+  }
+  if (error) {
+    console.log(`error: ${error}`);
+  }
   return data?.stations_aggregate.aggregate?.count
     ? data?.stations_aggregate.aggregate?.count
     : 0;
@@ -148,6 +154,12 @@ export const GetStationsCount = () => {
 
 export const GetJourneysCount = () => {
   const { loading, error, data } = useGetJourneysCountQuery();
+  if (loading) {
+    console.log('loading');
+  }
+  if (error) {
+    console.log(`error: ${error}`);
+  }
   return data?.journeys_aggregate.aggregate?.count
     ? data?.journeys_aggregate.aggregate?.count
     : 0;

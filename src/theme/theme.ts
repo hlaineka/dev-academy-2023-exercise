@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 import { Theme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
-  interface DefaultTheme extends Theme {}
+  type DefaultTheme = Theme;
 }
 
 export const theme = createTheme({
@@ -187,7 +187,7 @@ export const responsiveStyles = (theme: Theme) => [
       [theme.breakpoints.down(500)]: {},
       [theme.breakpoints.down(850)]: {},
       [theme.breakpoints.down(1100)]: {
-        position: 'absolute' as 'absolute',
+        position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -200,7 +200,7 @@ export const responsiveStyles = (theme: Theme) => [
         padding: '3rem',
       },
       [theme.breakpoints.up(1100)]: {
-        position: 'absolute' as 'absolute',
+        position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',

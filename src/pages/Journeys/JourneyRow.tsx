@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Collapse,
-  IconButton,
-  TableCell,
-  TableRow,
-  Typography,
-} from '@mui/material';
+import { Box, Collapse, IconButton, TableCell, TableRow } from '@mui/material';
 import { JourneyRowProps } from './types';
 import { responsiveStyles, theme } from '../../theme/theme';
 import {

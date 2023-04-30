@@ -63,7 +63,7 @@ const JourneyTable = () => {
   };
 
   const handleOrderBy = (event: SelectChangeEvent<'Sort by'>) => {
-    const index: number = Number(event.target.value);
+    const index: number = +event.target.value;
     setOrderBy(sortByOptions[index][0]);
   };
 
