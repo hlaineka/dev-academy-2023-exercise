@@ -1,0 +1,20 @@
+{
+  "actions": {
+		"sortBy": "Järjestys",
+		"rowsPerPage": "Rivejä sivulla",
+		"showMore": "Näytä enemmän",
+		"language": "Kieli"
+  },
+  "status": {
+    "loading": "Ladataan..."
+  },
+	"journeys": {
+		"journeys": "Matkat",
+		"departure": "Lähtö",
+		"departureStation": "Lähtöpysäkki",
+		"returnStation": "Paluupysäkki",
+		"return": "Paluu",
+		"coveredDistance": "Matka",
+		"duration": "Kesto"
+	}
+}

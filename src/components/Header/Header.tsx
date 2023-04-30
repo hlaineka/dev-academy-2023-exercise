@@ -2,10 +2,11 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Navigation from './Navigation/Navigation';
 import Typography from '@mui/material/Typography';
+import LanguageSelect from '../LanguageSelect/LanguageSelect';
 
 const Header = () => {
   return (
-    <AppBar position="static" sx={{ flexDirection: 'row', padding: '1rem 0' }}>
+    <AppBar position="static" sx={{ flexDirection: 'row', padding: '1rem 0', height: '5rem', diplay: 'flex', alignItems: 'center' }}>
       <Navigation />
       <Typography
         variant="h1"
@@ -14,6 +15,7 @@ const Header = () => {
       >
         Helsinki city bike app
       </Typography>
+			<LanguageSelect/>
     </AppBar>
   );
 };

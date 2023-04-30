@@ -7,12 +7,12 @@ import { darkTheme, responsiveStyles, theme } from '../theme/theme';
 
 type BasicPageLayoutProps = {
   children: React.ReactNode;
-  pageName: String;
+  pageName?: String;
 };
 
 const BasicPageLayout: React.FC<BasicPageLayoutProps> = ({
   children,
-  pageName,
+  pageName = "Not found",
 }) => {
   const headerStyles = responsiveStyles(darkTheme)[0].pageHeader;
   const contentStyles = responsiveStyles(theme)[0].contentView;

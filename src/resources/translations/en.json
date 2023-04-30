@@ -1,0 +1,20 @@
+{
+  "actions": {
+		"sortBy": "Sort By",
+		"rowsPerPage": "Rows per page",
+		"showMore": "Show more",
+		"language": "Language"
+  },
+  "status": {
+    "loading": "Loading..."
+  },
+	"journeys": {
+		"journeys": "Journeys",
+		"departure": "Departure",
+		"departureStation": "Departure station",
+		"returnStation": "Return station",
+		"return": "Return",
+		"coveredDistance": "Covered Distance",
+		"duration": "Duration"
+	}
+}
