@@ -6,21 +6,22 @@ import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import {
-  GetPaginatedOrderedJourneys,
-  GetJourneysCount,
-} from '../../queries/Queries';
-import { journeyTableHeads, rowsPerPageOptions } from './constants';
-import { CreateTableHead } from '../../components/CreateTableHead';
-import JourneyRow from './JourneyRow';
-import { Journeys } from '../../generated/graphql';
-import {
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { TableHeads } from './types';
+import {
+  GetPaginatedOrderedJourneys,
+  GetJourneysCount,
+} from '../../queries/Queries';
+import { JourneyTableHeads, rowsPerPageOptions } from './constants';
+import CreateTableHead from '../../components/CreateTableHead';
+import JourneyRow from './JourneyRow';
+import { Journeys } from '../../generated/graphql';
 
 type SortByOption = Array<string>;
 
@@ -40,6 +41,8 @@ const JourneyTable = () => {
     React.useState<number>(25);
   const [order, setOrder] = React.useState<SortDirection>('desc');
   const [orderBy, setOrderBy] = React.useState<string>('Departure');
+
+  const { t } = useTranslation();
 
   const handleChangeJourneyPage = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
@@ -82,6 +85,8 @@ const JourneyTable = () => {
   const maxRowsCount = GetJourneysCount();
   const filteredData = data?.journeys;
 
+  const journeyTableHeads = JourneyTableHeads();
+
   const customJourneyTableHeads: Array<TableHeads | undefined> = [
     undefined,
     journeyTableHeads[1],
@@ -103,14 +108,16 @@ const JourneyTable = () => {
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
+        <div>{t('status:loaging')}</div>
       ) : error ? (
-        <div>Error!</div>
+        <div>{t('status:loaging')}</div>
       ) : (
         data && (
           <>
             <FormControl sx={{ width: '20rem', color: '#14213D' }}>
-              <InputLabel id="journeys-order-by">Sort By</InputLabel>
+              <InputLabel id="journeys-order-by">
+                {t('tables:sort_by')}
+              </InputLabel>
               <Select
                 labelId="journeys-order-by-select-label"
                 id="journeys-order-by-select"

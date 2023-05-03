@@ -9,7 +9,7 @@ import {
   GetStationsCount,
 } from '../../queries/Queries';
 import { stationTableHeads, rowsPerPageOptions } from './constants';
-import { CreateTableHead } from '../../components/CreateTableHead';
+import CreateTableHead from '../../components/CreateTableHead';
 import { SortDirection } from '@mui/material';
 import { Stations } from '../../generated/graphql';
 import StationRow from './StationRow';

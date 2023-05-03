@@ -1,5 +1,5 @@
 import { Paper } from '@mui/material';
-import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { GetDashboardData } from '../../queries/Queries';
 import BasicPageLayout from '../../components/BasicPageLayout';
 import {
@@ -9,7 +9,9 @@ import {
 import TopDepartures from './TopDepartures';
 import TopReturns from './TopReturns';
 
-const DashBoard = () => {
+const DashBoardPage = () => {
+  const { t } = useTranslation();
+
   // collecting data from multiple queries
   const dashboardData = GetDashboardData();
 
@@ -17,18 +19,21 @@ const DashBoard = () => {
     <BasicPageLayout pageName="Dashboard">
       <Paper elevation={3} sx={{ padding: '2rem', marginBottom: '3rem' }}>
         <p>
-          Average distance of journey:{' '}
+          {t('dashboard:journey_avarage')}
           {dashboardData?.averageDistance
             ? createDistanceString(dashboardData.averageDistance)
             : ''}
         </p>
         <p>
-          Average duration of journey:{' '}
+          {t('dashboard:average_duration')}
           {dashboardData?.averageDuration
             ? createDurationString(dashboardData.averageDuration)
             : ''}
         </p>
-        <p>Average station usage: {dashboardData.averageStationsUsage}</p>
+        <p>
+          {t('dashboard:average_station_usage')}{' '}
+          {dashboardData.averageStationsUsage}
+        </p>
       </Paper>
       <Paper elevation={3} sx={{ padding: '2rem', marginBottom: '3rem' }}>
         <TopDepartures
@@ -42,4 +47,4 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+export default DashBoardPage;

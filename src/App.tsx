@@ -1,9 +1,9 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import DashBoard from './pages/DashBoard/DashBoard';
-import Stations from './pages/Stations/Stations';
-import Journeys from './pages/Journeys/Journeys';
-import Header from './components/Header/Header';
+import DashBoardPage from './pages/DashBoardPage';
+import StationsPage from './pages/StationsPage';
+import JourneysPage from './pages/JourneysPage';
+import Header from './components/Header';
 import { ThemeProvider } from '@mui/material/styles';
 import { responsiveStyles, theme } from './theme/theme';
 import { Box } from '@mui/material';
@@ -26,9 +26,9 @@ const App = () => {
           <ThemeProvider theme={theme}>
             <Header />
             <Routes>
-              <Route path="/" element={<DashBoard />} />
-              <Route path="/stations" element={<Stations />} />
-              <Route path="/journeys" element={<Journeys />} />
+              <Route path="/" element={<DashBoardPage />} />
+              <Route path="/stations" element={<StationsPage />} />
+              <Route path="/journeys" element={<JourneysPage />} />
             </Routes>
           </ThemeProvider>
         </Box>

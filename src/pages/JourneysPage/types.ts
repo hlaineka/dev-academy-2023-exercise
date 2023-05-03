@@ -10,7 +10,7 @@ export type JourneyRowProps = {
   customJourneyTableHeads: Array<TableHeads | undefined>;
 };
 
-interface TypedKeyJourneys {
+export interface TypedKeyJourneys {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }

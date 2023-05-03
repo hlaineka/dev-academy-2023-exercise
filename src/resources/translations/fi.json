@@ -1,20 +1,41 @@
 {
+  "test": {
+    "text": "testiteksti suomeksi"
+  },
   "actions": {
-		"sortBy": "Järjestys",
-		"rowsPerPage": "Rivejä sivulla",
-		"showMore": "Näytä enemmän",
-		"language": "Kieli"
+    "sort_by": "Järjestys",
+    "rows_per_page": "Rivejä sivulla",
+    "show_more": "Näytä enemmän",
+    "language": "Kieli"
   },
   "status": {
-    "loading": "Ladataan..."
+    "loading": "Ladataan...",
+    "error": "Virhe!"
   },
-	"journeys": {
-		"journeys": "Matkat",
-		"departure": "Lähtö",
-		"departureStation": "Lähtöpysäkki",
-		"returnStation": "Paluupysäkki",
-		"return": "Paluu",
-		"coveredDistance": "Matka",
-		"duration": "Kesto"
-	}
+  "journeys": {
+    "journeys": "Matkat",
+    "departure": "Lähtö",
+    "departure_station": "Lähtöpysäkki",
+    "return_station": "Paluupysäkki",
+    "return": "Paluu",
+    "covered_distance": "Matka",
+    "duration": "Kesto"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "journey_avarage": "Keskimääräinen matkan pituus: ",
+    "average_duration": "Keskimääräinen matkan kesto: ",
+    "average_station_usage": "Keskimääräinen pysäkin käyttömäärä: ",
+    "top_departure_stations": "Viisi vilkkainta lähtöasemaa: ",
+    "top_return_stations": "Viisi vilkkainta paluuasemaa: "
+  },
+  "stations": {
+    "stations": "Pysäkit",
+    "departures": "Lähdöt",
+    "station": "Pysäkki",
+    "returns": "Paluut"
+  },
+  "tables": {
+    "sort_by": "Järjestä"
+  }
 }

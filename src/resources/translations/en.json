@@ -1,20 +1,41 @@
 {
+  "test": {
+    "text": "test text in english"
+  },
   "actions": {
-		"sortBy": "Sort By",
-		"rowsPerPage": "Rows per page",
-		"showMore": "Show more",
-		"language": "Language"
+    "sort_by": "Sort By",
+    "rows_per_page": "Rows per page",
+    "show_more": "Show more",
+    "language": "Language"
   },
   "status": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "error": "Error!"
   },
-	"journeys": {
-		"journeys": "Journeys",
-		"departure": "Departure",
-		"departureStation": "Departure station",
-		"returnStation": "Return station",
-		"return": "Return",
-		"coveredDistance": "Covered Distance",
-		"duration": "Duration"
-	}
+  "journeys": {
+    "journeys": "Journeys",
+    "departure": "Departure",
+    "departure_station": "Departure station",
+    "return_station": "Return station",
+    "return": "Return",
+    "covered_distance": "Covered Distance",
+    "duration": "Duration"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "journey_avarage": "Average distance of journey: ",
+    "average_duration": "Average duration of journey: ",
+    "average_station_usage": "Average usage of one station: ",
+    "top_departure_stations": "Top 5 stations to departure: ",
+    "top_return_stations": "Top 5 stations to return to: "
+  },
+  "stations": {
+    "stations": "Stations",
+    "departures": "Departures",
+    "station": "Station",
+    "returns": "Returns"
+  },
+  "tables": {
+    "sort_by": "Järjestä"
+  }
 }

@@ -53,8 +53,11 @@ const BootstrapButton = styled(Button)(() => ({
 }));*/
 
 const LanguageSelect: React.FC = () => {
+  const [lang, setLang] = React.useState('en');
+
   const onLanguageChange: OnLanguageChange = language => {
     i18n.changeLanguage(language);
+    setLang(language);
   };
 
   return (
@@ -63,7 +66,8 @@ const LanguageSelect: React.FC = () => {
         <BootstrapButton
           key={`${language}-selection`}
           onClick={() => onLanguageChange(language)}
-          className={i18n.language === language ? 'active' : ''}
+          className={lang === language ? 'active' : ''}
+          data-testid={`${language}-selection`}
         >
           {language}
         </BootstrapButton>

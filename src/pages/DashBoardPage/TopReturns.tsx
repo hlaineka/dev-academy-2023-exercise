@@ -1,3 +1,5 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Paper,
   Table,
@@ -10,15 +12,19 @@ import {
 } from '@mui/material';
 import { darkTheme, responsiveStyles, theme } from '../../theme/theme';
 import { Stations } from '../../generated/graphql';
-import React from 'react';
-import { TopReturnsProps } from './types';
+
+export type TopReturnsProps = {
+  topReturnStations: Array<Stations> | undefined | null;
+};
 
 const TopReturns: React.FC<TopReturnsProps> = ({ topReturnStations }) => {
+  const { t } = useTranslation();
+
   const tableCellStyles = responsiveStyles(theme)[0].tableCell;
 
   return (
     <>
-      <p>Top 5 stations to return to: </p>
+      <p>{t('dashboard:top_return_stations')} </p>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -38,7 +44,7 @@ const TopReturns: React.FC<TopReturnsProps> = ({ topReturnStations }) => {
                   align={'left'}
                   sx={tableCellStyles}
                 >
-                  Station
+                  {t('stations:station')}
                 </TableCell>
                 <TableCell
                   key={'1-top-departure-stations-departures'}
@@ -46,7 +52,7 @@ const TopReturns: React.FC<TopReturnsProps> = ({ topReturnStations }) => {
                   align={'left'}
                   sx={tableCellStyles}
                 >
-                  Returns
+                  {t('stations:returns')}
                 </TableCell>
               </TableRow>
             </ThemeProvider>

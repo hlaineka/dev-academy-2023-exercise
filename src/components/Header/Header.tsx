@@ -1,7 +1,6 @@
-import React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Navigation from './Navigation/Navigation';
-import LanguageSelect from '../LanguageSelect/LanguageSelect';
+import Navigation from '../Navigation';
+import LanguageSelect from '../LanguageSelect';
 
 const Header = () => {
   return (
@@ -13,9 +12,9 @@ const Header = () => {
         flexDirection: 'row',
         height: '5rem',
         padding: '1rem 0',
-				justifyContent: 'space-between'
+        justifyContent: 'space-between',
       }}
-			data-testid="header"
+      data-testid="header"
     >
       <Navigation />
       <LanguageSelect />
