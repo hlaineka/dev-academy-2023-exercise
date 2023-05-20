@@ -6,7 +6,8 @@
     "sort_by": "Sort By",
     "rows_per_page": "Rows per page",
     "show_more": "Show more",
-    "language": "Language"
+    "language": "Language",
+    "more_info": "More info"
   },
   "status": {
     "loading": "Loading...",
@@ -19,7 +20,9 @@
     "return_station": "Return station",
     "return": "Return",
     "covered_distance": "Covered Distance",
-    "duration": "Duration"
+    "duration": "Duration",
+    "show_less": "Show less information",
+    "shoe_more": "Show more information"
   },
   "dashboard": {
     "dashboard": "Dashboard",
@@ -33,9 +36,18 @@
     "stations": "Stations",
     "departures": "Departures",
     "station": "Station",
-    "returns": "Returns"
+    "returns": "Returns",
+    "name": "Name",
+    "address": "Address",
+    "city": "City",
+    "operator": "Operator",
+    "capacity": "Capacity",
+    "info_of": "Station info of ",
+    "departed_journeys": "Number of journeys departed",
+    "returned_journeys": "Number of journeys returned",
+    "undefined": "Not known"
   },
   "tables": {
-    "sort_by": "Järjestä"
+    "sort_by": "Order by"
   }
 }

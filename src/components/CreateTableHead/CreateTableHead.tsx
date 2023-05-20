@@ -42,13 +42,12 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
                 order={order}
                 tableType={tableType}
                 handleOrdering={handleOrdering}
-                key={headCell.id}
+                key={`${headCell.id}-headcell`}
               />
             ) : (
               <></>
             ),
           )}
-          ;
         </TableRow>
       </ThemeProvider>
     </TableHead>

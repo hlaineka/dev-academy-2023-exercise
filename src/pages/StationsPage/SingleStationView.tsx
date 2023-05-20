@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { StationViewButtonProps } from './types';
 import { responsiveStyles, theme } from '../../theme/theme';
+import { useTranslation } from 'react-i18next';
 
 const singleStationStyles = responsiveStyles(theme)[0].singleStation;
 
@@ -12,16 +13,24 @@ const SingleStationView: React.FC<StationViewButtonProps> = ({ data }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { t } = useTranslation();
 
-  const ariaLabel = 'Station info of ' + data.nimi;
-  const infoString = 'Adress: ' + data.osoite;
-  const departuredString =
-    'Number of journeys departed: ' + data.journey_departures;
-  const returnedString = 'Number of journeys returned: ' + data.journey_returns;
+  const ariaLabel = `${t('stations:info_of')} ${data.nimi}`;
+  const addressString = `${t('stations:address')}: ${data.osoite}`;
+  const operatorString = `${t('stations:operator')}: ${
+    data.operaattori ? t('stations:undefined') : data.operaattori
+  }`;
+  const capacityString = `${t('stations.capacity')}: ${data.kapasiteetti}`;
+  const departuredString = `${t('stations:departed_journeys')}: ${
+    data.journey_departures
+  }`;
+  const returnedString = `${t('stations:returned_journeys')}: ${
+    data.journey_returns
+  }`;
 
   return (
     <>
-      <Button onClick={handleOpen}>More info</Button>
+      <Button onClick={handleOpen}>{t('actions:more_info')}</Button>
 
       <Modal open={open} onClose={handleClose} aria-labelledby={ariaLabel}>
         <Box sx={singleStationStyles}>
@@ -34,7 +43,13 @@ const SingleStationView: React.FC<StationViewButtonProps> = ({ data }) => {
             {data.nimi}
           </Typography>
           <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>
-            {infoString}
+            {addressString}
+          </Typography>
+          <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>
+            {operatorString}
+          </Typography>
+          <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>
+            {capacityString}
           </Typography>
           <Typography sx={{ fontSize: '1.5rem', padding: '.5rem' }}>
             {departuredString}

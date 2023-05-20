@@ -408,6 +408,8 @@ export type Mutation_Root = {
   delete_journeys_by_pk?: Maybe<Journeys>;
   /** delete data from the table: "stations" */
   delete_stations?: Maybe<Stations_Mutation_Response>;
+  /** delete data from the table: "test_journeys" */
+  delete_test_journeys?: Maybe<Test_Journeys_Mutation_Response>;
   /** insert data into the table: "journeys" */
   insert_journeys?: Maybe<Journeys_Mutation_Response>;
   /** insert a single row into the table: "journeys" */
@@ -416,6 +418,10 @@ export type Mutation_Root = {
   insert_stations?: Maybe<Stations_Mutation_Response>;
   /** insert a single row into the table: "stations" */
   insert_stations_one?: Maybe<Stations>;
+  /** insert data into the table: "test_journeys" */
+  insert_test_journeys?: Maybe<Test_Journeys_Mutation_Response>;
+  /** insert a single row into the table: "test_journeys" */
+  insert_test_journeys_one?: Maybe<Test_Journeys>;
   /** update data of the table: "journeys" */
   update_journeys?: Maybe<Journeys_Mutation_Response>;
   /** update single row of the table: "journeys" */
@@ -426,6 +432,10 @@ export type Mutation_Root = {
   update_stations?: Maybe<Stations_Mutation_Response>;
   /** update multiples rows of table: "stations" */
   update_stations_many?: Maybe<Array<Maybe<Stations_Mutation_Response>>>;
+  /** update data of the table: "test_journeys" */
+  update_test_journeys?: Maybe<Test_Journeys_Mutation_Response>;
+  /** update multiples rows of table: "test_journeys" */
+  update_test_journeys_many?: Maybe<Array<Maybe<Test_Journeys_Mutation_Response>>>;
 };
 
 
@@ -444,6 +454,12 @@ export type Mutation_RootDelete_Journeys_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootDelete_StationsArgs = {
   where: Stations_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Test_JourneysArgs = {
+  where: Test_Journeys_Bool_Exp;
 };
 
 
@@ -470,6 +486,18 @@ export type Mutation_RootInsert_StationsArgs = {
 /** mutation root */
 export type Mutation_RootInsert_Stations_OneArgs = {
   object: Stations_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Test_JourneysArgs = {
+  objects: Array<Test_Journeys_Insert_Input>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Test_Journeys_OneArgs = {
+  object: Test_Journeys_Insert_Input;
 };
 
 
@@ -508,6 +536,20 @@ export type Mutation_RootUpdate_Stations_ManyArgs = {
   updates: Array<Stations_Updates>;
 };
 
+
+/** mutation root */
+export type Mutation_RootUpdate_Test_JourneysArgs = {
+  _inc?: InputMaybe<Test_Journeys_Inc_Input>;
+  _set?: InputMaybe<Test_Journeys_Set_Input>;
+  where: Test_Journeys_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Test_Journeys_ManyArgs = {
+  updates: Array<Test_Journeys_Updates>;
+};
+
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
@@ -536,6 +578,10 @@ export type Query_Root = {
   stations: Array<Stations>;
   /** fetch aggregated fields from the table: "stations" */
   stations_aggregate: Stations_Aggregate;
+  /** fetch data from the table: "test_journeys" */
+  test_journeys: Array<Test_Journeys>;
+  /** fetch aggregated fields from the table: "test_journeys" */
+  test_journeys_aggregate: Test_Journeys_Aggregate;
 };
 
 
@@ -577,6 +623,24 @@ export type Query_RootStations_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Stations_Order_By>>;
   where?: InputMaybe<Stations_Bool_Exp>;
+};
+
+
+export type Query_RootTest_JourneysArgs = {
+  distinct_on?: InputMaybe<Array<Test_Journeys_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Test_Journeys_Order_By>>;
+  where?: InputMaybe<Test_Journeys_Bool_Exp>;
+};
+
+
+export type Query_RootTest_Journeys_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Test_Journeys_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Test_Journeys_Order_By>>;
+  where?: InputMaybe<Test_Journeys_Bool_Exp>;
 };
 
 /** columns and relationships of "stations" */
@@ -949,6 +1013,12 @@ export type Subscription_Root = {
   stations_aggregate: Stations_Aggregate;
   /** fetch data from the table in a streaming manner: "stations" */
   stations_stream: Array<Stations>;
+  /** fetch data from the table: "test_journeys" */
+  test_journeys: Array<Test_Journeys>;
+  /** fetch aggregated fields from the table: "test_journeys" */
+  test_journeys_aggregate: Test_Journeys_Aggregate;
+  /** fetch data from the table in a streaming manner: "test_journeys" */
+  test_journeys_stream: Array<Test_Journeys>;
 };
 
 
@@ -1004,6 +1074,307 @@ export type Subscription_RootStations_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Stations_Stream_Cursor_Input>>;
   where?: InputMaybe<Stations_Bool_Exp>;
+};
+
+
+export type Subscription_RootTest_JourneysArgs = {
+  distinct_on?: InputMaybe<Array<Test_Journeys_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Test_Journeys_Order_By>>;
+  where?: InputMaybe<Test_Journeys_Bool_Exp>;
+};
+
+
+export type Subscription_RootTest_Journeys_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Test_Journeys_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Test_Journeys_Order_By>>;
+  where?: InputMaybe<Test_Journeys_Bool_Exp>;
+};
+
+
+export type Subscription_RootTest_Journeys_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Test_Journeys_Stream_Cursor_Input>>;
+  where?: InputMaybe<Test_Journeys_Bool_Exp>;
+};
+
+/** columns and relationships of "test_journeys" */
+export type Test_Journeys = {
+  __typename?: 'test_journeys';
+  Departure?: Maybe<Scalars['timestamp']>;
+  Return?: Maybe<Scalars['timestamp']>;
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Int']>;
+  departure_station_name?: Maybe<Scalars['String']>;
+  duration_sec?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  return_station_id?: Maybe<Scalars['Int']>;
+  return_station_name?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "test_journeys" */
+export type Test_Journeys_Aggregate = {
+  __typename?: 'test_journeys_aggregate';
+  aggregate?: Maybe<Test_Journeys_Aggregate_Fields>;
+  nodes: Array<Test_Journeys>;
+};
+
+/** aggregate fields of "test_journeys" */
+export type Test_Journeys_Aggregate_Fields = {
+  __typename?: 'test_journeys_aggregate_fields';
+  avg?: Maybe<Test_Journeys_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Test_Journeys_Max_Fields>;
+  min?: Maybe<Test_Journeys_Min_Fields>;
+  stddev?: Maybe<Test_Journeys_Stddev_Fields>;
+  stddev_pop?: Maybe<Test_Journeys_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Test_Journeys_Stddev_Samp_Fields>;
+  sum?: Maybe<Test_Journeys_Sum_Fields>;
+  var_pop?: Maybe<Test_Journeys_Var_Pop_Fields>;
+  var_samp?: Maybe<Test_Journeys_Var_Samp_Fields>;
+  variance?: Maybe<Test_Journeys_Variance_Fields>;
+};
+
+
+/** aggregate fields of "test_journeys" */
+export type Test_Journeys_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Test_Journeys_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Test_Journeys_Avg_Fields = {
+  __typename?: 'test_journeys_avg_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Float']>;
+  duration_sec?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  return_station_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "test_journeys". All fields are combined with a logical 'AND'. */
+export type Test_Journeys_Bool_Exp = {
+  Departure?: InputMaybe<Timestamp_Comparison_Exp>;
+  Return?: InputMaybe<Timestamp_Comparison_Exp>;
+  _and?: InputMaybe<Array<Test_Journeys_Bool_Exp>>;
+  _not?: InputMaybe<Test_Journeys_Bool_Exp>;
+  _or?: InputMaybe<Array<Test_Journeys_Bool_Exp>>;
+  covered_distance_m?: InputMaybe<Float_Comparison_Exp>;
+  departure_station_id?: InputMaybe<Int_Comparison_Exp>;
+  departure_station_name?: InputMaybe<String_Comparison_Exp>;
+  duration_sec?: InputMaybe<Int_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  return_station_id?: InputMaybe<Int_Comparison_Exp>;
+  return_station_name?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** input type for incrementing numeric columns in table "test_journeys" */
+export type Test_Journeys_Inc_Input = {
+  covered_distance_m?: InputMaybe<Scalars['Float']>;
+  departure_station_id?: InputMaybe<Scalars['Int']>;
+  duration_sec?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  return_station_id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "test_journeys" */
+export type Test_Journeys_Insert_Input = {
+  Departure?: InputMaybe<Scalars['timestamp']>;
+  Return?: InputMaybe<Scalars['timestamp']>;
+  covered_distance_m?: InputMaybe<Scalars['Float']>;
+  departure_station_id?: InputMaybe<Scalars['Int']>;
+  departure_station_name?: InputMaybe<Scalars['String']>;
+  duration_sec?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  return_station_id?: InputMaybe<Scalars['Int']>;
+  return_station_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Test_Journeys_Max_Fields = {
+  __typename?: 'test_journeys_max_fields';
+  Departure?: Maybe<Scalars['timestamp']>;
+  Return?: Maybe<Scalars['timestamp']>;
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Int']>;
+  departure_station_name?: Maybe<Scalars['String']>;
+  duration_sec?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  return_station_id?: Maybe<Scalars['Int']>;
+  return_station_name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Test_Journeys_Min_Fields = {
+  __typename?: 'test_journeys_min_fields';
+  Departure?: Maybe<Scalars['timestamp']>;
+  Return?: Maybe<Scalars['timestamp']>;
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Int']>;
+  departure_station_name?: Maybe<Scalars['String']>;
+  duration_sec?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  return_station_id?: Maybe<Scalars['Int']>;
+  return_station_name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "test_journeys" */
+export type Test_Journeys_Mutation_Response = {
+  __typename?: 'test_journeys_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Test_Journeys>;
+};
+
+/** Ordering options when selecting data from "test_journeys". */
+export type Test_Journeys_Order_By = {
+  Departure?: InputMaybe<Order_By>;
+  Return?: InputMaybe<Order_By>;
+  covered_distance_m?: InputMaybe<Order_By>;
+  departure_station_id?: InputMaybe<Order_By>;
+  departure_station_name?: InputMaybe<Order_By>;
+  duration_sec?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  return_station_id?: InputMaybe<Order_By>;
+  return_station_name?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "test_journeys" */
+export enum Test_Journeys_Select_Column {
+  /** column name */
+  Departure = 'Departure',
+  /** column name */
+  Return = 'Return',
+  /** column name */
+  CoveredDistanceM = 'covered_distance_m',
+  /** column name */
+  DepartureStationId = 'departure_station_id',
+  /** column name */
+  DepartureStationName = 'departure_station_name',
+  /** column name */
+  DurationSec = 'duration_sec',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  ReturnStationId = 'return_station_id',
+  /** column name */
+  ReturnStationName = 'return_station_name'
+}
+
+/** input type for updating data in table "test_journeys" */
+export type Test_Journeys_Set_Input = {
+  Departure?: InputMaybe<Scalars['timestamp']>;
+  Return?: InputMaybe<Scalars['timestamp']>;
+  covered_distance_m?: InputMaybe<Scalars['Float']>;
+  departure_station_id?: InputMaybe<Scalars['Int']>;
+  departure_station_name?: InputMaybe<Scalars['String']>;
+  duration_sec?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  return_station_id?: InputMaybe<Scalars['Int']>;
+  return_station_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Test_Journeys_Stddev_Fields = {
+  __typename?: 'test_journeys_stddev_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Float']>;
+  duration_sec?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  return_station_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Test_Journeys_Stddev_Pop_Fields = {
+  __typename?: 'test_journeys_stddev_pop_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Float']>;
+  duration_sec?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  return_station_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Test_Journeys_Stddev_Samp_Fields = {
+  __typename?: 'test_journeys_stddev_samp_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Float']>;
+  duration_sec?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  return_station_id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "test_journeys" */
+export type Test_Journeys_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Test_Journeys_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Test_Journeys_Stream_Cursor_Value_Input = {
+  Departure?: InputMaybe<Scalars['timestamp']>;
+  Return?: InputMaybe<Scalars['timestamp']>;
+  covered_distance_m?: InputMaybe<Scalars['Float']>;
+  departure_station_id?: InputMaybe<Scalars['Int']>;
+  departure_station_name?: InputMaybe<Scalars['String']>;
+  duration_sec?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
+  return_station_id?: InputMaybe<Scalars['Int']>;
+  return_station_name?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Test_Journeys_Sum_Fields = {
+  __typename?: 'test_journeys_sum_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Int']>;
+  duration_sec?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  return_station_id?: Maybe<Scalars['Int']>;
+};
+
+export type Test_Journeys_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Test_Journeys_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Test_Journeys_Set_Input>;
+  where: Test_Journeys_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Test_Journeys_Var_Pop_Fields = {
+  __typename?: 'test_journeys_var_pop_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Float']>;
+  duration_sec?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  return_station_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Test_Journeys_Var_Samp_Fields = {
+  __typename?: 'test_journeys_var_samp_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Float']>;
+  duration_sec?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  return_station_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Test_Journeys_Variance_Fields = {
+  __typename?: 'test_journeys_variance_fields';
+  covered_distance_m?: Maybe<Scalars['Float']>;
+  departure_station_id?: Maybe<Scalars['Float']>;
+  duration_sec?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  return_station_id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */

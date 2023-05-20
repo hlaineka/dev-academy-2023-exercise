@@ -30,7 +30,7 @@ export const theme = createTheme({
   breakpoints: {
     values: {
       xs: 500, // phone
-      sm: 850, // tablets
+      sm: 750, // tablets
       md: 900, // small laptop
       lg: 1350, // desktop
       xl: 1536, // large screens

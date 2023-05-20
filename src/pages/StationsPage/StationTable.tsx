@@ -8,11 +8,12 @@ import {
   GetPaginatedOrderedStations,
   GetStationsCount,
 } from '../../queries/Queries';
-import { stationTableHeads, rowsPerPageOptions } from './constants';
+import { StationTableHeads, rowsPerPageOptions } from './constants';
 import CreateTableHead from '../../components/CreateTableHead';
 import { SortDirection } from '@mui/material';
 import { Stations } from '../../generated/graphql';
 import StationRow from './StationRow';
+import { useTranslation } from 'react-i18next';
 
 const StationTable = () => {
   //states and handlers for pagination and ordering
@@ -21,6 +22,7 @@ const StationTable = () => {
     React.useState<number>(25);
   const [order, setOrder] = React.useState<SortDirection>('asc');
   const [orderBy, setOrderBy] = React.useState<string>('nimi');
+  const { t } = useTranslation();
 
   const handleChangeStationsPage = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
@@ -59,13 +61,14 @@ const StationTable = () => {
 
   const filteredData = data?.stations;
   const maxRowsCount = GetStationsCount();
+  const stationTableHeads = StationTableHeads();
 
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
+        <div>{t('status:loading')}</div>
       ) : error ? (
-        <div>Error!</div>
+        <div>{t('status:error')}</div>
       ) : (
         data && (
           <>
@@ -86,7 +89,7 @@ const StationTable = () => {
                   headCells={stationTableHeads}
                   orderBy={orderBy}
                   order={order}
-                  tableType="stationss"
+                  tableType="stations"
                   handleOrdering={handleToggleOrdering}
                 />
                 <TableBody>

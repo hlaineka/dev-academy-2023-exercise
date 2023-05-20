@@ -25,15 +25,6 @@ import { Journeys } from '../../generated/graphql';
 
 type SortByOption = Array<string>;
 
-const sortByOptions: Array<SortByOption> = [
-  ['Departure', 'Departure'],
-  ['Return', 'Return'],
-  ['covered_distance_m', 'Covered distance'],
-  ['departure_station_name', 'Departure station'],
-  ['duration_sec', 'Duration'],
-  ['return_station_name', 'Return station'],
-];
-
 const JourneyTable = () => {
   //states and handlers for padination and ordering
   const [journeyPage, setJourneyPage] = React.useState<number>(0);
@@ -41,6 +32,7 @@ const JourneyTable = () => {
     React.useState<number>(25);
   const [order, setOrder] = React.useState<SortDirection>('desc');
   const [orderBy, setOrderBy] = React.useState<string>('Departure');
+  const [orderByValue, setOrderByValue] = React.useState('0');
 
   const { t } = useTranslation();
 
@@ -65,9 +57,12 @@ const JourneyTable = () => {
     setOrderBy(query_name);
   };
 
-  const handleOrderBy = (event: SelectChangeEvent<'Sort by'>) => {
+  const handleOrderBy = (event: SelectChangeEvent) => {
     const index: number = +event.target.value;
+    console.log('here');
+    console.log(sortByOptions[index][0]);
     setOrderBy(sortByOptions[index][0]);
+    setOrderByValue(event.target.value);
   };
 
   //query call for paginated, ordered data
@@ -105,12 +100,23 @@ const JourneyTable = () => {
     customJourneyTableHeads[0] = customField;
   }
 
+  const sortByOptions: Array<SortByOption> = [
+    ['Departure', t('journeys:departure')],
+    ['Return', t('journeys:return')],
+    ['covered_distance_m', t('journeys:covered_distance')],
+    ['departure_station_name', t('journeys:departure_station')],
+    ['duration_sec', t('journeys:duration')],
+    ['return_station_name', t('journeys:return_station')],
+  ];
+
+  console.log(orderBy);
+
   return (
     <>
       {loading ? (
-        <div>{t('status:loaging')}</div>
+        <div>{t('status:loading')}</div>
       ) : error ? (
-        <div>{t('status:loaging')}</div>
+        <div>{t('status:error')}</div>
       ) : (
         data && (
           <>
@@ -121,15 +127,15 @@ const JourneyTable = () => {
               <Select
                 labelId="journeys-order-by-select-label"
                 id="journeys-order-by-select"
-                value=""
-                label="Sort by"
+                value={orderByValue}
+                label={t('tables:sort_by')}
                 onChange={handleOrderBy}
               >
                 {sortByOptions.map((option: SortByOption, index) => (
                   <MenuItem
                     sx={{ color: '#14213D' }}
                     key={`${index}-${option[1]}`}
-                    value={index.toString()}
+                    value={index}
                   >
                     {option[1]}
                   </MenuItem>

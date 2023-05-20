@@ -21,12 +21,6 @@ const StationRow: React.FC<StationRowProps> = ({ row }) => {
       <TableCell align="left" sx={tableCellStyles}>
         {row.kaupunki}
       </TableCell>
-      <TableCell align="left" sx={tableCellStyles}>
-        {row.operaattori}
-      </TableCell>
-      <TableCell align="right" sx={tableCellStyles}>
-        {row.kapasiteetti?.toString()}
-      </TableCell>
       <TableCell align="center" sx={tableCellStyles}>
         <SingleStationView data={row} />
       </TableCell>

@@ -18,23 +18,14 @@ const CollapsibleTableRow: React.FC<CollapsibleTableRowProps> = ({
   const { t } = useTranslation();
 
   return (
-    <TableRow key={Math.floor(Math.random() * 10000000).toString(16)}>
+    <TableRow>
       <TableCell
         style={{ padding: 0 }}
         colSpan={customJourneyTableHeads.length}
-        key={Math.floor(Math.random() * 10000000).toString(16)}
       >
-        <Collapse
-          in={showMore}
-          timeout="auto"
-          unmountOnExit
-          key={Math.floor(Math.random() * 10000000).toString(16)}
-        >
-          <Box
-            sx={{ display: 'flex', justifyContent: 'space-between' }}
-            key={Math.floor(Math.random() * 10000000).toString(16)}
-          >
-            {Object.entries(row).map(([keyString]) =>
+        <Collapse in={showMore} timeout="auto" unmountOnExit>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            {Object.entries(row).map(([keyString], index) =>
               keyString != 'departure_station_name' &&
               keyString != 'return_station_name' &&
               keyString != customJourneyTableHeads[0]?.query_name &&
@@ -42,12 +33,9 @@ const CollapsibleTableRow: React.FC<CollapsibleTableRowProps> = ({
               keyString != 'id' ? (
                 <Box
                   sx={{ display: 'flex', padding: '1rem' }}
-                  key={Math.floor(Math.random() * 10000000).toString(16)}
+                  key={`${keyString}-${index}`}
                 >
-                  <Box
-                    style={{ paddingRight: '.5rem' }}
-                    key={Math.floor(Math.random() * 10000000).toString(16)}
-                  >
+                  <Box style={{ paddingRight: '.5rem' }}>
                     {keyString === 'Return'
                       ? `${t('journeys:return')}:`
                       : keyString === 'Departure'
@@ -56,10 +44,7 @@ const CollapsibleTableRow: React.FC<CollapsibleTableRowProps> = ({
                       ? `${t('journeys:covered_distance')}:`
                       : `${t('journeys:duration')}:`}
                   </Box>
-                  <Box
-                    style={{ paddingLeft: '0', margin: 'auto' }}
-                    key={Math.floor(Math.random() * 10000000).toString(16)}
-                  >
+                  <Box style={{ paddingLeft: '0', margin: 'auto' }}>
                     {getRightCustomString(keyString, row)}
                   </Box>
                 </Box>

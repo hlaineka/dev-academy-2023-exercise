@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { IconButton, TableCell, TableRow } from '@mui/material';
+import { Button, TableCell, TableRow } from '@mui/material';
 import { responsiveStyles, theme } from '../../theme/theme';
 import { getRightCustomString } from '../../functions/helpers';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import CollapsibleTableRow from './CollapsibleTableRow';
 import { JourneyRowProps } from './types';
+import { useTranslation } from 'react-i18next';
 
 /* customJourneyTableHeads: Array of type Array<TableHeads> (all entries of 
 	this array are in ./constants.tsx) with info on what columns are shown in 
@@ -27,6 +28,7 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
 }) => {
   const [showMore, setShowMore] = useState(false);
   const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+  const { t } = useTranslation();
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
@@ -34,48 +36,52 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
 
   return (
     <>
-      <TableRow
-        key={Math.floor(Math.random() * 10000000).toString(16)}
-        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-      >
+      <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
         <>
           {customJourneyTableHeads[0] ? (
-            <TableCell
-              align="left"
-              sx={tableCellStyles}
-              key={Math.floor(Math.random() * 10000000).toString(16)}
-            >
+            <TableCell align="left" sx={tableCellStyles}>
               {getRightCustomString(customJourneyTableHeads[0].query_name, row)}
             </TableCell>
           ) : (
             <></>
           )}
-          <TableCell
-            align="left"
-            sx={tableCellStyles}
-            key={Math.floor(Math.random() * 10000000).toString(16)}
-          >
+          <TableCell align="left" sx={tableCellStyles}>
             {customJourneyTableHeads[1]
               ? row[customJourneyTableHeads[1].query_name]
               : ''}
           </TableCell>
-          <TableCell
-            align="left"
-            sx={tableCellStyles}
-            key={Math.floor(Math.random() * 10000000).toString(16)}
-          >
+          <TableCell align="left" sx={tableCellStyles}>
             {customJourneyTableHeads[2]
               ? row[customJourneyTableHeads[2].query_name]
               : ''}
           </TableCell>
-          <TableCell key={Math.floor(Math.random() * 10000000).toString(16)}>
-            <IconButton
+          <TableCell>
+            <Button
               sx={{ color: '#14213D' }}
               onClick={toggleShowMore}
-              key={Math.floor(Math.random() * 10000000).toString(16)}
+              aria-label={
+                showMore
+                  ? t('journeys:show_less').toString()
+                  : t('journeys:show:more').toString()
+              }
+              aria-labelledby={`expandlabeldiv-${row.id}`}
             >
-              {showMore ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </IconButton>
+              {showMore ? (
+                <>
+                  <ExpandLessIcon />{' '}
+                  <div id="expandlabeldiv" style={{ opacity: '0', width: '0' }}>
+                    Show Less
+                  </div>
+                </>
+              ) : (
+                <>
+                  <ExpandMoreIcon />
+                  <div id="expandlabeldiv" style={{ opacity: '0', width: '0' }}>
+                    Show More
+                  </div>
+                </>
+              )}
+            </Button>
           </TableCell>
         </>
       </TableRow>
@@ -83,7 +89,6 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
         customJourneyTableHeads={customJourneyTableHeads}
         showMore={showMore}
         row={row}
-        key={Math.floor(Math.random() * 10000000).toString(16)}
       />
     </>
   );

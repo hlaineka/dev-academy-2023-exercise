@@ -96,7 +96,7 @@ MIT
 - Application is deployed e.g. in Heroku deployment (most likely will not happen for lack of server for hasura server)
 - The source code and application structure complies to general coding conventions
 
-## Todo -list
+## would be nice to add -list
 - [x] Backend, remove duplicate rows!
 - [ ] Backend, data validation
 - [x] Not importing journey data with distance shorter than 10m or duration shorter than 10s
@@ -122,3 +122,27 @@ MIT
 - [ ] Accessibility evaluation
 - [ ] Testing responsivity
 - [ ] fixing stations view to follow new layout
+- [ ] Fix packages so that there is no vulnerabilities
+
+
+## Todo -list
+- [ ] Running the project online
+- [ ] Jest tests
+- [ ] Dashboard with more statistics!
+- [x] Language versions check
+- [x] Responsive layout
+- [x] Accessible layout
+- [ ] Documentation
+- [ ] Code through prettier, refactoring, commenting
+- [x] fixing stations view to follow new layout
+- [ ] Testing responsivity
+- [ ] Accessibility evaluation
+- [ ] Station view: 
+	- [ ] The average distance of a journey starting from the station
+	- [ ] The average distance of a journey ending at the station
+	- [ ] Top 5 most popular return stations for journeys starting from the station
+	- [ ] Top 5 most popular departure stations for journeys ending at the station
+	- [ ] Ability to filter all the calculations per month
+	- [ ] Google maps to singe station view
+- [ ] Search for journeys and stations
+- [ ] Change queries to allow more functionalities

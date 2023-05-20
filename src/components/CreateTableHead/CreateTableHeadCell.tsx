@@ -41,11 +41,10 @@ const CreateTableHeadCell: React.FC<CreateTableHeadCellProps> = ({
         onClick={createSortHandler(headCell.query_name)}
       >
         {headCell.label}
-        {orderBy === headCell.query_name ? (
-          <Box component="span" sx={visuallyHidden}>
-            {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-          </Box>
-        ) : null}
+
+        <Box component="span" sx={visuallyHidden}>
+          {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+        </Box>
       </TableSortLabel>
     </TableCell>
   );

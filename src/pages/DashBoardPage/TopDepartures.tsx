@@ -29,7 +29,7 @@ const TopDepartures: React.FC<TopDeparturesProps> = ({
     <>
       <p>{t('dashboard:top_departure_stations')} </p>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <ThemeProvider theme={darkTheme}>
               <TableRow

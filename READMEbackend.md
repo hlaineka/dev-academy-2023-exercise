@@ -26,3 +26,17 @@ and
 ```UPDATE stations SET journey_returns = (SELECT COUNT(id) FROM journeys WHERE journeys.return_station_id = stations.id);```
 
 In retrospect, it might have been a better idea to learn how to make queries for these, but you need to have goals for the future too! Fetching this data with queries would have given a good base for adding a lot more customable information to station view, and allowed things like showing usage by month or year.
+
+
+## TESTING THE DATABASE
+
+For testing purposes, I created a mock dataset, shown in test_data folder of the project. The original set is in test_journeys_original.csv, which I tried to import to the database with
+
+```psql -h localhost -p 5432 -d postgres -U postgres```
+
+```reate table test_journeys (id serial, "Departure" timestamp, "Return" timestamp, departure_station_id integer, departure_station_name text, return_station_id integer, return_station_name text, covered_distance_m real, duration_sec integer);```
+
+```\COPY test_journeys ("Departure", "Return", departure_station_id, departure_station_name, return_station_id, return_station_name, covered_distance_m, duration_sec) FROM './test_data/test_journeys.csv' WITH DELIMITER ',' CSV HEADER;```
+
+The datatypes of columns are identical to the real database and trying to insert the mock data to database failed for copy errors. I deleted all the lines that created errors, and what was left to test you can find in test_journeys.csv
+

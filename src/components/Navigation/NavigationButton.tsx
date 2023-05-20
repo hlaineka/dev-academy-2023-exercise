@@ -10,10 +10,25 @@ import ListItemText from '@mui/material/ListItemText';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import { styled } from '@mui/material';
+import { theme } from '../../theme/theme';
 
 export type NavigationButtonProps = {
   text: string;
 };
+
+const StyledListItemText = styled(ListItemText)(() => ({
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
+  },
+}));
+
+const StyledListItemIcon = styled(ListItemIcon)(() => ({
+  color: '#FCA311',
+  [theme.breakpoints.down('sm')]: {
+    minWidth: 'fit-content',
+  },
+}));
 
 const Link = React.forwardRef<HTMLAnchorElement, RouterLinkProps>(function Link(
   itemProps,
@@ -37,16 +52,16 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({ text }) => {
       }
       sx={{ color: '#FFF' }}
     >
-      <ListItemIcon>
+      <StyledListItemIcon>
         {text == t('journeys:journeys').toString() ? (
-          <DirectionsBikeIcon style={{ color: '#FCA311' }} />
+          <DirectionsBikeIcon />
         ) : text == t('stations:stations').toString() ? (
-          <LocationOnIcon style={{ color: '#FCA311' }} />
+          <LocationOnIcon />
         ) : (
-          <DashboardIcon style={{ color: '#FCA311' }} />
+          <DashboardIcon />
         )}
-      </ListItemIcon>
-      <ListItemText primary={text} />
+      </StyledListItemIcon>
+      <StyledListItemText primary={text} />
     </ListItemButton>
   );
 };
