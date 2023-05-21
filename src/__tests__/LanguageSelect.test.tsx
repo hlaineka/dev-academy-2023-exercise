@@ -2,13 +2,12 @@
  * @jest-environment jsdom
  */
 
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import LanguageSelect from '../components/LanguageSelect';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n';
 import { useTranslation } from 'react-i18next';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import LanguageSelect from '../components/LanguageSelect';
 
 const TestPage = () => {
   const { t } = useTranslation();

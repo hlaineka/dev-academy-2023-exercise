@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button, TableRow } from '@mui/material';
-import { StyledTableCell } from '../../theme/theme';
-import { GetRightCustomString } from '../../functions/helpers';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import CollapsibleTableRow from './CollapsibleTableRow';
 import { JourneyRowProps } from './types';
-import { useTranslation } from 'react-i18next';
+import CollapsibleTableRow from './CollapsibleTableRow';
+import { StyledTableCell } from '../../theme/theme';
+import { GetRightCustomString } from '../../functions/helpers';
 
 /* customJourneyTableHeads: Array of type Array<TableHeads> (all entries of 
 	this array are in ./constants.tsx) with info on what columns are shown in 

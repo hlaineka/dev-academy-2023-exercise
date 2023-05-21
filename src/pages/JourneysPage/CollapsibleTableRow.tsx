@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Box,
   BoxProps,
@@ -7,7 +8,6 @@ import {
   TableRow,
   styled,
 } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 import { TableHeads, TypedKeyJourneys } from './types';
 import { GetRightCustomString } from '../../functions/helpers';
 import { theme } from '../../theme/theme';

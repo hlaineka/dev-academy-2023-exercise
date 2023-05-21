@@ -4,13 +4,13 @@ import {
   LinkProps as RouterLinkProps,
 } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { styled } from '@mui/material';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import { styled } from '@mui/material';
 import { theme } from '../../theme/theme';
 
 export type NavigationButtonProps = {

@@ -1,12 +1,12 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ThemeProvider } from '@mui/material/styles';
+import { Box } from '@mui/material';
 import DashBoardPage from './pages/DashBoardPage';
 import StationsPage from './pages/StationsPage';
 import JourneysPage from './pages/JourneysPage';
 import Header from './components/Header';
-import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme/theme';
-import { Box } from '@mui/material';
 
 const createApolloClient = () => {
   return new ApolloClient({

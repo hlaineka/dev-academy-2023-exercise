@@ -1,19 +1,19 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
+import { SortDirection } from '@mui/material';
 import {
   GetPaginatedOrderedStations,
   GetStationsCount,
 } from '../../queries/Queries';
+import { Stations } from '../../generated/graphql';
 import { StationTableHeads, rowsPerPageOptions } from './constants';
 import CreateTableHead from '../../components/CreateTableHead';
-import { SortDirection } from '@mui/material';
-import { Stations } from '../../generated/graphql';
 import StationRow from './StationRow';
-import { useTranslation } from 'react-i18next';
 
 const StationTable = () => {
   //states and handlers for pagination and ordering

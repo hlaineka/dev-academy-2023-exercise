@@ -1,7 +1,7 @@
+import { styled } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Navigation from '../Navigation';
 import LanguageSelect from '../LanguageSelect';
-import { styled } from '@mui/material';
 
 const StyledAppBar = styled(AppBar)(() => ({
   alignItems: 'center',

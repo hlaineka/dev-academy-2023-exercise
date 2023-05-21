@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import { SortDirection } from '@mui/material/TableCell';
@@ -13,16 +14,15 @@ import {
   SelectChangeEvent,
   styled,
 } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { TableHeads } from './types';
 import {
   GetPaginatedOrderedJourneys,
   GetJourneysCount,
 } from '../../queries/Queries';
+import { Journeys } from '../../generated/graphql';
+import { TableHeads } from './types';
 import { JourneyTableHeads, rowsPerPageOptions } from './constants';
 import CreateTableHead from '../../components/CreateTableHead';
 import JourneyRow from './JourneyRow';
-import { Journeys } from '../../generated/graphql';
 
 type SortByOption = Array<string>;
 

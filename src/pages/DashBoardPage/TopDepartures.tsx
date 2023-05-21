@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Paper,
   Table,
@@ -8,14 +9,12 @@ import {
   TableRow,
   ThemeProvider,
 } from '@mui/material';
-
+import { Stations } from '../../generated/graphql';
 import {
   DashboardTableRow,
   StyledTableCell,
   darkTheme,
 } from '../../theme/theme';
-import { Stations } from '../../generated/graphql';
-import { useTranslation } from 'react-i18next';
 
 export type TopDeparturesProps = {
   topDepartureStations: Array<Stations> | undefined | null;

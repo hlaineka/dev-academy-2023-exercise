@@ -1,6 +1,6 @@
-import { TableCell, TableCellProps, TableRow } from '@mui/material';
 import { createTheme, styled } from '@mui/material/styles';
 import { Theme } from '@mui/material/styles';
+import { TableCell, TableCellProps, TableRow } from '@mui/material';
 
 declare module '@mui/material/styles' {
   type DefaultTheme = Theme;

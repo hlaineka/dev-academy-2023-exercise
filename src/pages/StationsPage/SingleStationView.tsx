@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
+import { styled } from '@mui/material';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import { StationViewButtonProps } from './types';
 import { theme } from '../../theme/theme';
-import { useTranslation } from 'react-i18next';
-import { styled } from '@mui/material';
 
 const SingleStationModal = styled(Box)(() => ({
   [theme.breakpoints.down(1100)]: {

@@ -1,13 +1,13 @@
-import { Paper, styled } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { Paper, styled } from '@mui/material';
 import { GetDashboardData } from '../../queries/Queries';
 import BasicPageLayout from '../../components/BasicPageLayout';
+import TopDepartures from './TopDepartures';
+import TopReturns from './TopReturns';
 import {
   createDistanceString,
   createDurationString,
 } from '../../functions/helpers';
-import TopDepartures from './TopDepartures';
-import TopReturns from './TopReturns';
 
 const DashboardPaper = styled(Paper)(() => ({
   padding: '2rem',

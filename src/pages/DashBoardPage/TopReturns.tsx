@@ -9,12 +9,12 @@ import {
   TableRow,
   ThemeProvider,
 } from '@mui/material';
+import { Stations } from '../../generated/graphql';
 import {
   DashboardTableRow,
   StyledTableCell,
   darkTheme,
 } from '../../theme/theme';
-import { Stations } from '../../generated/graphql';
 
 export type TopReturnsProps = {
   topReturnStations: Array<Stations> | undefined | null;

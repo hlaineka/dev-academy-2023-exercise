@@ -1,8 +1,8 @@
-import { TableRow } from '@mui/material';
 import React from 'react';
+import { TableRow } from '@mui/material';
+import { StationRowProps } from './types';
 import { StyledTableCell } from '../../theme/theme';
 import SingleStationView from './SingleStationView';
-import { StationRowProps } from './types';
 
 const StationRow: React.FC<StationRowProps> = ({ row }) => {
   return (
