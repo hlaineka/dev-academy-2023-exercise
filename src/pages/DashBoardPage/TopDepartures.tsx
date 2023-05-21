@@ -3,14 +3,17 @@ import {
   Paper,
   Table,
   TableBody,
-  TableCell,
   TableContainer,
   TableHead,
   TableRow,
   ThemeProvider,
 } from '@mui/material';
 
-import { darkTheme, responsiveStyles, theme } from '../../theme/theme';
+import {
+  DashboardTableRow,
+  StyledTableCell,
+  darkTheme,
+} from '../../theme/theme';
 import { Stations } from '../../generated/graphql';
 import { useTranslation } from 'react-i18next';
 
@@ -23,8 +26,6 @@ const TopDepartures: React.FC<TopDeparturesProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
-
   return (
     <>
       <p>{t('dashboard:top_departure_stations')} </p>
@@ -32,32 +33,22 @@ const TopDepartures: React.FC<TopDeparturesProps> = ({
         <Table aria-label="simple table">
           <TableHead>
             <ThemeProvider theme={darkTheme}>
-              <TableRow
-                sx={{
-                  backgroundColor: '#14213d',
-                  padding: '2rem 2rem .5rem 2rem',
-                  boxSizing: 'border-box',
-                  borderRadius: '.5rem .5rem 0 0',
-                  borderBottom: 'solid .5rem #fca211',
-                }}
-              >
-                <TableCell
+              <DashboardTableRow>
+                <StyledTableCell
                   key={'0-top-departure-stations'}
                   id={'0-top-departure-stations'}
                   align={'left'}
-                  sx={tableCellStyles}
                 >
                   {t('stations:station')}
-                </TableCell>
-                <TableCell
+                </StyledTableCell>
+                <StyledTableCell
                   key={'1-top-departure-stations-departures'}
                   id={'1-top-departure-stations-departures'}
                   align={'left'}
-                  sx={tableCellStyles}
                 >
                   {t('stations:departures')}
-                </TableCell>
-              </TableRow>
+                </StyledTableCell>
+              </DashboardTableRow>
             </ThemeProvider>
           </TableHead>
           <TableBody>
@@ -66,12 +57,12 @@ const TopDepartures: React.FC<TopDeparturesProps> = ({
                 key={row.id?.toString()}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="left" sx={tableCellStyles}>
+                <StyledTableCell align="left">
                   {row.nimi?.toString()}
-                </TableCell>
-                <TableCell align="left" sx={tableCellStyles}>
+                </StyledTableCell>
+                <StyledTableCell align="left">
                   {row.journey_departures}
-                </TableCell>
+                </StyledTableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, TableCell, TableRow } from '@mui/material';
-import { responsiveStyles, theme } from '../../theme/theme';
-import { getRightCustomString } from '../../functions/helpers';
+import { Button, TableRow } from '@mui/material';
+import { StyledTableCell } from '../../theme/theme';
+import { GetRightCustomString } from '../../functions/helpers';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import CollapsibleTableRow from './CollapsibleTableRow';
@@ -27,35 +27,41 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
   customJourneyTableHeads,
 }) => {
   const [showMore, setShowMore] = useState(false);
-  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
   const { t } = useTranslation();
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
 
+  const width = customJourneyTableHeads[0] ? 25 : 33;
+
   return (
     <>
       <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
         <>
           {customJourneyTableHeads[0] ? (
-            <TableCell align="left" sx={tableCellStyles}>
-              {getRightCustomString(customJourneyTableHeads[0].query_name, row)}
-            </TableCell>
+            <StyledTableCell align="left" width={width}>
+              {GetRightCustomString(customJourneyTableHeads[0].label, row)}
+            </StyledTableCell>
           ) : (
             <></>
           )}
-          <TableCell align="left" sx={tableCellStyles}>
+          <StyledTableCell align="left" width={width}>
             {customJourneyTableHeads[1]
               ? row[customJourneyTableHeads[1].query_name]
               : ''}
-          </TableCell>
-          <TableCell align="left" sx={tableCellStyles}>
+          </StyledTableCell>
+          <StyledTableCell align="left" width={width}>
             {customJourneyTableHeads[2]
               ? row[customJourneyTableHeads[2].query_name]
               : ''}
-          </TableCell>
-          <TableCell>
+          </StyledTableCell>
+          {!customJourneyTableHeads[0] ? (
+            <StyledTableCell align="left" width={width}></StyledTableCell>
+          ) : (
+            <></>
+          )}
+          <StyledTableCell width={width}>
             <Button
               sx={{ color: '#14213D' }}
               onClick={toggleShowMore}
@@ -82,7 +88,7 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
                 </>
               )}
             </Button>
-          </TableCell>
+          </StyledTableCell>
         </>
       </TableRow>
       <CollapsibleTableRow

@@ -35,7 +35,6 @@ const StationTable = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const rowCount = parseInt(event.target.value, 10);
-    console.log(event);
     setRowsPerStationPage(rowCount);
     setStationPage(0);
   };
@@ -44,8 +43,6 @@ const StationTable = () => {
     const isAsc = orderBy === query_name && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(query_name);
-    console.log(orderBy);
-    console.log(order);
   };
 
   const { loading, error, data } = GetPaginatedOrderedStations(

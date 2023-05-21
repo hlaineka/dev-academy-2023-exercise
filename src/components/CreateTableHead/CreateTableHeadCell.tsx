@@ -1,23 +1,41 @@
-import { Box, SortDirection, TableCell, TableSortLabel } from '@mui/material';
+import {
+  Box,
+  SortDirection,
+  TableCell,
+  TableCellProps,
+  TableSortLabel,
+  styled,
+} from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import { TableHeads } from '../../pages/StationsPage/types';
-import { responsiveStyles, theme } from '../../theme/theme';
+import { theme } from '../../theme/theme';
 
 export type CreateTableHeadCellProps = {
   headCell: TableHeads;
   tableType: string;
   orderBy: string;
   order: SortDirection;
+  width: number;
   handleOrdering: (id: string) => void;
 };
 
-const tableCellStyles = responsiveStyles(theme)[0].tableCell;
+const StyledTableCell = styled(TableCell, {
+  shouldForwardProp: prop => prop !== 'width',
+})<TableCellProps>(({ width }) => ({
+  [theme.breakpoints.down(1100)]: {
+    padding: '.5rem',
+  },
+  ...(width && {
+    maxWidth: `${width}%`,
+  }),
+}));
 
 const CreateTableHeadCell: React.FC<CreateTableHeadCellProps> = ({
   headCell,
   tableType,
   orderBy,
   order,
+  width,
   handleOrdering,
 }) => {
   const createSortHandler = (id: string) => () => {
@@ -28,25 +46,38 @@ const CreateTableHeadCell: React.FC<CreateTableHeadCellProps> = ({
     order === 'desc' ? 'desc' : 'asc';
 
   return (
-    <TableCell
-      key={headCell.id + '-' + tableType}
-      id={headCell.id}
-      align={headCell.align}
-      sortDirection={orderBy === headCell.query_name ? order : 'asc'}
-      sx={tableCellStyles}
-    >
-      <TableSortLabel
-        active={orderBy === headCell.id}
-        direction={orderBy === headCell.id ? directionOrder : 'asc'}
-        onClick={createSortHandler(headCell.query_name)}
+    <>
+      {width === 33 && headCell.query_name === '' && (
+        <StyledTableCell
+          key={headCell.id + '-' + tableType}
+          id={headCell.id}
+          width={width}
+        />
+      )}
+      <StyledTableCell
+        key={headCell.id + '-' + tableType}
+        id={headCell.id}
+        align={headCell.align}
+        sortDirection={orderBy === headCell.query_name ? order : 'asc'}
+        width={width}
       >
-        {headCell.label}
+        {headCell.query_name === '' ? (
+          headCell.label
+        ) : (
+          <TableSortLabel
+            active={true}
+            direction={orderBy === headCell.query_name ? directionOrder : 'asc'}
+            onClick={createSortHandler(headCell.query_name)}
+          >
+            {headCell.label}
 
-        <Box component="span" sx={visuallyHidden}>
-          {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-        </Box>
-      </TableSortLabel>
-    </TableCell>
+            <Box component="span" sx={visuallyHidden}>
+              {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+            </Box>
+          </TableSortLabel>
+        )}
+      </StyledTableCell>
+    </>
   );
 };
 

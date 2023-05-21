@@ -4,13 +4,16 @@ import {
   Paper,
   Table,
   TableBody,
-  TableCell,
   TableContainer,
   TableHead,
   TableRow,
   ThemeProvider,
 } from '@mui/material';
-import { darkTheme, responsiveStyles, theme } from '../../theme/theme';
+import {
+  DashboardTableRow,
+  StyledTableCell,
+  darkTheme,
+} from '../../theme/theme';
 import { Stations } from '../../generated/graphql';
 
 export type TopReturnsProps = {
@@ -20,8 +23,6 @@ export type TopReturnsProps = {
 const TopReturns: React.FC<TopReturnsProps> = ({ topReturnStations }) => {
   const { t } = useTranslation();
 
-  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
-
   return (
     <>
       <p>{t('dashboard:top_return_stations')} </p>
@@ -29,32 +30,22 @@ const TopReturns: React.FC<TopReturnsProps> = ({ topReturnStations }) => {
         <Table aria-label="simple table">
           <TableHead>
             <ThemeProvider theme={darkTheme}>
-              <TableRow
-                sx={{
-                  backgroundColor: '#14213d',
-                  padding: '2rem 2rem .5rem 2rem',
-                  boxSizing: 'border-box',
-                  borderRadius: '.5rem .5rem 0 0',
-                  borderBottom: 'solid .5rem #fca211',
-                }}
-              >
-                <TableCell
+              <DashboardTableRow>
+                <StyledTableCell
                   key={'0-top-departure-stations'}
                   id={'0-top-departure-stations'}
                   align={'left'}
-                  sx={tableCellStyles}
                 >
                   {t('stations:station')}
-                </TableCell>
-                <TableCell
+                </StyledTableCell>
+                <StyledTableCell
                   key={'1-top-departure-stations-departures'}
                   id={'1-top-departure-stations-departures'}
                   align={'left'}
-                  sx={tableCellStyles}
                 >
                   {t('stations:returns')}
-                </TableCell>
-              </TableRow>
+                </StyledTableCell>
+              </DashboardTableRow>
             </ThemeProvider>
           </TableHead>
           <TableBody>
@@ -63,12 +54,12 @@ const TopReturns: React.FC<TopReturnsProps> = ({ topReturnStations }) => {
                 key={row.id?.toString()}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="left" sx={tableCellStyles}>
+                <StyledTableCell align="left">
                   {row.nimi?.toString()}
-                </TableCell>
-                <TableCell align="left" sx={tableCellStyles}>
+                </StyledTableCell>
+                <StyledTableCell align="left">
                   {row.journey_returns}
-                </TableCell>
+                </StyledTableCell>
               </TableRow>
             ))}
           </TableBody>

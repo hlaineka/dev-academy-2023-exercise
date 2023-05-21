@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { TypedKeyJourneys } from '../pages/JourneysPage/types';
 
 export const createDurationString = (duration: number): string => {
@@ -30,17 +31,19 @@ export const createTimeString = (time: Date): string => {
   return returnable;
 };
 
-export const getRightCustomString = (
+export const GetRightCustomString = (
   keyString: string,
   row: TypedKeyJourneys,
 ) => {
-  return keyString === 'duration_sec'
+  const { t } = useTranslation();
+
+  return keyString === t('journeys:duration')
     ? createDurationString(row.duration_sec)
-    : keyString === 'covered_distance_m'
+    : keyString === t('journeys:covered_distance')
     ? createDistanceString(row.covered_distance_m)
-    : keyString === 'Departure'
+    : keyString === t('journeys:departure')
     ? createTimeString(row.Departure)
-    : keyString === 'Return'
+    : keyString === t('journeys:return')
     ? createTimeString(row.Return)
     : row[keyString];
 };

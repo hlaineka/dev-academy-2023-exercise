@@ -6,6 +6,13 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material';
 import NavigationButton from './NavigationButton';
 
+const NavigationContainer = styled(Box)(() => ({
+  width: 'auto',
+  paddingRight: '2rem',
+  backgroundColor: '#14213D',
+  height: '5rem',
+}));
+
 const SelectableListItem = styled(ListItem)(() => ({
   height: '100%',
   '&.selected-item': {
@@ -39,14 +46,7 @@ const Navigation = () => {
 
   return (
     <div>
-      <Box
-        sx={{
-          width: 'auto',
-          paddingRight: '2rem',
-          backgroundColor: '#14213D',
-          height: '5rem',
-        }}
-      >
+      <NavigationContainer>
         <CustomList>
           {[
             t('dashboard:dashboard').toString(),
@@ -64,7 +64,7 @@ const Navigation = () => {
             </SelectableListItem>
           ))}
         </CustomList>
-      </Box>
+      </NavigationContainer>
     </div>
   );
 };

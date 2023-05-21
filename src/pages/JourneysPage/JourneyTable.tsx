@@ -11,6 +11,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  styled,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { TableHeads } from './types';
@@ -24,6 +25,22 @@ import JourneyRow from './JourneyRow';
 import { Journeys } from '../../generated/graphql';
 
 type SortByOption = Array<string>;
+
+const StyledFormControl = styled(FormControl)(() => ({
+  width: '20rem',
+  color: '#14213D',
+}));
+
+const StyledMenuItem = styled(MenuItem)(() => ({
+  color: '#14213D',
+}));
+
+const StyledTable = styled(Table)(() => ({
+  tableLayout: 'fixed',
+  whiteSpace: 'normal',
+  maxWidth: '100vw',
+  width: '100%',
+}));
 
 const JourneyTable = () => {
   //states and handlers for padination and ordering
@@ -55,12 +72,13 @@ const JourneyTable = () => {
     const isAsc = orderBy === query_name && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(query_name);
+    setOrderByValue(
+      sortByOptions.findIndex(element => element[0] === query_name).toString(),
+    );
   };
 
   const handleOrderBy = (event: SelectChangeEvent) => {
     const index: number = +event.target.value;
-    console.log('here');
-    console.log(sortByOptions[index][0]);
     setOrderBy(sortByOptions[index][0]);
     setOrderByValue(event.target.value);
   };
@@ -109,8 +127,6 @@ const JourneyTable = () => {
     ['return_station_name', t('journeys:return_station')],
   ];
 
-  console.log(orderBy);
-
   return (
     <>
       {loading ? (
@@ -120,7 +136,7 @@ const JourneyTable = () => {
       ) : (
         data && (
           <>
-            <FormControl sx={{ width: '20rem', color: '#14213D' }}>
+            <StyledFormControl>
               <InputLabel id="journeys-order-by">
                 {t('tables:sort_by')}
               </InputLabel>
@@ -132,16 +148,12 @@ const JourneyTable = () => {
                 onChange={handleOrderBy}
               >
                 {sortByOptions.map((option: SortByOption, index) => (
-                  <MenuItem
-                    sx={{ color: '#14213D' }}
-                    key={`${index}-${option[1]}`}
-                    value={index}
-                  >
+                  <StyledMenuItem key={`${index}-${option[1]}`} value={index}>
                     {option[1]}
-                  </MenuItem>
+                  </StyledMenuItem>
                 ))}
               </Select>
-            </FormControl>
+            </StyledFormControl>
             <TablePagination
               component="div"
               count={maxRowsCount}
@@ -154,14 +166,7 @@ const JourneyTable = () => {
               rowsPerPageOptions={rowsPerPageOptions}
             />
             <TableContainer component={Paper}>
-              <Table
-                sx={{
-                  tableLayout: 'auto',
-                  whiteSpace: 'normal',
-                  maxWidth: '100vw',
-                }}
-                aria-label="simple table"
-              >
+              <StyledTable aria-label="simple table">
                 <CreateTableHead
                   headCells={customJourneyTableHeads}
                   orderBy={orderBy}
@@ -180,7 +185,7 @@ const JourneyTable = () => {
                     />
                   ))}
                 </TableBody>
-              </Table>
+              </StyledTable>
             </TableContainer>
           </>
         )

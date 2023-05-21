@@ -1,24 +1,23 @@
 import AppBar from '@mui/material/AppBar';
 import Navigation from '../Navigation';
 import LanguageSelect from '../LanguageSelect';
+import { styled } from '@mui/material';
+
+const StyledAppBar = styled(AppBar)(() => ({
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'row',
+  height: '5rem',
+  padding: '1rem 0',
+  justifyContent: 'space-between',
+}));
 
 const Header = () => {
   return (
-    <AppBar
-      position="static"
-      sx={{
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        height: '5rem',
-        padding: '1rem 0',
-        justifyContent: 'space-between',
-      }}
-      data-testid="header"
-    >
+    <StyledAppBar position="static" data-testid="header">
       <Navigation />
       <LanguageSelect />
-    </AppBar>
+    </StyledAppBar>
   );
 };
 export default Header;

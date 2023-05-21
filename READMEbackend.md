@@ -34,7 +34,7 @@ For testing purposes, I created a mock dataset, shown in test_data folder of the
 
 ```psql -h localhost -p 5432 -d postgres -U postgres```
 
-```reate table test_journeys (id serial, "Departure" timestamp, "Return" timestamp, departure_station_id integer, departure_station_name text, return_station_id integer, return_station_name text, covered_distance_m real, duration_sec integer);```
+```create table test_journeys (id serial, "Departure" timestamp, "Return" timestamp, departure_station_id integer, departure_station_name text, return_station_id integer, return_station_name text, covered_distance_m real, duration_sec integer);```
 
 ```\COPY test_journeys ("Departure", "Return", departure_station_id, departure_station_name, return_station_id, return_station_name, covered_distance_m, duration_sec) FROM './test_data/test_journeys.csv' WITH DELIMITER ',' CSV HEADER;```
 

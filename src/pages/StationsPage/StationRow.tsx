@@ -1,29 +1,21 @@
-import { TableCell, TableRow } from '@mui/material';
+import { TableRow } from '@mui/material';
 import React from 'react';
-import { responsiveStyles, theme } from '../../theme/theme';
+import { StyledTableCell } from '../../theme/theme';
 import SingleStationView from './SingleStationView';
 import { StationRowProps } from './types';
 
 const StationRow: React.FC<StationRowProps> = ({ row }) => {
-  const tableCellStyles = responsiveStyles(theme)[0].tableCell;
-
   return (
     <TableRow
       key={row.fid?.toString()}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
-      <TableCell align="left" sx={tableCellStyles}>
-        {row.nimi}
-      </TableCell>
-      <TableCell align="left" sx={tableCellStyles}>
-        {row.osoite}
-      </TableCell>
-      <TableCell align="left" sx={tableCellStyles}>
-        {row.kaupunki}
-      </TableCell>
-      <TableCell align="center" sx={tableCellStyles}>
+      <StyledTableCell align="left">{row.nimi}</StyledTableCell>
+      <StyledTableCell align="left">{row.osoite}</StyledTableCell>
+      <StyledTableCell align="left">{row.kaupunki}</StyledTableCell>
+      <StyledTableCell align="center">
         <SingleStationView data={row} />
-      </TableCell>
+      </StyledTableCell>
     </TableRow>
   );
 };
