@@ -1,7 +1,7 @@
-*/node_modules
+/node_modules
 .DS_Store
 *.dump
-*/dist
+dist
 
 frontend/src/generated*
 graphql.schema.json
@@ -9,4 +9,6 @@ graphql.schema.json
 .env
 
 /extras*
-/backend/data*
+/data*
+
+/coverage
