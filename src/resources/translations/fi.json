@@ -6,7 +6,8 @@
     "sort_by": "Järjestys",
     "rows_per_page": "Rivejä sivulla",
     "show_more": "Näytä enemmän",
-    "language": "Kieli"
+    "language": "Kieli",
+    "more_info": "Lisätietoja"
   },
   "status": {
     "loading": "Ladataan...",
@@ -19,7 +20,9 @@
     "return_station": "Paluupysäkki",
     "return": "Paluu",
     "covered_distance": "Matka",
-    "duration": "Kesto"
+    "duration": "Kesto",
+    "show_less": "Show less information",
+    "show_more": "Show more information"
   },
   "dashboard": {
     "dashboard": "Dashboard",
@@ -33,7 +36,16 @@
     "stations": "Pysäkit",
     "departures": "Lähdöt",
     "station": "Pysäkki",
-    "returns": "Paluut"
+    "returns": "Paluut",
+    "name": "Nimi",
+    "address": "Osoite",
+    "city": "Kaupunki",
+    "operator": "Palveluntarjoaja",
+    "capacity": "Kapasiteetti",
+    "info_of": "Tiedot pysäkistä ",
+    "departed_journeys": "Pysäkiltä lähteneiden matkojen lukumäärä",
+    "returned_journeys": "Pysäkille palanneiden matkojen lukumäärä",
+    "undefined": "Ei tiedossa"
   },
   "tables": {
     "sort_by": "Järjestä"

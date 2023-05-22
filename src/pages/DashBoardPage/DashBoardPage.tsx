@@ -1,13 +1,18 @@
-import { Paper } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { Paper, styled } from '@mui/material';
 import { GetDashboardData } from '../../queries/Queries';
 import BasicPageLayout from '../../components/BasicPageLayout';
+import TopDepartures from './TopDepartures';
+import TopReturns from './TopReturns';
 import {
   createDistanceString,
   createDurationString,
 } from '../../functions/helpers';
-import TopDepartures from './TopDepartures';
-import TopReturns from './TopReturns';
+
+const DashboardPaper = styled(Paper)(() => ({
+  padding: '2rem',
+  marginBottom: '3rem',
+}));
 
 const DashBoardPage = () => {
   const { t } = useTranslation();
@@ -17,7 +22,7 @@ const DashBoardPage = () => {
 
   return (
     <BasicPageLayout pageName="Dashboard">
-      <Paper elevation={3} sx={{ padding: '2rem', marginBottom: '3rem' }}>
+      <DashboardPaper elevation={3}>
         <p>
           {t('dashboard:journey_avarage')}
           {dashboardData?.averageDistance
@@ -34,15 +39,15 @@ const DashBoardPage = () => {
           {t('dashboard:average_station_usage')}{' '}
           {dashboardData.averageStationsUsage}
         </p>
-      </Paper>
-      <Paper elevation={3} sx={{ padding: '2rem', marginBottom: '3rem' }}>
+      </DashboardPaper>
+      <DashboardPaper elevation={3}>
         <TopDepartures
           topDepartureStations={dashboardData.topDepartureStations}
         />
-      </Paper>
-      <Paper elevation={3} sx={{ padding: '2rem', marginBottom: '3rem' }}>
+      </DashboardPaper>
+      <DashboardPaper elevation={3}>
         <TopReturns topReturnStations={dashboardData.topReturnStations} />
-      </Paper>
+      </DashboardPaper>
     </BasicPageLayout>
   );
 };

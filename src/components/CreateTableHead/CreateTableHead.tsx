@@ -1,11 +1,11 @@
 import React from 'react';
+import { ThemeProvider, styled } from '@mui/material/styles';
 import TableHead from '@mui/material/TableHead';
 import { SortDirection } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { ThemeProvider } from '@mui/material/styles';
 import CreateTableHeadCell from './CreateTableHeadCell';
-import { darkTheme } from '../../theme/theme';
 import { TableHeads } from '../../pages/StationsPage/types';
+import { darkTheme } from '../../theme/theme';
 
 export type CreateTableHeadProps = {
   headCells: Array<TableHeads | undefined>;
@@ -14,6 +14,14 @@ export type CreateTableHeadProps = {
   tableType: string;
   handleOrdering: (id: string) => void;
 };
+
+const StyledTableRow = styled(TableRow)(() => ({
+  backgroundColor: '#14213d',
+  padding: '2rem 2rem .5rem 2rem',
+  boxSizing: 'border-box',
+  borderRadius: '.5rem .5rem 0 0',
+  borderBottom: 'solid .5rem #fca211',
+}));
 
 export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
   headCells,
@@ -25,15 +33,7 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
   return (
     <TableHead>
       <ThemeProvider theme={darkTheme}>
-        <TableRow
-          sx={{
-            backgroundColor: '#14213d',
-            padding: '2rem 2rem .5rem 2rem',
-            boxSizing: 'border-box',
-            borderRadius: '.5rem .5rem 0 0',
-            borderBottom: 'solid .5rem #fca211',
-          }}
-        >
+        <StyledTableRow>
           {headCells.map(headCell =>
             headCell ? (
               <CreateTableHeadCell
@@ -42,14 +42,14 @@ export const CreateTableHead: React.FC<CreateTableHeadProps> = ({
                 order={order}
                 tableType={tableType}
                 handleOrdering={handleOrdering}
-                key={headCell.id}
+                width={headCells[0] ? 25 : 33}
+                key={`${headCell.id}-headcell`}
               />
             ) : (
               <></>
             ),
           )}
-          ;
-        </TableRow>
+        </StyledTableRow>
       </ThemeProvider>
     </TableHead>
   );

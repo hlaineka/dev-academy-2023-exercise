@@ -57,3 +57,15 @@ export const JourneyTableHeads = (): Array<TableHeads> => {
     },
   ];
 };
+
+export const GetSortByOptions = (): Array<Array<string>> => {
+  const { t } = useTranslation();
+  return [
+    ['Departure', t('journeys:departure')],
+    ['Return', t('journeys:return')],
+    ['covered_distance_m', t('journeys:covered_distance')],
+    ['departure_station_name', t('journeys:departure_station')],
+    ['duration_sec', t('journeys:duration')],
+    ['return_station_name', t('journeys:return_station')],
+  ];
+};

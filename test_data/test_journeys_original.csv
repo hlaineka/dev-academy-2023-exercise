@@ -1,0 +1,109 @@
+Departure,Return,Departure station id,Departure station name,Return station id,Return station name,Covered distance (m),Duration (sec.)
+2021-05-31T23:57:25,2021-06-01T00:05:46,94,Laajalahden aukio,100,Teljäntie,2043,500
+2021-05-31T23:56:59,2021-06-01T00:07:14,82,Töölöntulli,113,Pasilan asema,1870,611
+2021-05-31T23:56:44,2021-06-01T00:03:26,123,Näkinsilta,121,Vilhonvuorenkatu,1025,399
+2021-05-31T23:56:23,2021-06-01T00:29:58,4,Viiskulma,65,Hernesaarenranta,4318,2009
+2021-05-31T23:56:11,2021-06-01T00:02:02,4,Viiskulma,65,Hernesaarenranta,1400,350
+2021-05-31T23:54:48,2021-06-01T00:00:57,292,Koskelan varikko,133,Paavalinpuisto,1713,366
+2021-05-31T23:54:11,2021-06-01T00:17:11,34,Kansallismuseo,81,Stenbäckinkatu,2550,1377
+2021-05-31T23:53:04,2021-06-01T00:14:52,240,Viikin normaalikoulu,281,Puotila (M),5366,1304
+2021-05-31T23:52:03,2021-06-01T00:15:16,116,Linnanmäki,117,Brahen puistikko,3344,1393
+2021-05-31T23:50:19,2021-06-01T00:05:58,116,Linnanmäki,145,Pohjolankatu,3248,935
+2021-05-31T23:50:05,2021-06-01T00:01:22,147,Käpylän asema,232,Oulunkylän asema,1633,672
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,1131,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,1131,0
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,1131,−5
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,1131,34l5
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,1131,string
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,1131,@#$@
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,0,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,−5,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,34l5,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,string,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,@#$@,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Keksitty asema,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,2343,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,−54223,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,0,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,−32523,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,SELECT * FROM journeys LIMIT 5;,62,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,<script>HellO!</script>,62,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,cmd|'/C echo HELLO & ping 8.8.8.8'!'A1',62,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,`12,62,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,"""jep",62,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,hrefhttps://example.com,62,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu<a>hrefhttps://example.com,62,Välimerenkatu,5366,345
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,<a>hrefhttps://example.com,62,Välimerenkatu,5366,345
+2021-05-31T23:57:25,2021-06-01T00:05:46,94,"HYPERLINK('https://bit.ly/3hUl6Pd','NOTFOUND.'",100,Teljäntie,2043,500
+2021-05-31T23:56:59,2021-06-01T00:07:14,82,123,113,Pasilan asema,1870,611
+2021-05-31T23:56:44,2021-06-01T00:03:26,123,"""asema""",121,Vilhonvuorenkatu,1025,399
+2021-05-31T23:56:23,2021-06-01T00:29:58,4,"""Viiskulma""",65,Hernesaarenranta,4318,2009
+2021-05-31T23:56:11,2021-06-01T00:02:02,4,Viiskulma,65,Hernesaarenranta,1400,350
+2021-05-31T23:54:48,2021-06-01T00:00:57,292,Koskelan varikko,"""'""",Paavalinpuisto,1713,366
+2021-05-31T23:54:11,2021-06-01T00:17:11,34,Kansallismuseo,"""--""",Stenbäckinkatu,2550,1377
+2021-05-31T23:53:04,2021-06-01T00:14:52,240,Viikin normaalikoulu,"""+++""",Puotila (M),5366,1304
+2021-05-31T23:52:03,2021-06-01T00:15:16,116,Linnanmäki,"""13223113""",Brahen puistikko,3344,1393
+2021-05-31T23:50:19,2021-06-01T00:05:58,116,Linnanmäki,"""000000000000""",Pohjolankatu,3248,935
+2021-05-31T23:50:05,2021-06-01T00:01:22,147,Käpylän asema,"""return station 1+345@""",Oulunkylän asema,1633,672
+2021-05-31T23:50:00,2021-05-31T23:55:48,"""'""",Kalevankatu,62,Välimerenkatu,1131,345
+2021-05-31T23:57:25,2021-06-01T00:05:46,"""--""",Laajalahden aukio,100,Teljäntie,2043,500
+2021-05-31T23:56:59,2021-06-01T00:07:14,"""+++""",Töölöntulli,113,Pasilan asema,1870,611
+2021-05-31T23:56:44,2021-06-01T00:03:26,"""13223113""",Näkinsilta,121,Vilhonvuorenkatu,1025,399
+2021-05-31T23:56:23,2021-06-01T00:29:58,"""000000000000""",Viiskulma,65,Hernesaarenranta,4318,2009
+2021-05-31T23:56:11,2021-06-01T00:02:02,"""return station 1+345@""",Viiskulma,65,Hernesaarenranta,1400,350
+2021-05-31T23:54:48,2021-06-01T00:00:57,−3422,Koskelan varikko,133,Paavalinpuisto,1713,366
+2021-05-31T23:54:11,2021-06-01T00:17:11,-,Kansallismuseo,81,Stenbäckinkatu,2550,1377
+2021-05-31T23:53:04,2021-06-01T00:14:52,asdf,Viikin normaalikoulu,281,Puotila (M),5366,1304
+2021-05-31T23:52:03,SELECT * FROM journeys LIMIT 5;,116,Linnanmäki,117,Brahen puistikko,3344,1393
+2021-05-31T23:50:19,<script>HellO!</script>,116,Linnanmäki,145,Pohjolankatu,3248,935
+2021-05-31T23:50:05,cmd|'/C echo HELLO & ping 8.8.8.8'!'A1',147,Käpylän asema,232,Oulunkylän asema,1633,672
+2021-05-31T23:50:00,`12,69,Kalevankatu,62,Välimerenkatu,1131,345
+2021-05-31T23:57:25,"""jep",94,Laajalahden aukio,100,Teljäntie,2043,500
+2021-05-31T23:56:59,hrefhttps://example.com,82,Töölöntulli,113,Pasilan asema,1870,611
+2021-05-31T23:56:44,Kalevankatu<a>hrefhttps://example.com,123,Näkinsilta,121,Vilhonvuorenkatu,1025,399
+2021-05-31T23:56:23,<a>hrefhttps://example.com,4,Viiskulma,65,Hernesaarenranta,4318,2009
+2021-05-31T23:56:11,"HYPERLINK('https://bit.ly/3hUl6Pd','NOTFOUND.'",4,Viiskulma,65,Hernesaarenranta,1400,350
+2021-05-31T23:54:48,2021-06-01T0,292,Koskelan varikko,133,Paavalinpuisto,1713,366
+2021-05-31T23:54:11,202T00:17:11,34,Kansallismuseo,81,Stenbäckinkatu,2550,1377
+2021-05-31T23:53:04,2021-55-01T00:14:52,240,Viikin normaalikoulu,281,Puotila (M),5366,1304
+2021-05-31T23:52:03,2021-06-01T50:15:16,116,Linnanmäki,117,Brahen puistikko,3344,1393
+2021-05-31T23:50:19,2021-06-01T00:55:58,116,Linnanmäki,145,Pohjolankatu,3248,935
+2021-05-31T23:50:05,2021-06-01T00:01:82,147,Käpylän asema,232,Oulunkylän asema,1633,672
+2021-05-31T23:50:00,−235,69,Kalevankatu,62,Välimerenkatu,1131,345
+2021-05-31T23:57:25,0,94,Laajalahden aukio,100,Teljäntie,2043,500
+SELECT * FROM journeys LIMIT 5;,2021-06-01T00:07:14,82,Töölöntulli,113,Pasilan asema,1870,611
+<script>HellO!</script>,2021-06-01T00:03:26,123,Näkinsilta,121,Vilhonvuorenkatu,1025,399
+cmd|'/C echo HELLO & ping 8.8.8.8'!'A1',2021-06-01T00:29:58,4,Viiskulma,65,Hernesaarenranta,4318,2009
+`12,2021-06-01T00:02:02,4,Viiskulma,65,Hernesaarenranta,1400,350
+"""jep",2021-06-01T00:00:57,292,Koskelan varikko,133,Paavalinpuisto,1713,366
+hrefhttps://example.com,2021-06-01T00:17:11,34,Kansallismuseo,81,Stenbäckinkatu,2550,1377
+Kalevankatu<a>hrefhttps://example.com,2021-06-01T00:14:52,240,Viikin normaalikoulu,281,Puotila (M),5366,1304
+<a>hrefhttps://example.com,2021-06-01T00:15:16,116,Linnanmäki,117,Brahen puistikko,3344,1393
+"HYPERLINK('https://bit.ly/3hUl6Pd','NOTFOUND.'",2021-06-01T00:05:58,116,Linnanmäki,145,Pohjolankatu,3248,935
+2021-06-01T0,2021-06-01T00:01:22,147,Käpylän asema,232,Oulunkylän asema,1633,672
+202T00:17:11,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,1131,345
+2021-55-01T00:14:52,2021-06-01T00:05:46,94,Laajalahden aukio,100,Teljäntie,2043,500
+2021-06-01T50:15:16,2021-06-01T00:07:14,82,Töölöntulli,113,Pasilan asema,1870,611
+2021-06-01T00:55:58,2021-06-01T00:03:26,123,Näkinsilta,121,Vilhonvuorenkatu,1025,399
+2021-06-01T00:01:82,2021-06-01T00:29:58,4,Viiskulma,65,Hernesaarenranta,4318,2009
+−235,2021-06-01T00:02:02,4,Viiskulma,65,Hernesaarenranta,1400,350
+0,2021-06-01T00:00:57,292,Koskelan varikko,133,Paavalinpuisto,1713,366
+2021-05-31T23:54:11,2021-06-01T00:17:11,34,Kansallismuseo,81,SELECT * FROM journeys LIMIT 5;,2550,1377
+2021-05-31T23:53:04,2021-06-01T00:14:52,240,Viikin normaalikoulu,281,<script>HellO!</script>,5366,1304
+2021-05-31T23:52:03,2021-06-01T00:15:16,116,Linnanmäki,117,cmd|'/C echo HELLO & ping 8.8.8.8'!'A1',3344,1393
+2021-05-31T23:50:19,2021-06-01T00:05:58,116,Linnanmäki,145,`12,3248,935
+2021-05-31T23:50:05,2021-06-01T00:01:22,147,Käpylän asema,232,"""jep",1633,672
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,hrefhttps://example.com,1131,345
+2021-05-31T23:57:25,2021-06-01T00:05:46,94,Laajalahden aukio,100,Kalevankatu<a>hrefhttps://example.com,2043,500
+2021-05-31T23:56:59,2021-06-01T00:07:14,82,Töölöntulli,113,<a>hrefhttps://example.com,1870,611
+2021-05-31T23:56:44,2021-06-01T00:03:26,123,Näkinsilta,121,"HYPERLINK('https://bit.ly/3hUl6Pd','NOTFOUND.'",1025,399
+2021-05-31T23:56:23,2021-06-01T00:29:58,4,Viiskulma,65,2021-06-01T0,4318,2009
+2021-05-31T23:56:11,2021-06-01T00:02:02,4,Viiskulma,65,202T00:17:11,1400,350
+2021-05-31T23:54:48,2021-06-01T00:00:57,292,Koskelan varikko,133,2021-55-01T00:14:52,1713,366
+2021-05-31T23:54:11,2021-06-01T00:17:11,34,Kansallismuseo,81,2021-06-01T50:15:16,2550,1377
+2021-05-31T23:53:04,2021-06-01T00:14:52,240,Viikin normaalikoulu,281,2021-06-01T00:55:58,5366,1304
+2021-05-31T23:52:03,2021-06-01T00:15:16,116,Linnanmäki,117,2021-06-01T00:01:82,3344,1393
+2021-05-31T23:50:19,2021-06-01T00:05:58,116,Linnanmäki,145,−235,3248,935
+2021-05-31T23:50:05,2021-06-01T00:01:22,147,Käpylän asema,232,0,1633,672
+2021-05-31T23:50:00,2021-05-31T23:55:48,69,Kalevankatu,62,Välimerenkatu,20394802983094989081239489834899,345

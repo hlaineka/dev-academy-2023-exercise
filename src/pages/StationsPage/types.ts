@@ -2,7 +2,7 @@ import { Stations } from '../../generated/graphql';
 
 export type TableHeads = {
   id: string;
-  label: String;
+  label: string;
   query_name: string;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 };

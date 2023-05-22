@@ -12,3 +12,5 @@ graphql.schema.json
 /data*
 
 /coverage
+
+/src/generated/

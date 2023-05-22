@@ -1,12 +1,12 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ThemeProvider } from '@mui/material/styles';
+import { Box } from '@mui/material';
 import DashBoardPage from './pages/DashBoardPage';
 import StationsPage from './pages/StationsPage';
 import JourneysPage from './pages/JourneysPage';
 import Header from './components/Header';
-import { ThemeProvider } from '@mui/material/styles';
-import { responsiveStyles, theme } from './theme/theme';
-import { Box } from '@mui/material';
+import { theme } from './theme/theme';
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -17,12 +17,11 @@ const createApolloClient = () => {
 
 const App = () => {
   const client = createApolloClient();
-  const rootStyles = responsiveStyles(theme)[0].root;
 
   return (
     <BrowserRouter>
       <ApolloProvider client={client}>
-        <Box sx={rootStyles}>
+        <Box>
           <ThemeProvider theme={theme}>
             <Header />
             <Routes>

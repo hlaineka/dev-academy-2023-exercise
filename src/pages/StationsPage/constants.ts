@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { TableHeads } from './types';
 
 // for mui pagination component, selection for pagination options
@@ -9,41 +10,32 @@ export const rowsPerPageOptions = [
   { label: 'all', value: -1 },
 ];
 
-export const stationTableHeads: Array<TableHeads> = [
-  {
-    id: '0',
-    label: 'Name',
-    query_name: 'name',
-    align: 'left',
-  },
-  {
-    id: '1',
-    label: 'Adress',
-    query_name: 'osoite',
-    align: 'left',
-  },
-  {
-    id: '2',
-    label: 'City',
-    query_name: 'kaupunki',
-    align: 'left',
-  },
-  {
-    id: '3',
-    label: 'Operator',
-    query_name: 'operaattori',
-    align: 'left',
-  },
-  {
-    id: '4',
-    label: 'Capacity',
-    query_name: 'kapasiteetti',
-    align: 'right',
-  },
-  {
-    id: '5',
-    label: '',
-    query_name: '',
-    align: 'center',
-  },
-];
+export const StationTableHeads = (): Array<TableHeads> => {
+  const { t } = useTranslation();
+  return [
+    {
+      id: '0',
+      label: t('stations:name'),
+      query_name: 'name',
+      align: 'left',
+    },
+    {
+      id: '1',
+      label: t('stations:address'),
+      query_name: 'osoite',
+      align: 'left',
+    },
+    {
+      id: '2',
+      label: t('stations:city'),
+      query_name: 'kaupunki',
+      align: 'left',
+    },
+    {
+      id: '3',
+      label: '',
+      query_name: '',
+      align: 'center',
+    },
+  ];
+};
