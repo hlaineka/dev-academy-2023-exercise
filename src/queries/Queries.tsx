@@ -76,6 +76,7 @@ export const GET_PAGINATED_ORDERED_STATIONS = gql`
 export const GET_TOP_DEPARTURE_STATIONS = gql`
   query getTopDepartureStations {
     stations(order_by: { journey_departures: desc }, limit: 5) {
+      fid
       id
       nimi
       journey_departures
@@ -111,6 +112,7 @@ export const GET_AVERAGE_JOURNEYS = gql`
 export const GET_TOP_RETURN_STATIONS = gql`
   query getTopReturnStations {
     stations(order_by: { journey_returns: desc }, limit: 5) {
+      fid
       id
       nimi
       journey_returns
