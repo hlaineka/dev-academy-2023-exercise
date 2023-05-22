@@ -5,7 +5,7 @@
   "author": "hlaineka",
   "licence": "MIT",
   "main": "index.js",
-  "homepage": "hlaineka.github.io",
+  "homepage": "https://hlaineka.github.io/dev-academy-2023-exercise",
   "dependencies": {
     "@apollo/client": "^3.7.5",
     "@apollo/server": "^4.3.1",
