@@ -2,7 +2,7 @@
 
 ## RUNNING THE PROJECT
 
-### Start the Hasura/Postgre backend:
+### Start the Hasura/Postgre backend (not necessary, by default uses cloud hasura server):
 
 Download the datadump https://www.dropbox.com/s/z8hpz0xlj3povdx/latest.dump?dl=0
 
@@ -23,6 +23,8 @@ start the hasura server
 Now you should have the database running with hasura, and you can access the console from http://localhost:8080/console/
 
 ### Starting the front end:
+
+If you want to run the project with the local hasura server, change the uri in src/App.tsx to http://localhost:8080/v1/graphql, and remove headers.
 
 Go to the folder /frontend and run 
 

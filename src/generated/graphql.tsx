@@ -86,15 +86,15 @@ export enum Cursor_Ordering {
 /** columns and relationships of "journeys" */
 export type Journeys = {
   __typename?: 'journeys';
-  Departure?: Maybe<Scalars['timestamp']>;
-  Return?: Maybe<Scalars['timestamp']>;
-  covered_distance_m?: Maybe<Scalars['Float']>;
-  departure_station_id?: Maybe<Scalars['Int']>;
-  departure_station_name?: Maybe<Scalars['String']>;
-  duration_sec?: Maybe<Scalars['Int']>;
+  Departure: Scalars['timestamp'];
+  Return: Scalars['timestamp'];
+  covered_distance_m: Scalars['Float'];
+  departure_station_id: Scalars['Int'];
+  departure_station_name: Scalars['String'];
+  duration_sec: Scalars['Int'];
   id: Scalars['Int'];
-  return_station_id?: Maybe<Scalars['Int']>;
-  return_station_name?: Maybe<Scalars['String']>;
+  return_station_id: Scalars['Int'];
+  return_station_name: Scalars['String'];
 };
 
 /** aggregated selection of "journeys" */
@@ -366,6 +366,7 @@ export type Journeys_Updates = {
   _inc?: InputMaybe<Journeys_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Journeys_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Journeys_Bool_Exp;
 };
 
@@ -480,12 +481,14 @@ export type Mutation_RootInsert_Journeys_OneArgs = {
 /** mutation root */
 export type Mutation_RootInsert_StationsArgs = {
   objects: Array<Stations_Insert_Input>;
+  on_conflict?: InputMaybe<Stations_On_Conflict>;
 };
 
 
 /** mutation root */
 export type Mutation_RootInsert_Stations_OneArgs = {
   object: Stations_Insert_Input;
+  on_conflict?: InputMaybe<Stations_On_Conflict>;
 };
 
 
@@ -647,15 +650,15 @@ export type Query_RootTest_Journeys_AggregateArgs = {
 export type Stations = {
   __typename?: 'stations';
   adress?: Maybe<Scalars['String']>;
-  fid?: Maybe<Scalars['Int']>;
-  id?: Maybe<Scalars['Int']>;
+  fid: Scalars['Int'];
+  id: Scalars['Int'];
   journey_departures?: Maybe<Scalars['Int']>;
   journey_returns?: Maybe<Scalars['Int']>;
   kapasiteetti?: Maybe<Scalars['Int']>;
   kaupunki?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   namn?: Maybe<Scalars['String']>;
-  nimi?: Maybe<Scalars['String']>;
+  nimi: Scalars['String'];
   operaattori?: Maybe<Scalars['String']>;
   osoite?: Maybe<Scalars['String']>;
   stad?: Maybe<Scalars['String']>;
@@ -726,6 +729,14 @@ export type Stations_Bool_Exp = {
   x?: InputMaybe<Float_Comparison_Exp>;
   y?: InputMaybe<Float_Comparison_Exp>;
 };
+
+/** unique or primary key constraints on table "stations" */
+export enum Stations_Constraint {
+  /** unique or primary key constraint on columns "fid" */
+  StationsFidKey = 'stations_fid_key',
+  /** unique or primary key constraint on columns "id" */
+  StationsIdKey = 'stations_id_key'
+}
 
 /** input type for incrementing numeric columns in table "stations" */
 export type Stations_Inc_Input = {
@@ -804,6 +815,13 @@ export type Stations_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Stations>;
+};
+
+/** on_conflict condition type for table "stations" */
+export type Stations_On_Conflict = {
+  constraint: Stations_Constraint;
+  update_columns?: Array<Stations_Update_Column>;
+  where?: InputMaybe<Stations_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "stations". */
@@ -953,11 +971,46 @@ export type Stations_Sum_Fields = {
   y?: Maybe<Scalars['Float']>;
 };
 
+/** update columns of table "stations" */
+export enum Stations_Update_Column {
+  /** column name */
+  Adress = 'adress',
+  /** column name */
+  Fid = 'fid',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  JourneyDepartures = 'journey_departures',
+  /** column name */
+  JourneyReturns = 'journey_returns',
+  /** column name */
+  Kapasiteetti = 'kapasiteetti',
+  /** column name */
+  Kaupunki = 'kaupunki',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Namn = 'namn',
+  /** column name */
+  Nimi = 'nimi',
+  /** column name */
+  Operaattori = 'operaattori',
+  /** column name */
+  Osoite = 'osoite',
+  /** column name */
+  Stad = 'stad',
+  /** column name */
+  X = 'x',
+  /** column name */
+  Y = 'y'
+}
+
 export type Stations_Updates = {
   /** increments the numeric columns with given value of the filtered values */
   _inc?: InputMaybe<Stations_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Stations_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Stations_Bool_Exp;
 };
 
@@ -1344,6 +1397,7 @@ export type Test_Journeys_Updates = {
   _inc?: InputMaybe<Test_Journeys_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Test_Journeys_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Test_Journeys_Bool_Exp;
 };
 
@@ -1397,7 +1451,7 @@ export type GetPaginatedOrderedJourneysQueryVariables = Exact<{
 }>;
 
 
-export type GetPaginatedOrderedJourneysQuery = { __typename?: 'query_root', journeys: Array<{ __typename?: 'journeys', Departure?: any | null, Return?: any | null, covered_distance_m?: number | null, departure_station_name?: string | null, duration_sec?: number | null, id: number, return_station_name?: string | null }> };
+export type GetPaginatedOrderedJourneysQuery = { __typename?: 'query_root', journeys: Array<{ __typename?: 'journeys', Departure: any, Return: any, covered_distance_m: number, departure_station_name: string, duration_sec: number, id: number, return_station_name: string }> };
 
 export type GetStationsCountQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1416,12 +1470,12 @@ export type GetPaginatedOrderedStationsQueryVariables = Exact<{
 }>;
 
 
-export type GetPaginatedOrderedStationsQuery = { __typename?: 'query_root', stations: Array<{ __typename?: 'stations', adress?: string | null, fid?: number | null, id?: number | null, kapasiteetti?: number | null, kaupunki?: string | null, name?: string | null, namn?: string | null, nimi?: string | null, operaattori?: string | null, osoite?: string | null, stad?: string | null, x?: number | null, y?: number | null, journey_departures?: number | null, journey_returns?: number | null }> };
+export type GetPaginatedOrderedStationsQuery = { __typename?: 'query_root', stations: Array<{ __typename?: 'stations', adress?: string | null, fid: number, id: number, kapasiteetti?: number | null, kaupunki?: string | null, name?: string | null, namn?: string | null, nimi: string, operaattori?: string | null, osoite?: string | null, stad?: string | null, x?: number | null, y?: number | null, journey_departures?: number | null, journey_returns?: number | null }> };
 
 export type GetTopDepartureStationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTopDepartureStationsQuery = { __typename?: 'query_root', stations: Array<{ __typename?: 'stations', id?: number | null, nimi?: string | null, journey_departures?: number | null }> };
+export type GetTopDepartureStationsQuery = { __typename?: 'query_root', stations: Array<{ __typename?: 'stations', fid: number, id: number, nimi: string, journey_departures?: number | null }> };
 
 export type GetaverageStationUsageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1436,7 +1490,7 @@ export type GetAverageJourneysQuery = { __typename?: 'query_root', journeys_aggr
 export type GetTopReturnStationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTopReturnStationsQuery = { __typename?: 'query_root', stations: Array<{ __typename?: 'stations', id?: number | null, nimi?: string | null, journey_returns?: number | null }> };
+export type GetTopReturnStationsQuery = { __typename?: 'query_root', stations: Array<{ __typename?: 'stations', fid: number, id: number, nimi: string, journey_returns?: number | null }> };
 
 
 export const GetPaginatedOrderedJourneysDocument = gql`
@@ -1608,6 +1662,7 @@ export type GetPaginatedOrderedStationsQueryResult = Apollo.QueryResult<GetPagin
 export const GetTopDepartureStationsDocument = gql`
     query getTopDepartureStations {
   stations(order_by: {journey_departures: desc}, limit: 5) {
+    fid
     id
     nimi
     journey_departures
@@ -1721,6 +1776,7 @@ export type GetAverageJourneysQueryResult = Apollo.QueryResult<GetAverageJourney
 export const GetTopReturnStationsDocument = gql`
     query getTopReturnStations {
   stations(order_by: {journey_returns: desc}, limit: 5) {
+    fid
     id
     nimi
     journey_returns

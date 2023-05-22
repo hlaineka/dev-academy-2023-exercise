@@ -8,10 +8,16 @@ import JourneysPage from './pages/JourneysPage';
 import Header from './components/Header';
 import { theme } from './theme/theme';
 
+//for local hasura server, change the uri to http://localhost:8080/v1/graphql
+
 const createApolloClient = () => {
   return new ApolloClient({
     cache: new InMemoryCache(),
-    uri: 'http://localhost:8080/v1/graphql',
+    uri: 'https://accurate-gnu-96.hasura.app/v1/graphql',
+    //remove headers for local hasura server
+    headers: {
+      'x-hasura-admin-secret': process.env.REACT_APP_HASURA_SECRET_KEY || '',
+    },
   });
 };
 
