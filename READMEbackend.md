@@ -6,7 +6,7 @@ After creating the tables and importing the csv data to journeys and stations da
 
 ```create table journeys (id serial, "Departure" timestamp, "Return" timestamp, departure_station_id integer, departure_station_name text, return_station_id integer, return_station_name text, covered_distance_m real, duration_sec integer);```
 
-```\COPY journeys ("Departure", "Return", departure_station_id, departure_station_name, return_station_id, return_station_name, covered_distance_m, duration_sec) FROM 'journeys.csv' WITH DELIMITER ',' CSV HEADER;``
+```\COPY journeys ("Departure", "Return", departure_station_id, departure_station_name, return_station_id, return_station_name, covered_distance_m, duration_sec) FROM 'journeys.csv' WITH DELIMITER ',' CSV HEADER;```
 
 ## REMOVAL OF NEAR ZERO DATA
 
@@ -44,6 +44,10 @@ On journeys table foreign key pairs were made between departure_station_id and s
 Distance and duration limits were added to check constraints of journey table to be forced on any new data imported to the database.
 
 I would have loved to add also a constraint about departure time being before return time, but that is something I am looking forward to learning in the future!
+
+![Hasura setup for journeys](https://github.com/hlaineka/dev-academy-2023-exercise/blob/d29b8f1fddda11143837c4369f02ba635b0ec524/readme_images/Screenshot%202023-05-22%20at%2012.09.41.png "Hasura setup for journeys")
+
+
 
 ## TESTING THE DATABASE
 
