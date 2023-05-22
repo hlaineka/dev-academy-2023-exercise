@@ -4,7 +4,7 @@
 
 ### Start the Hasura/Postgre backend:
 
-Download the datadump https://www.dropbox.com/s/3a9zk0ssde2lc4c/latest.dump?dl=0
+Download the datadump https://www.dropbox.com/s/z8hpz0xlj3povdx/latest.dump?dl=0
 
 Start the postgres server
 ```cd backend```
@@ -58,7 +58,11 @@ Jest/jsdom tests are written for components and can be run with ```npm run jest`
 When developing, tests were run with ```npm run test:watch``` to make sure no
 breaking changes were made.
 
-Accessibility testing, E2E testing on the way, hopefully.
+Responsivity was tested manually with developer tools. Accessibility was tested with lighthouse to make sure all the pages get 100%. Wawe tool generated some possible improvements, that were out of the timeframe of this project, but would be extremely educational to go through in detail.
+
+Database was created with hasura, and a lot of the requirements are integrated in the database. You can read more about how the database was created and tested from LINKLINKLINK
+
+Unfortunately I did not have time to learn about E2E tests for this project, but I am really looking forward on mastering that subject in the furure.
 
 ### Version control:
 New features and bigger changes were made in a separate branch and merged to main.
@@ -73,7 +77,7 @@ Time and energy was put in refactoring the code in a way that helps reading and 
 The project uses one folder for frontend and backend, but they are separated. Backend runs with postgreSQL database operated with hasura/graphQL and accessed with Apollo from the frontend. More on backend can be read from READMEbackend.md.
 
 ### Error handling is addressed 
-Backend dataqueries handle error and loading states.
+Backend dataqueries handle error and loading states. Error and loading messages are at this point printed to console.
 
 ### User interface is responsive and easy to use
 Responsive tables are difficult to create - the project was planned using figma to make data presentation as responsive as possible. The endproduct does differ from the figma plannin, but having a planning step helped me to grasp what and how I wanted to display in the application. The figma layout for the page can be found in https://www.figma.com/file/i2VfpJVUpLSdv9xD7nVvhY/bikeapp?node-id=12%3A201&t=3c3n3ywpxyxJJ5Sv-1
@@ -97,46 +101,8 @@ MIT
 - The source code and application structure complies to general coding conventions
 
 ## would be nice to add -list
-- [x] Backend, remove duplicate rows!
-- [ ] Backend, data validation
-- [x] Not importing journey data with distance shorter than 10m or duration shorter than 10s
+- [ ] Backend, more data validation
 - [ ] Fixing station data by importing missing city info
-- [x] Single station view
-- [ ] Adding new journeys and stations
-- [ ] Running the project online
-- [ ] Jest tests
-- [ ] E2E tests
-- [x] Dashboard with statistics
-- [ ] Dashboard with more statistics!
-- [ ] Language versions
-- [x] Responsive layout
-- [ ] Accessible layout
-- [ ] Documentation
-- [x] Ordering per column for journeys and stations
-- [ ] Search for journeys and stations
-- [ ] Change queries to allow more functionalities
-- [x] Code through prettier, commenting
-- [x] Single station view to english
-- [x] Timestamp on journeys to more readable format
-- [ ] Google maps to singe station view
-- [ ] Accessibility evaluation
-- [ ] Testing responsivity
-- [ ] fixing stations view to follow new layout
-- [ ] Fix packages so that there is no vulnerabilities
-
-
-## Todo -list
-- [ ] Running the project online
-- [ ] Jest tests
-- [ ] Dashboard with more statistics!
-- [x] Language versions check
-- [x] Responsive layout
-- [x] Accessible layout
-- [ ] Documentation
-- [ ] Code through prettier, refactoring, commenting
-- [x] fixing stations view to follow new layout
-- [ ] Testing responsivity
-- [ ] Accessibility evaluation
 - [ ] Station view: 
 	- [ ] The average distance of a journey starting from the station
 	- [ ] The average distance of a journey ending at the station
@@ -144,5 +110,13 @@ MIT
 	- [ ] Top 5 most popular departure stations for journeys ending at the station
 	- [ ] Ability to filter all the calculations per month
 	- [ ] Google maps to singe station view
+- [ ] Adding new journeys and stations
+- [ ] Running the project online
+- [ ] Lots and lots more Jest tests
+- [ ] E2E tests
+- [ ] Dashboard with more statistics!
+- [ ] Accessible layout improvements from WAVE or other tools
 - [ ] Search for journeys and stations
 - [ ] Change queries to allow more functionalities
+- [ ] Fix packages so that there is no vulnerabilities
+

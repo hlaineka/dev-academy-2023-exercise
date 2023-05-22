@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Button, TableRow } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { TableRow } from '@mui/material';
 import { JourneyRowProps } from './types';
 import CollapsibleTableRow from './CollapsibleTableRow';
 import { StyledTableCell } from '../../theme/theme';
 import { GetRightCustomString } from '../../functions/helpers';
+import ShowMoreJourneyButton from './ShowMoreJourneyButton';
 
 /* customJourneyTableHeads: Array of type Array<TableHeads> (all entries of 
 	this array are in ./constants.tsx) with info on what columns are shown in 
@@ -27,7 +25,6 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
   customJourneyTableHeads,
 }) => {
   const [showMore, setShowMore] = useState(false);
-  const { t } = useTranslation();
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
@@ -61,34 +58,12 @@ const JourneyRow: React.FC<JourneyRowProps> = ({
           ) : (
             <></>
           )}
-          <StyledTableCell width={width}>
-            <Button
-              sx={{ color: '#14213D' }}
-              onClick={toggleShowMore}
-              aria-label={
-                showMore
-                  ? t('journeys:show_less').toString()
-                  : t('journeys:show:more').toString()
-              }
-              aria-labelledby={`expandlabeldiv-${row.id}`}
-            >
-              {showMore ? (
-                <>
-                  <ExpandLessIcon />{' '}
-                  <div id="expandlabeldiv" style={{ opacity: '0', width: '0' }}>
-                    Show Less
-                  </div>
-                </>
-              ) : (
-                <>
-                  <ExpandMoreIcon />
-                  <div id="expandlabeldiv" style={{ opacity: '0', width: '0' }}>
-                    Show More
-                  </div>
-                </>
-              )}
-            </Button>
-          </StyledTableCell>
+          <ShowMoreJourneyButton
+            width={width}
+            row={row}
+            toggleShowMore={toggleShowMore}
+            showMore={showMore}
+          />
         </>
       </TableRow>
       <CollapsibleTableRow

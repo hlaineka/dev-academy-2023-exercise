@@ -14,5 +14,3 @@ graphql.schema.json
 /coverage
 
 /src/generated/
-
-/test_data

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { TypedKeyJourneys } from '../pages/JourneysPage/types';
+import { TableHeads, TypedKeyJourneys } from '../pages/JourneysPage/types';
 
 export const createDurationString = (duration: number): string => {
   const seconds = duration % 60;
@@ -46,4 +46,35 @@ export const GetRightCustomString = (
     : keyString === t('journeys:return')
     ? createTimeString(row.Return)
     : row[keyString];
+};
+
+export const GetCollapsibleTableRowCells = (
+  row: TypedKeyJourneys,
+  customJourneyTableHeads: Array<TableHeads | undefined>,
+) => {
+  const { t } = useTranslation();
+  const RowCells = Object.entries(row)
+    .map(([keyString]) => {
+      if (
+        keyString != 'departure_station_name' &&
+        keyString != 'return_station_name' &&
+        keyString != customJourneyTableHeads[0]?.query_name &&
+        keyString != '__typename' &&
+        keyString != 'id'
+      ) {
+        switch (keyString) {
+          case 'Return':
+            return t('journeys:return');
+          case 'Departure':
+            return t('journeys:departure');
+          case 'covered_distance_m':
+            return t('journeys:covered_distance');
+          default:
+            return t('journeys:duration');
+        }
+      }
+    })
+    .filter(notUndefined => notUndefined !== undefined);
+
+  return RowCells;
 };
