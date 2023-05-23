@@ -38,6 +38,8 @@ The page should open to your browser, if not, you can find it in http://localhos
 
 ## ABOUT THE PROJECT
 
+You can find the project deployed [here!](https://hlaineka.github.io/dev-academy-2023-exercise/)
+
 ### Stack
 This project uses postgreSQL database with Hasura/GraphQL. Postgres- and hasura servers both run on docker. Frontend accesses the database over Apollo, and Codegen was uset to help with query typing. Frontend uses React/Typescript. Localisations were made with the help of i18next. Mui library with themes was used to save time in implementing frontend elements. Jest and Prettier help with writing quality code, and they are added also to githooks to ensure committed code follows the rules. 
 
